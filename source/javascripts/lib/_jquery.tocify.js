@@ -131,7 +131,7 @@
             // "pretty" - #looks-like-a-nice-url-and-is-easily-readable
             // function(text, element){} - Your own hash generation function that accepts the text as an
             // argument, and returns the hash value.
-            hashGenerator: "compact",
+            hashGenerator: "pretty",
 
             // **highlightDefault**: Accepts a boolean: true or false
             // Set's the first TOC item as active if no other TOC item is active.
@@ -401,7 +401,8 @@
 
             }).append($("<a/>", {
 
-                "text": self.text()
+                "text": self.text(),
+                "href": "#" + hashValue
 
             }));
 
@@ -539,7 +540,7 @@
 
             // Event delegation that looks for any clicks on list item elements inside of the HTML element calling the plugin
             this.element.on("click.tocify", "li", function(event) {
-
+                event.preventDefault();
                 if(self.options.history) {
 
                     window.location.hash = $(this).attr("data-unique");

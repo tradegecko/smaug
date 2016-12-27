@@ -23,9 +23,9 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #393939;
+$nav-bg: #2d3033;
 $examples-bg: #393939;
-$code-bg: #292929;
+$code-bg: #2d3033;
 $code-annotation-bg: #1c1c1c;
 $nav-subitem-bg: #262626;
 $nav-active-bg: #2467af;
@@ -100,10 +100,6 @@ $search-box-border-color: #666;
 // These settings are probably best left alone.
 
 %break-words {
-     word-break: break-all;
-
-     /* Non standard for webkit */
-     word-break: break-word;
-
-        hyphens: auto;
+    word-break: break-all;
+    hyphens: auto;
 }
