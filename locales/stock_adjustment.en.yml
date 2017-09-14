@@ -89,6 +89,12 @@ en:
         updatable: true,
         creatable: true,
       },
+      stock_adjustment_reason_id: {
+        name: "stock_adjustment_reason_id",
+        type: "Integer",
+        description: "",
+        filterable: true,
+      },
       stock_location_id: {
         name: "stock_location_id",
         type: "Integer",
