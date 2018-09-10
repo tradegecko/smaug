@@ -35,8 +35,8 @@ name: {
 
 `thor generate model ClassName`
 
-You will need 
-```
+You will need
+``` bash
 OAUTH_SECRET=xxx
 OAUTH_ID=xxx
 OAUTH_TOKEN=xxx
@@ -54,13 +54,15 @@ Look in the appropriate .yml file.
 
 # Deploy
 
-./deploy.sh
+``` bash
+$ deploy
+```
 
 # Rebase with upstream
 
-git remote set upstream git@github.com:lord/slate.git
-
-git fetch upstream
-
-git merge upstream/master
+`` bash
+$ git remote set upstream git@github.com:lord/slate.git
+$ git fetch upstream
+$ git merge upstream/master
+```
 
