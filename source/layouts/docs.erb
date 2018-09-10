@@ -62,37 +62,76 @@ under the License.
       </span>
     </a>
 
+    <div class="toc-wrapper">
+      <a href="/" title="Back to API documentation">
+        <%= image_tag "logo.png", width: "200px" %>
+      </a>
+      <% if language_tabs.any? %>
+        <div class="lang-selector">
+          <% language_tabs.each do |lang| %>
+            <% if lang.is_a? Hash %>
+              <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
+            <% else %>
+              <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if current_page.data.search %>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <% end %>
+      <div id="toc" class="toc-list-h1">
+        <% unless current_page.data.home %>
+          <a class="faux-toc-link" href="/">Back to documentation</a>
+        <% end %>
+        <% toc_data(page_content).each do |h1| %>
+          <li>
+            <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:content] %>"><%= h1[:content] %></a>
+            <% if h1[:children].length > 0 %>
+              <ul class="toc-list-h2">
+                <% h1[:children].each do |h2| %>
+                  <li>
+                    <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:content] %>"><%= h2[:content] %></a>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </li>
+        <% end %>
+
+        <% if current_page.data.home %>
+          <a class="faux-toc-link" href="/changes.html">API Change log</a>
+        <% end %>
+      </div>
+
+      <% if current_page.data.toc_footers %>
+        <ul class="toc-footer">
+          <% current_page.data.toc_footers.each do |footer| %>
+            <li><%= footer %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
     <div class="page-wrapper">
+      <div class="dark-box"></div>
       <div class="content">
         <%= page_content %>
-        <%= current_page.data.title %>
-        <%= current_page.data.search %>
-        <input type="text" class="search" id="input-search" placeholder="Search">
-        <ul class="search-results"></ul>
-        <div style="display:none">
-          <div id="toc" class="toc-list-h1">
-            <% unless current_page.data.home %>
-              <a class="faux-toc-link" href="/">Back to documentation</a>
+      </div>
+      <div class="dark-box">
+        <% if language_tabs.any? %>
+          <div class="lang-selector">
+            <% language_tabs.each do |lang| %>
+              <% if lang.is_a? Hash %>
+                <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
+              <% else %>
+                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+              <% end %>
             <% end %>
-            <% toc_index(current_page.data).each do |h1| %>
-              <li>
-                <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:content] %>"><%= h1[:content] %></a>
-                <% if h1[:children].length > 0 %>
-                  <ul class="toc-list-h2">
-                    <% h1[:children].each do |h2| %>
-                      <li>
-                        <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:content] %>"><%= h2[:content] %></a>
-                      </li>
-                    <% end %>
-                  </ul>
-                <% end %>
-              </li>
-            <% end %>
-
-            <% if current_page.data.home %>
-              <a class="faux-toc-link" href="/changes.html">API Change log</a>
-            <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
     <script>
