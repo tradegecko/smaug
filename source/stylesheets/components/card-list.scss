@@ -1,0 +1,27 @@
+.card-list {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+
+.study-card {
+  width: 32%;
+  border-radius: 5px;
+  display:inline-block;
+  overflow: hidden;
+}
+
+.study-blurb {
+  background:#F4F4F5;
+  height:220px;
+  padding:20px;
+  position: relative;
+}
+
+
+.card__sticky-button {
+  position: absolute;
+    bottom: 30px;
+}

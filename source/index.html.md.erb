@@ -1,73 +1,58 @@
 ---
-title: TradeGecko API Documentation
+title: Tradegecko Developer Portal
 
-language_tabs: # must be one of https://git.io/vQNgJ
-  - ruby
-  - shell
+case_studies:
+  - name: 3pl Absolute next level
+    blurb: they are so awesome and shippable
+    url: https://www.tradegecko.com
+    image: https://www.tradegecko.com/hubfs/marketing/img-brooklyn-bicycle-co-1.jpg
+  - name: Automate extra speed extra win
+    blurb: They won so much, that you think you can only win
+    url: https://www.tradegecko.com
+    image: https://www.tradegecko.com/hubfs/marketing/img-brooklyn-bicycle-co-1.jpg
+  - name: Warehousing in singapore
+    blurb: OMG THE HOUSE TURNED INTO A WARE
+    url: https://www.tradegecko.com
+    image: https://www.tradegecko.com/hubfs/marketing/img-brooklyn-bicycle-co-1.jpg
 
-toc_footers:
-  - <a href='https://go.tradegecko.com/register'>Sign up for an Account</a>
-  - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - libraries
-
-guides:
-  - creating_a_sales_order
-  - fulfilling_a_sales_order
-  - sales_order_flow
-
-asides:
-  - registering_an_application
-  - authentication_flows
-  - authorization_code
-  - privileged_access_token
-  - pagination
-  - filtering
-  - metadata
-  - rate_limiting
-  - idempotency_keys
-  - soft_deletion
-  - errors
-
-resources:
-  - account
-  - address
-  - company
-  - contact
-  - currency
-  - fulfillment
-  - fulfillment_line_item
-  - image
-  - invoice
-  - invoice_line_item
-  - location
-  - note
-  - order
-  - order_line_item
-  - payment_term
-  - product
-  - purchase_order
-  - purchase_order_line_item
-  - tax_type
-  - user
-  - variant
 
 search: true
 home: true
 ---
+<div class="row">
+  <div class="col-12">
+      <%= partial "includes/home_cta" %>
+  </div>
+</div>
+<div class="row">
+  <div style="background:#4A90E2; border-radius: 5px;padding:50px;width:100%;text-align:center;color:white">
+    <h2> Discover our comprehensive API </h2>
+    <p>Build exactly what you need with modern API's and webhooks<p>
+    <div style="width:500px;margin:auto">
+      <%= partial "includes/search" %>
+    </div>
+  </div>
+</div>
 
-# TradeGecko API Reference
+<div class="row">
 
-This website documents the public API for [TradeGecko](https://www.tradegecko.com)
+</div>
 
-You can view code examples in the dark area to the right; switch the programming language of the examples with the tabs in the top right.
-
-If anything is missing or seems incorrect, please check the [GitHub issues](https://github.com/tradegecko/smaug/issues)
-for existing known issues or [create a new issue](https://github.com/tradegecko/smaug/issues/new).
-
-<%= partial "includes/authentication" %>
-<%= partial "includes/guides" %>
-
-# Resources
-<%= partial "includes/resources" %>
+<div class="row">
+  <div class="card-list">
+    <% current_page.data.case_studies.each do |study| %>
+      <div class="study-card">
+        <div>
+          <img src="<%=study.image%>" height=280px />
+        </div>
+        <div class="study-blurb">
+          <h2><%=study.name%></h2>
+          <p><%=study.blurb%></p>
+          <button href="#" class="btn btn-big btn-primary card__sticky-button" >
+            Read More
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
