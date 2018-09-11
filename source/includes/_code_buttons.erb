@@ -1,0 +1,9 @@
+<div class="lang-selector">
+  <% ["ruby", "shell"].each do |lang| %>
+    <% if lang.is_a? Hash %>
+      <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
+    <% else %>
+      <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+    <% end %>
+  <% end %>
+</div>
