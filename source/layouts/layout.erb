@@ -31,6 +31,7 @@ under the License.
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title><%= current_page.data.title || "API Documentation" %></title>
     <!-- Google Tag Manager -->
+    <%= javascript_include_tag  "all" %>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -62,39 +63,17 @@ under the License.
       </span>
     </a>
 
-    <div class="page-wrapper">
-      <div class="content">
-        <%= page_content %>
-        <%= current_page.data.title %>
-        <%= current_page.data.search %>
-        <input type="text" class="search" id="input-search" placeholder="Search">
-        <ul class="search-results"></ul>
-        <div style="display:none">
-          <div id="toc" class="toc-list-h1">
-            <% unless current_page.data.home %>
-              <a class="faux-toc-link" href="/">Back to documentation</a>
-            <% end %>
-            <% toc_index(current_page.data).each do |h1| %>
-              <li>
-                <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:content] %>"><%= h1[:content] %></a>
-                <% if h1[:children].length > 0 %>
-                  <ul class="toc-list-h2">
-                    <% h1[:children].each do |h2| %>
-                      <li>
-                        <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:content] %>"><%= h2[:content] %></a>
-                      </li>
-                    <% end %>
-                  </ul>
-                <% end %>
-              </li>
-            <% end %>
-
-            <% if current_page.data.home %>
-              <a class="faux-toc-link" href="/changes.html">API Change log</a>
-            <% end %>
+    <div class="base">
+      <%= partial "includes/header" %>
+      <div class="base__body">
+        <div class="container">
+          <%= page_content %>
         </div>
       </div>
+      <%= partial "includes/footer" %>
     </div>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700' rel='stylesheet' type='text/css'>
     <script>
       window.intercomSettings = {
         app_id: "i0krnes0"
