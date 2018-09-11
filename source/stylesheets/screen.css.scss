@@ -42,10 +42,15 @@
 @import 'components/link-list';
 @import 'components/footer';
 @import 'components/search';
+@import 'components/card-list';
 
 
 @import 'original';
 
 .base__body {
   overflow: visible;
+}
+
+.btn-primary {
+  color: white;
 }
