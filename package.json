@@ -1,0 +1,26 @@
+{
+  "name": "smaug",
+  "version": "1.0.0",
+  "description": "Tradegecko developer portal",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tradegecko/smaug.git"
+  },
+  "dependencies": {
+    "@tradegecko/styles": "git+https://50f35d54e06c3a4dc3408924d232d16f522ab729:x-oauth-basic@github.com/tradegecko/tradegecko-assets.git",
+    "bootstrap": "^4.1.3"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tradegecko/smaug/issues"
+  },
+  "homepage": "https://github.com/tradegecko/smaug#readme"
+}
