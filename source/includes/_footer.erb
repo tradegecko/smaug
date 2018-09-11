@@ -1,0 +1,57 @@
+<%
+  @links = {
+    company: [
+      {name: 'Our story'},
+      {name: 'Team'},
+      {name: 'Careers'},
+      {name: 'In the press'},
+      {name: 'Press kit'}
+    ],
+    contact: [
+      {name: 'Speak to us'},
+      {name: 'Chat with us'},
+      {name: 'Email us'},
+      {name: 'Visit us'}
+    ],
+    getting_help: [
+      {name: 'Help Desk'},
+      {name: 'Community'},
+      {name: 'Staus'}
+    ],
+    partners: [
+      {name: 'Become a partner'},
+      {name: 'Partner portal'},
+      {name: 'Find a partner'},
+      {name: 'Developers & API'}
+    ]
+  }
+%>
+<div class="base__footer">
+  <div class="feedback-banner">
+    <div>
+      <h2>
+      Got Feedback we want to header from you
+      <h2>
+    </div>
+  </div>
+  <div class="container footer-wrapper">
+    <div class="row">
+      <% @links.each_pair do |key, value| %>
+        <div class="col-2">
+        <h4><%= key.capitalize %></h4>
+          <ul class="link-list">
+            <% value.each do |link| %>
+              <li><a href="#"><%= link[:name] %></a></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="col-4">
+        <h4>Subscribe to our newsletter</h4>
+        <legend>
+          You'll get useful news from our blog, as well as periodic product update emails. Unsubscribe any time.
+        </legend>
+      </div>
+    </div>
+  </div>
+</div>
