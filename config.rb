@@ -32,7 +32,7 @@ ready do
 end
 
 activate :sprockets
-
+sprockets.append_path 'node_modules'
 activate :autoprefixer do |config|
   config.browsers = ['last 2 version', 'Firefox ESR']
   config.cascade  = false
