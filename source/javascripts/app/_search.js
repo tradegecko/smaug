@@ -20,14 +20,10 @@
   $(bind);
 
   function populate() {
-    $('h1, h2').each(function() {
-      var title = $(this);
-      var body = title.nextUntil('h1, h2');
-      index.add({
-        id: title.prop('id'),
-        title: title.text(),
-        body: body.text()
-      });
+    window.refHash = {}
+    window.tokens.forEach(function(token){
+      index.add(token)
+      window.refHash[token.id] =token
     });
 
     determineSearchDelay();
@@ -69,12 +65,12 @@
       var results = index.search(searchInput.value).filter(function(r) {
         return r.score > 0.0001;
       });
-
+      debugger
       if (results.length) {
         searchResults.empty();
         $.each(results, function (index, result) {
           var elem = document.getElementById(result.ref);
-          searchResults.append("<li><a href='#" + result.ref + "'>" + $(elem).text() + "</a></li>");
+          searchResults.append("<li><a href='#" + result.ref + "'>" + window.refHash[result.ref].title+ "</a></li>");
         });
         highlight.call(searchInput);
       } else {
@@ -95,4 +91,3 @@
     content.unhighlight(highlightOpts);
   }
 })();
-
