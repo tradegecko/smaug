@@ -5,9 +5,6 @@
 
 @import 'normalize';
 @import 'variables'; //revert to tripit defaults
-@import 'variables2'; // tradegecko overrides
-@import 'icon-font';
-
 
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
@@ -44,6 +41,8 @@
 @import 'components/search';
 @import 'components/card-list';
 
+@import 'variables2'; // tradegecko overrides
+@import 'icon-font';
 
 @import 'original';
 
