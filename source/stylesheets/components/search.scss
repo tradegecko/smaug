@@ -1,7 +1,12 @@
 .search-wrapper {
   position: relative;
-  
+
   .search-results {
+    z-index: 10;
+    border-top: none;
+    border: 1px solid #F4F4F5;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     margin-top: 0;
     box-sizing: border-box;
     height: 0;
