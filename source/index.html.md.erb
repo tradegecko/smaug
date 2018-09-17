@@ -1,58 +1,97 @@
 ---
 title: Tradegecko Developer Portal
 
-case_studies:
+primary_cards:
   - name: 3pl Absolute next level
     blurb: they are so awesome and shippable
     url: https://www.tradegecko.com
-    image: https://www.tradegecko.com/hubfs/marketing/img-brooklyn-bicycle-co-1.jpg
+    image:
+      url: /images/ecommerce-integration@2x.png
   - name: Automate extra speed extra win
     blurb: They won so much, that you think you can only win
     url: https://www.tradegecko.com
-    image: https://www.tradegecko.com/hubfs/marketing/img-brooklyn-bicycle-co-1.jpg
+    image:
+      url: /images/ecommerce-integration@2x.png
   - name: Warehousing in singapore
     blurb: OMG THE HOUSE TURNED INTO A WARE
     url: https://www.tradegecko.com
-    image: https://www.tradegecko.com/hubfs/marketing/img-brooklyn-bicycle-co-1.jpg
+    image:
+      url: /images/ecommerce-integration@2x.png
 
+secondary_cards:
+  - name: 3pl Absolute next level
+    blurb: they are so awesome and shippable
+    url: https://www.tradegecko.com
+  - name: Automate extra speed extra win
+    blurb: They won so much, that you think you can only win
+    url: https://www.tradegecko.com
+  - name: Warehousing in singapore
+    blurb: OMG THE HOUSE TURNED INTO A WARE
+    url: https://www.tradegecko.com
 
 search: true
 home: true
 ---
-<div class="row">
-  <div class="col-12">
-      <%= partial "includes/home_cta" %>
-  </div>
-</div>
-<div class="row">
-  <div style="background:#4A90E2; border-radius: 5px;padding:50px;width:100%;text-align:center;color:white">
-    <h2> Discover our comprehensive API </h2>
-    <p>Build exactly what you need with modern API's and webhooks<p>
-    <div style="width:500px;margin:auto">
-      <%= partial "includes/search" %>
+<div class="index-page">
+  <div class="row">
+    <div class="col-12">
+        <%= partial "includes/home_cta" %>
     </div>
   </div>
-</div>
 
-<div class="row">
-
-</div>
-
-<div class="row">
-  <div class="card-list">
-    <% current_page.data.case_studies.each do |study| %>
-      <div class="study-card">
-        <div>
-          <img src="<%=study.image%>" height=280px />
+  <div class="row">
+    <div class="card-list">
+      <% current_page.data.primary_cards.each do |study| %>
+        <div class="study-card">
+          <div style="position:relative;height:280px">
+            <img
+            src="<%=study.image.url%>"
+            height="<%=study.image.height || "280px"%>"
+            />
+          </div>
+          <div class="study-blurb">
+            <h2><%=study.name%></h2>
+            <p><%=study.blurb%></p>
+            <a href="#" class="btn btn-big btn-primary card__sticky-button" >
+              Read More
+            </a>
+          </div>
         </div>
-        <div class="study-blurb">
-          <h2><%=study.name%></h2>
-          <p><%=study.blurb%></p>
-          <button href="#" class="btn btn-big btn-primary card__sticky-button" >
-            Read More
-          </button>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <h1> Start building with tradegecko api in minutes...</h1>
+  </div>
+
+  <div class="row">
+    <div class="card-list">
+      <% current_page.data.secondary_cards.each do |study| %>
+        <div class="study-card secondary-card">
+          <div class="study-blurb">
+            <h2><%=study.name%></h2>
+            <p><%=study.blurb%></p>
+            <a href="#" class="btn btn-big btn-primary card__sticky-button" >
+              Read More
+            </a>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-3">
+      <img src="images/ecommerce-integration@2x.png" height="200px">
+    </div>
+    <div class="col-md-9">
+      <h1> Sign up for a partner account to get started</h1>
+      <p>Life is good, all the answers will be found with this button. I am attempting to ipsum when i am not loream</p>
+      <a href="#" class="btn btn-big btn-primary card__sticky-button" >
+        Learn more
+      </a>
+    </div>
   </div>
 </div>

@@ -6,14 +6,30 @@
 }
 
 
+.secondary-card{
+  &.study-card {
+    background: none;
+    border: solid 1px black;
+    border-radius: 5px;
+  }
+
+  .study-blurb {
+    background: none;
+  }
+}
 .study-card {
   width: 32%;
+  background:#4A90E2;
   border-radius: 5px;
   display:inline-block;
   overflow: hidden;
 }
 
+
 .study-blurb {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   background:#F4F4F5;
   height:220px;
   padding:20px;
