@@ -9,7 +9,7 @@
 .secondary-card{
   &.study-card {
     background: none;
-    border: solid 1px black;
+    border: solid 1px #F4F4F5;
     border-radius: 5px;
   }
 
@@ -22,7 +22,13 @@
   background:#4A90E2;
   border-radius: 5px;
   display:inline-block;
-  overflow: hidden;
+  overflow: visible;
+
+  img {
+    position: absolute;
+    bottom: 45px;
+    left: 15px;
+  }
 }
 
 

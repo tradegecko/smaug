@@ -33,20 +33,20 @@ search: true
 home: true
 ---
 <div class="index-page">
-  <div class="row">
+  <div class="row index-page__section">
     <div class="col-12">
         <%= partial "includes/home_cta" %>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row index-page__section">
     <div class="card-list">
       <% current_page.data.primary_cards.each do |study| %>
         <div class="study-card">
           <div style="position:relative;height:280px">
             <img
             src="<%=study.image.url%>"
-            height="<%=study.image.height || "280px"%>"
+            height="<%=study.image.height || "260px"%>"
             />
           </div>
           <div class="study-blurb">
@@ -61,7 +61,7 @@ home: true
     </div>
   </div>
 
-  <div class="row">
+  <div class="row index-page__section">
     <h1> Start building with tradegecko api in minutes...</h1>
   </div>
 
@@ -81,8 +81,7 @@ home: true
     </div>
   </div>
 
-
-  <div class="row">
+  <div class="row index-page__section">
     <div class="col-md-3">
       <img src="images/ecommerce-integration@2x.png" height="200px">
     </div>
