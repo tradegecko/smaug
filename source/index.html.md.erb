@@ -5,18 +5,21 @@ primary_cards:
   - name: 3pl Absolute next level
     blurb: they are so awesome and shippable
     url: https://www.tradegecko.com
+    background_color: "#5784f7"
     image:
-      url: /images/ecommerce-integration@2x.png
+      url: /images/eCommerce@2x.png
   - name: Automate extra speed extra win
     blurb: They won so much, that you think you can only win
     url: https://www.tradegecko.com
+    background_color: "#5bb4f9"
     image:
-      url: /images/ecommerce-integration@2x.png
+      url: /images/3PL@2x.png
   - name: Warehousing in singapore
     blurb: OMG THE HOUSE TURNED INTO A WARE
     url: https://www.tradegecko.com
+    background_color: "#80dce2"
     image:
-      url: /images/ecommerce-integration@2x.png
+      url: /images/Warehouse@2x.png
 
 secondary_cards:
   - name: 3pl Absolute next level
@@ -42,11 +45,12 @@ home: true
   <div class="row index-page__section">
     <div class="card-list">
       <% current_page.data.primary_cards.each do |study| %>
-        <div class="study-card">
-          <div style="position:relative;height:280px">
+        <div class="study-card" style="background-color: <%=study.background_color%> ">
+          <div style="position:relative;height:280px;">
+
             <img
             src="<%=study.image.url%>"
-            height="<%=study.image.height || "260px"%>"
+            height="<%=study.image.height || "250px"%>"
             />
           </div>
           <div class="study-blurb">
