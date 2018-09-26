@@ -6,3 +6,13 @@
   justify-content: center;
   color:white
 }
+
+.feedback-banner > button {
+  margin-left: 10px;
+  background-color: #5784f7;
+  border-color: #5784f7;
+
+  &:hover {
+    background-color: darken(#5784f7, 10%);
+  }
+}
