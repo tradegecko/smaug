@@ -18,7 +18,7 @@ under the License.
 ;(function () {
   'use strict';
 
-  var languages = [];
+  var languages = ["ruby","shell"];
 
   window.setupLanguages = setupLanguages;
   window.activateLanguage = activateLanguage;

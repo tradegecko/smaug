@@ -1,0 +1,19 @@
+ <% partial "includes/code_buttons"  do %>
+  ```ruby
+  order = gecko.Order.build({
+    company_id: 101,
+    shipping_address_id: 1002,
+    billing_address_id: 1002,
+    issued_at: Time.now,
+  })
+  order.order_line_items.build(variant_id: 14, quantity: 1)
+  order.order_line_items.build(variant_id: 15, quantity: 2)
+  order.save
+  ```
+  ```shell
+  curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>" https://api.tradegecko.com/orders/ \
+  -d '{"order": {"company_id": 101, "shipping_address_id": 1002, "billing_address_id": 1002, "status": "active", "issued_at": "21-02-2018", "order_line_items": [{"variant_id": 14, "quantity": 1}, {"variant_id": 15, "quantity": 2}]}}'
+  ```
+<% end %>
+
+ 

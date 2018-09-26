@@ -13,7 +13,7 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations
 under the License.
 %>
-<% language_tabs = current_page.data.language_tabs || [] %>
+<% language_tabs = current_page.data.language_tabs || ["ruby","shell"] %>
 <% page_content = yield %>
 <%
   if current_page.data.includes
