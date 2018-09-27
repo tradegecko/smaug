@@ -1,28 +1,68 @@
 <%
   @links = {
     company: [
-      {name: 'Our story'},
-      {name: 'Team'},
-      {name: 'Careers'},
-      {name: 'In the press'},
-      {name: 'Press kit'}
+      {
+        name: 'About us',
+        url: 'https://www.tradegecko.com/about-us'
+      },
+      {
+        name: 'Meet the Team',
+        url: 'https://www.tradegecko.com/team'
+      },
+      {
+        name: 'Careers',
+        url: 'https://www.tradegecko.com/jobs'
+      },
+      {
+        name: 'Press kit',
+        url: 'https://www.tradegecko.com/press-kit'
+      },
     ],
     contact: [
-      {name: 'Speak to us'},
-      {name: 'Chat with us'},
-      {name: 'Email us'},
-      {name: 'Visit us'}
+      {
+        name: 'Contact us',
+        url: 'https://www.tradegecko.com/contact-us'
+      },
+      {
+        name: 'Email us',
+        url:'mailto:hello@tradegecko.com'
+      },
+      {
+        name: 'Visit us',
+        url: 'https://www.tradegecko.com/contact-us'
+      }
     ],
     getting_help: [
-      {name: 'Help Desk'},
-      {name: 'Community'},
-      {name: 'Staus'}
+      {
+        name: 'Help Desk',
+        url: 'http://support.tradegecko.com'
+      },
+      {
+        name: 'FAQ',
+        url: 'https://www.tradegecko.com/faq'
+      },
+      {
+        name: 'Staus',
+        url: 'https://status.tradegecko.com'
+      }
     ],
     partners: [
-      {name: 'Become a partner'},
-      {name: 'Partner portal'},
-      {name: 'Find a partner'},
-      {name: 'Developers & API'}
+      {
+        name: 'Become a partner',
+        url: 'https://www.tradegecko.com/partners'
+      },
+      {
+        name: 'Partner portal',
+        url: 'https://partners.tradegecko.com/'
+      },
+      {
+        name: 'Find a partner',
+        url: 'https://partners.tradegecko.com/directory'
+      },
+      {
+        name: 'Developers & API',
+        url: 'https://developer.tradegecko.com/'
+      }
     ]
   }
 %>
@@ -48,7 +88,7 @@
           <h4><%= key.capitalize %></h4>
             <ul class="link-list">
               <% value.each do |link| %>
-                <li><a href="#"><%= link[:name] %></a></li>
+                <li><a href="<%= link[:url] %>"><%= link[:name] %></a></li>
               <% end %>
             </ul>
           </div>
@@ -66,6 +106,5 @@
         <div class="footer-moko">
       </div>
     </div>
-
   </div>
 </div>
