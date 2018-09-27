@@ -2,7 +2,8 @@
   position: relative;
 
   .search-results {
-    z-index: 10;
+    // has 40 because content has 30 for some reason
+    z-index: 40;
     border-top: none;
     border: 1px solid #F4F4F5;
     border-bottom-left-radius: 5px;

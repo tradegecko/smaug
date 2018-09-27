@@ -48,10 +48,16 @@
 
 
 @import 'original';
+@import 'content';
 
 .btn-primary:hover {
   color: white;
 }
+
+.btn {
+  display: inline-block;
+}
+
 .index-page__section {
   margin-top: 100px;
 }

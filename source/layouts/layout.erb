@@ -65,7 +65,7 @@ under the License.
     <div class="base">
       <%= partial "includes/header" %>
       <div class="base__body">
-        <div class="container">
+        <div class="container <% unless current_page.data.home? %>content<% end %>">
           <%= page_content %>
         </div>
       </div>
