@@ -18,6 +18,7 @@
     background: none;
   }
 }
+
 .study-card {
   width: 32%;
   background:#4A90E2;
@@ -28,6 +29,12 @@
   img {
     position: absolute;
     bottom: 13px;
+    height: 250px;
+  }
+
+  .study-card__image-wrapper {
+    position:relative;
+    height:280px;
   }
 }
 
@@ -37,8 +44,8 @@
   width: 100%;
   bottom: 0;
   background:#F4F4F5;
-  height:220px;
-  padding:20px;
+  height: 260px;
+  padding: 20px;
   position: relative;
 }
 
@@ -46,4 +53,23 @@
 .card__sticky-button {
   position: absolute;
     bottom: 30px;
+}
+
+@media (max-width: 1000px) {
+    .study-card {
+        width: 48%;
+    }
+}
+
+@media (max-width: 375px) {
+    .study-card {
+      width: 100%;
+      margin-bottom: 10px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    .study-card img {
+      position: inherit;
+    }
 }

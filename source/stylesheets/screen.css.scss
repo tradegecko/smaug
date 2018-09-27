@@ -43,10 +43,15 @@
 @import 'components/footer';
 @import 'components/search';
 @import 'components/card-list';
+@import 'components/nav';
+@import 'components/become-partner';
 
 
 @import 'original';
 
+.btn-primary:hover {
+  color: white;
+}
 .index-page__section {
   margin-top: 100px;
 }
@@ -68,9 +73,19 @@
 }
 
 .base__footer {
-  margin-top: 50px;
+  position:relative
 }
 
 $border-base: solid 1px $gray-3;
 $base-shadow: 0px 1px 3px rgba(0, 0, 0, 0.10);
 $border-radius: 3px;
+
+@media (max-width: 1000px) {
+  .site-header {
+    padding-top: 0;
+
+    nav {
+      display: none !important;
+    }
+  }
+}

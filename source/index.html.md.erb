@@ -2,20 +2,20 @@
 title: Tradegecko Developer Portal
 
 primary_cards:
-  - name: 3pl Absolute next level
-    blurb: they are so awesome and shippable
+  - name:  Ecommerce store integration guide
+    blurb: Build a sale channel with TradeGecko. Automate your orders & product listing across online stores & marketplaces
     url: https://www.tradegecko.com
     background_color: "#5784f7"
     image:
       url: /images/eCommerce@2x.png
-  - name: Automate extra speed extra win
-    blurb: They won so much, that you think you can only win
+  - name: Managing fulfilment service
+    blurb: Learn how to integrate TradeGecko with fulfilment service, streamline shipping & 3PL management.
     url: https://www.tradegecko.com
     background_color: "#5bb4f9"
     image:
       url: /images/3PL@2x.png
-  - name: Warehousing in singapore
-    blurb: OMG THE HOUSE TURNED INTO A WARE
+  - name: Warehouse inventory management integration
+    blurb: Start update inventory between TradeGecko & a Warehouse Management System in minutes.
     url: https://www.tradegecko.com
     background_color: "#80dce2"
     image:
@@ -46,12 +46,8 @@ home: true
     <div class="card-list">
       <% current_page.data.primary_cards.each do |study| %>
         <div class="study-card" style="background-color: <%=study.background_color%> ">
-          <div style="position:relative;height:280px;">
-
-            <img
-            src="<%=study.image.url%>"
-            height="<%=study.image.height || "250px"%>"
-            />
+          <div class="study-card__image-wrapper">
+            <img src="<%=study.image.url%>" />
           </div>
           <div class="study-blurb">
             <h2><%=study.name%></h2>
