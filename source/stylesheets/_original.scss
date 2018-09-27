@@ -1,3 +1,13 @@
+@charset "utf-8";
+
+@import url("//fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("//fonts.googleapis.com/css?family=Raleway:300,500,700");
+
+@import 'normalize';
+@import 'variables'; //revert to tripit defaults
+@import 'variables2'; // tradegecko overrides
+@import 'icon-font';
+
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
 
@@ -246,21 +256,6 @@ html, body {
 // PAGE LAYOUT AND CODE SAMPLE BACKGROUND
 ////////////////////////////////////////////////////////////////////////////////
 
-.base__body {
-  overflow-y: auto;
-}
-
-.base__body, .page-wrapper {
-  .highlight {
-    background-color: $examples-bg;
-    padding: 1em $main-padding;
-  }
-
-  .lang-selector {
-    padding: 1em $main-padding;
-    background-color: $code-annotation-bg;
-  }
-}
 .page-wrapper {
   margin-left: $nav-width;
   position: relative;
@@ -269,10 +264,32 @@ html, body {
   min-height: 100%;
 
   padding-bottom: 1px; // prevent margin overflow
+
+  // The dark box is what gives the code samples their dark background.
+  // It sits essentially under the actual content block, which has a
+  // transparent background.
+  // I know, it's hackish, but it's the simplist way to make the left
+  // half of the content always this background color.
+  .dark-box {
+    width: $examples-width;
+    background-color: $examples-bg;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .lang-selector {
+    position: fixed;
+    z-index: 50;
+    padding: 1em $main-padding;
+    background-color: $code-annotation-bg;
+  }
 }
 
 .lang-selector {
   background-color: $code-annotation-bg;
+  border-radius: $border-radius;
   width: 100%;
 
   a {
