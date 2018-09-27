@@ -22,15 +22,18 @@ primary_cards:
       url: /images/Warehouse@2x.png
 
 secondary_cards:
-  - name: 3pl Absolute next level
-    blurb: they are so awesome and shippable
-    url: https://www.tradegecko.com
-  - name: Automate extra speed extra win
-    blurb: They won so much, that you think you can only win
-    url: https://www.tradegecko.com
-  - name: Warehousing in singapore
-    blurb: OMG THE HOUSE TURNED INTO A WARE
-    url: https://www.tradegecko.com
+  - name: Comprehensive API docs
+    blurb: Build exactly what you need with our modern APIs and webhooks.
+    url: /docs.html
+    cta: Explore docs
+  - name: Ways to build tutorial
+    blurb: TradeGecko’s thorough use cases provide step-by-step instructions to build integrations quickly and easily.
+    url: /docs.html#guides
+    cta: Explore guides
+  - name: Dedicated support
+    blurb: Get dedicated developer support through our forum or contacting our support team
+    url: https://support.tradegecko.com
+    cta: Learn more
 
 search: true
 home: true
@@ -72,8 +75,8 @@ home: true
           <div class="study-blurb">
             <h2><%=study.name%></h2>
             <p><%=study.blurb%></p>
-            <a href="#" class="plain-link card__sticky-button" >
-              Read More
+            <a href="<%= study.url %>" class="plain-link card__sticky-button" >
+              <%= study.cta %>
             </a>
           </div>
         </div>
@@ -89,9 +92,9 @@ home: true
     <div class="col-md-7 become-partner__details">
       <h1> Sign up for a partner account to get started</h1>
       <p>Discover how our Partner Program can help your clients build the business of their dreams and make you money in the process</p>
-      <button href="#" class="btn btn-big btn-primary" >
+      <a href="https://partners.tradegecko.com/register" target="blank_" class="btn btn-big btn-primary" >
         Become a partner
-      </button>
+      </a>
     </div>
     <div class="col-md-1">
     </div>
