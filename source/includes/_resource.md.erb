@@ -28,7 +28,7 @@
 <% end %>
 
 <% unless t(".disable_show", scope: resource) == true %>
-  <%= partial "includes/show_request", locals: { resource: resource, json_single: json_single }  %>
+  <%= partial "includes/show_request", locals: { resource: resource, json_single: json_single, disable_headers: false }  %>
 <% end %>
 
 <% if t('.current', scope: resource) == true %>

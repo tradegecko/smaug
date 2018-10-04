@@ -1,0 +1,28 @@
+<% resource = build_resource(resource_name) %>
+<% if resource.available? %>
+  ```ruby
+  require 'gecko-ruby'
+  gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+  access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+  gecko.access_token = access_token
+  <%- if resource.child_required? || resource.child_nestable? -%>
+    <%=- resource.resource_name %> = gecko.<%= resource.resource_klass %>.build(<%= resource.gecko[:create].except(resource.child.pluralize.to_sym) %>)
+    <%- resource.gecko[:create].fetch(resource.child.pluralize.to_sym).each do |child| %>
+      <%=- resource.resource_name %>.<%= resource.child.pluralize %>.build(<%= child %>)
+    <%- end %>
+  <%- else -%>
+    <%=- resource.resource_name %> = gecko.<%= resource.resource_klass %>.build(<%= resource.gecko[:create] %>)
+  <% end %>
+  <%= resource.resource_name %>.save
+  ```
+<% end %>
+```shell
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/<%= resource.resource_plural %>/ -d '{"<%= resource.resource_name %>":<%= resource.gecko[:create].to_json %>'}
+```
+
+```json
+{
+  "<%= resource.resource_name %>": <%= json_single %>
+}
+```

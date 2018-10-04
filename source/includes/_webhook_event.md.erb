@@ -1,0 +1,34 @@
+```ruby
+require 'gecko-ruby'
+gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+gecko.access_token = access_token
+webhook = gecko.Webhook.build(:address=>"https://mywebsite.com/webhooks", :event=>"<%= event %>")
+webhook.save
+
+{
+  "webhook": {
+    "id": 1,
+    "created_at": "2018-09-24T11:12:49.244Z",
+    "updated_at": "2018-09-24T11:12:49.244Z",
+    "event": "<%= event %>",
+    "address": "https://mywebsite.com/webhooks",
+    "oauth_application_id": 1
+  }
+}
+```
+```shell
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/webhooks/ -d '{"webhook":{"address":"https://mywebsite.com/webhooks","event":"<%= event %>"}}'
+
+{
+  "webhook": {
+    "id": 1,
+    "created_at": "2018-09-24T11:12:49.244Z",
+    "updated_at": "2018-09-24T11:12:49.244Z",
+    "event": "<%= event %>",
+    "address": "https://mywebsite.com/webhooks",
+    "oauth_application_id": 1
+  }
+}
+```
