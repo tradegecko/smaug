@@ -1,0 +1,240 @@
+---
+  title: Managing Warehouse Inventory Guide
+  introduction: This guide explains how to manage inventory across different warehouse locations in TradeGecko.
+  articles:
+    warehouse_resources:
+      header: Warehouse Resources
+      introduction: Before you start working on a warehouse integration with TradeGecko, it’s helpful to understand some of the different warehouse-related resources.
+      subsection:
+        - point: <b>Sales Order</b>:&nbsp;Contains information about a sales order, its associated order line items and fulfillments. Order line items contain information such as variants and tax types.
+          subpoints:
+            - An order in TradeGecko can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
+        - point: <b>Fulfillment</b>:&nbsp;Represents a shipment of one or more items in a sales order.
+          subpoints:
+            - A fulfillment in TradeGecko can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
+        - point: <b>Purchase Order</b>:&nbsp;Contains information about a purchase order and its associated purchase order line items. Purchase order line items contain information such as variants, quantity to procure, quantity to receive, item cost, tax, and landed cost.
+          subpoints:
+            - A purchase order in TradeGecko can have 1 of 5 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>received</code>, <code>void</code> or <code>deleted</code>.
+            - After a purchase order is fully received, the purchase order status will be changed to <code>received</code>.
+        - point: <b>Address</b>:&nbsp;Represents a physical address of a merchant's supplier or customer created and stored in the TradeGecko Relationships section.
+        - point: <b>Location</b>:&nbsp;Represents a geographical location where a merchant can receive, store and transfer goods.
+        - point: <b>Product</b>:&nbsp;Represents a group of variants e.g. t-shirt.
+        - point: <b>Variant</b>:&nbsp;Represents a variation of a product, based on specific attributes e.g. t-shirt in colour red and size small, t-shirt in colour blue and size large.
+          subpoints:
+            - In a sales order or purchase order, each line item always references a variant.
+            - At TradeGecko, stock levels are on variants and not products.
+    how_sales_order_and_stock_control_affect_inventory:
+      header: How Sales Order and Stock Control Affect Inventory
+      subsection:
+        - point: <b>Stock Levels</b>:&nbsp;There are four types of stock levels in TradeGecko:&nbsp;
+          subpoints:
+            - <b>Stock on Hand</b>:&nbsp; The stock that is present in a warehouse.
+            - <b>Committed Stock</b>:&nbsp; The stock that is committed for sales orders but has not been shipped yet.
+            - <b>Incoming Stock</b>:&nbsp; The stock that has been ordered through purchase orders but has not been received yet.
+            - <b>Available Stock</b>:&nbsp; The stock that is available for sale. It is calculated using:&nbsp; <b>Stock on Hand - Committed Stock</b>
+        - point: When a variant is created, it has an attribute called <code>initial_stock_levels</code> where an array of hashes can be defined to set the initial stock level for each location. There is another attribute called <code>initial_cost_price</code> that will be the cost price associated with the initial stock.
+        - point: There are 6 ways to change variant stock levels:&nbsp;
+          subpoints:
+            - Fulfillment of a Sales Order
+            - Fulfillment Return of a Sales Order
+            - Receiving a Purchase Order
+            - Creating a Stock Adjustment
+            - Receiving a Stock Transfer
+            - Creating a Stocktake
+    receiving_a_purchase_order:
+      header: Receiving a Purchase Order
+      step1:
+        header: Step 1:&nbsp;Receive a purchase order alert from <code>purchase_order.create</code> webhook.
+        text: To get started, subscribe to the <code>purchase_order.create</code> webhook to be notified when a new purchase order is created by a merchant.
+      step2:
+        header: Step 2:&nbsp;Query the purchase order to see the purchase order line items.
+      step3:
+        header: Step 3:&nbsp;Update purchase order status to <code>received</code>.
+        textSections:
+          text1: If you manage the procurement process for a merchant, once you have procured the items, you can update the original purchase order to <code>received</code> through an API call to <code>POST /purchase_orders/[:purchase_order_id]/actions/receive</code>. This will increase the <b>Stock On Hand</b> level of the procured items.
+          text2: Note:&nbsp; Partial procurements are currently not supported. If you need an endpoint for partial procurements, let us know <a target="_blank" href="https://tradegecko.typeform.com/to/A2ewy0"> here</a>.
+    other_ways_of_changing_stock_levels:
+      header: Other Ways of Changing Stock Levels
+      subsection:
+      - point: <b>Creating a Stock Adjustment</b>:&nbsp; Used to update inventory levels when there are damaged goods, promotional goods or new products. <a target="_blank" href="https://developer.tradegecko.com/#create-a-new-stock_adjustment">Creating a stock adjustment</a> would affect the account's <a target="_blank" href="https://support.tradegecko.com/hc/en-us/articles/202820818-What-is-the-MAC-and-how-is-it-calculated-">Moving Average Cost</a>.
+      - point: <b>Receiving a Stock Transfer</b>:&nbsp;Used to update inventory movements between warehouses. For example, you have 2 warehouses, one in New York and one in Chicago. When you transfer 20 items from New York to Chicago, you can <a target="_blank" href="https://developer.tradegecko.com/#create-a-new-stock_transfer">create a stock transfer</a>. Stock Transfers will not affect Moving Average Cost.
+        tips:
+          - You can subscribe to the <code>stock_transfer.create</code> webhook to be notified when a merchant creates a new stock transfer.
+      - point: <b>Creating a Stocktake</b>:&nbsp;Used to update inventory levels without changing the account’s Moving Average Cost. For example, your TradeGecko account indicates that you have 25 medium sized, white T-shirts in stock. When you go to the warehouse to do a physical stocktake, you realise that there are only 23 in stock. To account for this discrepancy, you should create a stocktake.
+    additional_resources:
+    support:
+
+---
+
+<div class="guides-main-container">
+<div>
+  <h1 class="mt-2"><%=current_page.data.title%></h1>
+  <p><%=current_page.data.introduction%></p>
+
+  In this guide:
+  <ul class="mt-2">
+    <% current_page.data.articles.each do |article|%>
+      <li><a href=<%="##{article[0]}"%>><%= article[0].titleize %></a></li>
+    <% end %>
+  </ul>
+</div>
+
+<% section = current_page.data.articles.warehouse_resources %>
+<div id="<%= section.header.parameterize.underscore %>" class="guide-section">
+  <h2><%= section.header %></h2>
+  <p><%= section.introduction %></p>
+  <ul class="mt-2">
+    <% section.subsection.each do |subsection|%>
+      <li class="mt-1"><%= subsection.point %></li>
+      <% if subsection.subpoints %>
+        <ul>
+          <% subsection.subpoints.each do |subpoint|%>
+            <li><%= subpoint %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<% section = current_page.data.articles.how_sales_order_and_stock_control_affect_inventory %>
+<div id="<%= section.header.parameterize.underscore %>" class="guide-section">
+  <h2><%= section.header %></h2>
+  <ul class="mt-2">
+    <% section.subsection.each do |subsection|%>
+      <li class="mt-1"><%= subsection.point %></li>
+      <% if subsection.subpoints %>
+        <ul>
+          <% subsection.subpoints.each do |subpoint|%>
+            <li><%= subpoint %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<% section = current_page.data.articles.receiving_a_purchase_order%>
+<div id="<%=section.header.parameterize.underscore%>" class="guide-section">
+  <h2><%=section.header%></h2>
+  <div class="scenario-section">
+    <ul>
+      <li><%= section.step1.header %></li>
+      <li><%= section.step2.header %></li>
+      <li><%= section.step3.header %></li>
+    </ul>
+    <div class="step-section">
+      <h3><%= section.step1.header %></h3>
+      <p><%= section.step1.text %></p>
+      <% partial "includes/code_buttons" do %>
+        <% partial "includes/webhook_event", locals: { event: 'purchase_order.create' }  %>
+      <% end %>
+    </div>
+    <div class="step-section">
+      <h3><%= section.step2.header %></h3>
+      
+      <% partial "includes/code_buttons"  do %>
+```ruby
+require 'gecko-ruby'
+gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+gecko.access_token = access_token
+gecko.PurchaseOrder.find(1)
+
+{
+  "purchase_order": {
+    "id": 1,
+    "created_at": "2015-11-02T01:22:25.524Z",
+    "updated_at": "2015-12-02T01:11:25.524Z",
+    "stock_location_id": 1,
+    "purchase_line_item_ids": [1, 2, 3]
+    // more fields
+  }
+}
+```
+```shell
+curl -X GET -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/purchase_orders/1?include=purchase_order_line_items
+
+{
+  "purchase_order_line_items": [
+    {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:25.524Z",
+      "updated_at": "2015-12-02T01:11:25.524Z",
+      // more fields
+    }
+  ],
+  "purchase_order": {
+    "id": 1,
+    "created_at": "2015-11-02T01:22:25.524Z",
+    "updated_at": "2015-12-02T01:11:25.524Z",
+    "stock_location_id": 1,
+    "purchase_line_item_ids": [1],
+    // more fields
+  }
+}
+```
+      <% end %>
+
+
+    </div>
+    <div class="step-section">
+      <h3><%= section.step3.header %></h3>
+      <p><%= section.step3.textSections.text1 %></p>
+
+      <% partial "includes/code_buttons"  do %>
+```ruby
+require 'gecko-ruby'
+gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+gecko.access_token = access_token
+purchase_order = gecko.PurchaseOrder.find(1)
+purchase_order.receive
+
+{
+  "procurement": {
+    "id": 1,
+    // more fields
+  }
+}
+```
+```shell
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/purchase_orders/1/actions/receive
+
+{
+  "procurement": {
+    "id": 1,
+    // more fields
+  }
+}
+```
+      <% end %>
+
+      <p><%= section.step3.textSections.text2 %></p>
+    </div>
+  </div>
+</div>
+
+
+<% section = current_page.data.articles.other_ways_of_changing_stock_levels %>
+<div id="<%= section.header.parameterize.underscore %>" class="guide-section">
+  <h2><%= section.header %></h2>
+  <ol class="mt-2">
+    <% section.subsection.each do |subsection|%>
+      <li class="mt-1"><%= subsection.point %></li>
+      <% if subsection.tips %>
+        <ul>
+        <% subsection.tips.each do |tip|%>
+          <li><%= tip %></li>
+        <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </ol>
+</div>
+
+<%= partial "includes/guides/additional_resources" %>
+<%= partial "includes/guides/support" %>
+</div>

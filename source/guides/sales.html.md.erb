@@ -1,0 +1,513 @@
+---
+  title: Sales Channel Guide
+  introduction: Use TradeGecko APIs and webhooks to build sales channel integrations, allowing merchants to import orders and products from online stores or marketplaces and to sell anywhere and everywhere.
+  articles:
+    sales_channel_resources:
+      header: Sales Channel Resources
+      introduction: Before you start working on a sales channel integration with TradeGecko, it’s helpful to understand some of the different sales channel related resources.
+      subsection:
+        - point: <b>Sales Order</b>:&nbsp;Contains information about a sales order, its associated order line items and fulfillments. Order line items contain information such as variants and tax types
+          subpoints:
+            - An order in TradeGecko can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
+        - point: <b>Fulfillment</b>:&nbsp;Represents a shipment of one or more items in a sales order. It includes the line item that the fulfillment applies to, its tracking information and the location of the fulfillment
+          subpoints:
+            - A fulfillment object in TradeGecko can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
+        - point: <b>Company</b>:&nbsp;Represents a merchant's supplier or customer created and stored in the TradeGecko Relationships section
+        - point: <b>Address</b>:&nbsp;Represents a physical address associated with a merchant's company
+
+    authorising_your_sales_channel_integration:
+      header: Authorising Your Sales Channel Integration
+      introduction: TradeGecko uses OAuth to authorize third party integrations. As part of the OAuth flow, TradeGecko obtains the user’s authorization and issues an access token that your sales channel can use to interact with the API. To find out more, refer to our <a href="https://developer.tradegecko.com/#oauth-authentication-flows" target="_blank">OAuth docs</a>.
+
+    publishing_products_from_tradegecko_to_a_sales_channel:
+      header: Publishing Products from TradeGecko to a Sales Channel
+      step1:
+        header: Step 1:&nbsp;Get a product, its variants and their inventory levels.
+        tips:
+          - As TradeGecko does not enforce variant SKU uniqueness, you are advised to use the TradeGecko variant id instead of SKU to create any mapping between TradeGecko and sales channel variants. This will ensure that incoming sales orders are linked to the correct TradeGecko variants.
+        notes:
+          - text: For each variant, we return <code>locations</code>, an array of per-warehouse inventory data about the current variant.
+          - text: When a variant's <code>manage_stock</code> attribute is set to false, the variant's stock level will not be tracked by TradeGecko.
+          - text: When a variant's <code>keep_selling</code> attribute is set to true, the variant can continue to be sold even when the stock level is zero or negative.
+          - text: If the variant has a <code>max_online</code> value defined, the sales channel should not display stock levels higher than this value.
+          - text: In TradeGecko, images belong to products. Each image can be assigned to multiple variants of the product. Use the <a target="_blank" href="https://developer.tradegecko.com/#retrieve-a-particular-image">image endpoint</a> to retrieve variant images.
+          - text: Variants may have different prices across price lists. To determine the variant prices to be displayed on the sales channel, you may need to retrieve the merchant's price lists by making a GET request to the price lists endpoint (<code>GET /price_lists</code>). Some relevant price lists include:&nbsp;
+            subpoints:
+              - The <code>default_order_price_list_id</code> which you can retrieve from the <a href="https://developer.tradegecko.com/#account" target="_blank">account endpoint.</a>
+              - The <code>default_price_list_id</code> which you can retrieve from the <a href="https://developer.tradegecko.com/#company" target="_blank">company endpoint.</a>
+      step2:
+        header: Step 2 (optional):&nbsp;Receive an alert whenever a merchant creates a new product or variant in TradeGecko
+        text: Subscribe to the <code>product.create</code> and <code>variant.create</code> webhooks to be notified when a new product or variant is created by the merchant.
+      step3:
+        header: Step 3:&nbsp;Receive an alert whenever the stock level for a variant is updated in TradeGecko
+        text: Subscribe to the <code>variant.stock_level_update</code> webhook to be notified when the stock level for a variant is updated in TradeGecko.
+
+    importing_orders_from_a_sales_channel_to_tradegecko:
+      header: Importing Orders from a Sales Channel to TradeGecko
+      introduction: Each order includes an array of order line items that needs to be fulfilled. Each order line item can be packed and fulfilled separately, depending on how the inventory is packed and managed.
+      step1:
+        header: Step 1:&nbsp;Create a sales order.
+        text1: For an existing customer with existing addresses, populate the <code>company_id</code> attribute with the customer's TradeGecko id, and the <code>shipping_address_id</code> and <code>billing_address_id</code> attributes with appropriate TradeGecko address ids. Do note that the <code>billing_address_id</code> defaults to the <code>shipping_address_id</code> if it is not provided.
+        text2: For an existing customer with a new address, you can embed the address when creating a sales order as seen below. Alternatively, you can manually create a new address using the <a href="https://developer.tradegecko.com/#create-a-new-address" target="_blank">address endpoint</a>.
+        text3: For a new customer, you can embed the the company and shipping address when creating a sales order as seen below. Alternatively, you can manually create <a href="https://developer.tradegecko.com/#create-a-new-company" target="_blank">a new company</a> and <a href="https://developer.tradegecko.com/#create-a-new-address" target="_blank">a new address</a>.
+      step2:
+        header: Step 2 (optional):&nbsp;Invoice and mark the sales order as paid.
+        subpoint1: Create an invoice for a sales order by sending an API call to <code> POST /orders/[:order_id]/actions/invoice</code>. This will create an <a target="_blank" href="https://developer.tradegecko.com/#invoice">invoice</a> for the sales order. Once the customer has paid for the sales order, mark the sales order as paid by sending an API call to <code>POST /orders/[:order_id]/actions/pay</code>.
+        subpoint2: For orders which are paid by credit card, you can send an API call to <code> POST /orders/[:order_id]/actions/pay</code> to both invoice and mark the sales order as paid in one step.
+      step3:
+        header: Step 3 (optional):&nbsp;Fulfill a sales order.
+        subpoint1: Fulfill a sales order by sending an API call to <code>POST /orders/[:order_id]/actions/pack</code>. This creates a fulfillment object with status <code>packed</code> and fires a <code>fulfillment.create</code> webhook. Once the fulfillment has been shipped, send an API call to <code>POST /orders/[:order_id]/actions/fulfil</code> which updates the fulfillment object to status <code>fulfilled</code>.
+        subpoint2: Learn more about managing the fulfillment process in TradeGecko <a target="_blank" href="3pl.html">here</a>.
+      step4:
+        header: Step 4 (optional):&nbsp;Cancel a sales order.
+        text: To cancel a sales order, send an API call to <code>POST /orders/[:order_id]/actions/void</code>.
+      notes:
+        - If you want to add additional information to a sales order such as special requests for customers or shipping information, you can set the <code>freeform</code> attribute to true and create or update an order line item with these information.
+        - When you create a sales order with a variant that cannot be matched to an existing variant in TradeGecko, either by TradeGecko id or SKU, you will need to create the variant in TradeGecko before re-importing the sales order.
+        - If you want to specify a currency when creating a sales order, pass in the <code>currency_iso</code> when creating or updating a sales order and TradeGecko would find a matching currency. However, if the currency matching fails, you will need to create the currency first. You can also cache the currencies and check if a particular currency exists before creating a new sales order.
+
+    handling_returns:
+      header: Handling Returns
+      introduction:
+        - Depending on a merchant's return policy, there may be a need to create a fulfillment return or void an order. You can return an entire order or part of an order.
+        - In the event that your company is handling the return through TradeGecko API, you can create a <code>fulfillment_return</code> as shown below:&nbsp;
+      tips:
+        - If fulfillment return creation is handled by the merchant, you can subscribe to the <code>fulfillment_return.create</code> webhook to receive notifications.
+      notes:
+        - You cannot delete a fulfillment if there are any associated fulfillment returns.
+        - If a merchant is integrated with an accounting platform on TradeGecko, creating a fulfillment return would create a credit note on the accounting platform.
+        - Refunds are currently not supported. If you need an endpoint for the refund process, let us know <a target="_blank" href="https://tradegecko.typeform.com/to/A2ewy0">here</a>.
+        - You can void an order via the <a target="_blank" href="https://developer.tradegecko.com/#order-actions">order's void endpoint</a>.
+
+    additional_resources:
+      header: Additional Resources
+    support:
+      header: Support
+---
+<div class="guides-main-container">
+  <div>
+    <h1 class="mt-2"><%=current_page.data.title%></h1>
+    <p><%=current_page.data.introduction%></p>
+
+    In this guide:
+    <ul class="mt-2">
+      <% current_page.data.articles.each do |article|%>
+        <li><a href=<%="##{article[0]}"%>><%= article[0].titleize %></a></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <% section = current_page.data.articles.sales_channel_resources%>
+  <div id="<%=section.header.parameterize.underscore%>" class="guide-section">
+    <h2><%=section.header%></h2>
+    <p><%=section.introduction%></p>
+    <ul class="mt-2">
+      <% section.subsection.each do |subsection|%>
+        <li class="mt-1"><%= subsection.point %></li>
+        <% if subsection.subpoints %>
+          <ul>
+            <% subsection.subpoints.each do |subpoint|%>
+              <li><%= subpoint %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <% section = current_page.data.articles.authorising_your_sales_channel_integration%>
+  <div id="<%=section.header.parameterize.underscore%>" class="guide-section">
+    <h2><%=section.header%></h2>
+    <p><%=section.introduction%></p>
+  </div>
+
+  <% section = current_page.data.articles.publishing_products_from_tradegecko_to_a_sales_channel%>
+  <div id="<%=section.header.parameterize.underscore%>" class="guide-section">
+    <h2><%=section.header%></h2>
+    <p><%=section.introduction%></p>
+    <ul>
+      <li><%= section.step1.header %></li>
+      <li><%= section.step2.header %></li>
+      <li><%= section.step3.header %></li>
+    </ul>
+
+    <div class="step-section">
+      <h3><%= section.step1.header %></h3>
+
+      <% partial "includes/code_buttons"  do %>
+  ```ruby
+  require 'gecko-ruby'
+  gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+  access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+  gecko.access_token = access_token
+  gecko.Product.find(1)
+
+  {
+    "product": {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:24.817Z",
+      "updated_at": "2015-11-02T01:22:24.817Z",
+      "variant_ids": [
+        1,
+        2
+      ],
+      // more fields
+    }
+  }
+  ```
+  ```shell
+  curl -X GET -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+  https://api.tradegecko.com/products/1?include=variants
+
+  {
+    "variants": [
+      {
+        "id": 1,
+        "created_at": "2015-11-02T01:22:24.817Z",
+        "updated_at": "2015-11-02T01:22:24.817Z",
+        "locations": [
+          {
+            "location_id": 1,
+            "stock_on_hand": "10",
+            "committed": "3",
+            "incoming": null,
+            "bin_location": null,
+            "reorder_point": null
+          }
+        ]
+        // more fields
+      }
+    ],
+    "product": {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:24.817Z",
+      "updated_at": "2015-11-02T01:22:24.817Z",
+      "variant_ids": [
+        1
+      ],
+      // more fields
+    }
+  }
+  ```
+      <% end %>
+
+      <h3>Tips:</h3>
+      <ul>
+        <% section.step1.tips.each do |tip|%>
+          <li><%= tip %></li>
+        <% end %>
+      </ul>
+      <h3>Notes:</h3>
+      <ul>
+        <% section.step1.notes.each do |note|%>
+          <li><%= note.text %></li>
+          <% if note.subpoints %>
+            <ul>
+              <% note.subpoints.each do |subpoint|%>
+                <li><%= subpoint %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="step-section">
+      <h3><%= section.step2.header %></h3>
+      <p><%= section.step2.text %></p>
+      <% partial "includes/code_buttons" do %>
+        <% partial "includes/webhook_event", locals: { event: 'product.create' }  %>
+      <% end %>
+    </div>
+
+    <div class="step-section">
+      <h3><%= section.step3.header %></h3>
+      <p><%= section.step3.text %></p>
+      <% partial "includes/code_buttons" do %>
+        <% partial "includes/webhook_event", locals: { event: 'variant.stock_level_update' }  %>
+      <% end %>
+    </div>
+  </div>
+
+  <% section = current_page.data.articles.importing_orders_from_a_sales_channel_to_tradegecko %>
+  <div id="<%=section.header.parameterize.underscore%>" class="guide-section">
+    <h2><%=section.header%></h2>
+    <p><%=section.introduction%></p>
+    <ul>
+      <li><%= section.step1.header %></li>
+      <li><%= section.step2.header %></li>
+      <li><%= section.step3.header %></li>
+      <li><%= section.step4.header %></li>
+    </ul>
+
+    <div class="step-section">
+      <h3><%= section.step1.header %></h3>
+      <p><%= section.step1.text1 %></p>
+
+      <% partial "includes/code_buttons"  do %>
+  ``` ruby
+  require 'gecko-ruby'
+  gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+  access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+  gecko.access_token = access_token
+  order = gecko.Order.build({:company_id=>1, :issued_at=>"Time.now", :billing_address_id=>1, :shipping_address_id=>1, :order_line_items=>[{:variant_id=>123, :quantity=>2}, {:variant_id=>456, :quantity=>5}]})
+  order.save
+
+  {
+    "order": {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:25.524Z",
+      "updated_at": "2015-11-02T01:22:25.524Z",
+      "shipping_address_id": 1,
+      "billing_address_id": 1,
+      "company_id": 1,
+      "order_line_item_ids": [
+        1,
+        2
+      ]
+      // more fields
+    }
+  }
+  ```
+  ```shell
+  curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+  https://api.tradegecko.com/orders/ -d '{"order":{"company_id":1,"issued_at":"Time.now","billing_address_id":1,"shipping_address_id":1,"order_line_items":[{"variant_id":123,"quantity":2},{"variant_id":456,"quantity":5}]}'}
+
+  {
+    "order": {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:25.524Z",
+      "updated_at": "2015-11-02T01:22:25.524Z",
+      "shipping_address_id": 1,
+      "billing_address_id": 1,
+      "company_id": 1,
+      "order_line_item_ids": [
+        1,
+        2
+      ]
+      // more fields
+    }
+  }
+  ```
+      <% end %>
+
+      <p><%= section.step1.text2 %></p>
+
+      <% partial "includes/code_buttons"  do %>
+  ``` ruby
+  require 'gecko-ruby'
+  gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+  access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+  gecko.access_token = access_token
+  order = gecko.Order.build({:company_id=>1, :issued_at=>"Time.now", :shipping_address_id=>1, :order_line_items=>[{:variant_id=>123, :quantity=>2}, {:variant_id=>456, :quantity=>5}]})
+  order.shipping_address.build({address1=>"121 Street", :label=>"my company label", :company_id=>1})
+  order.save
+
+  {
+    "order": {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:25.524Z",
+      "updated_at": "2015-11-02T01:22:25.524Z",
+      "shipping_address_id": 2,
+      "billing_address_id": 1,
+      "company_id": 1,
+      "order_line_item_ids": [
+        1,
+        2
+      ]
+      // more fields
+    }
+  }
+  ```
+  ```shell
+  curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+  https://api.tradegecko.com/orders/ -d '{"order":{"company_id":1,"issued_at":"Time.now","shipping_address_id":1,"order_line_items":[{"variant_id":123,"quantity":2},{"variant_id":456,"quantity":5}],"billing_address":{"address1":"121 Street","label":"my company label","company_id":1}}'}
+
+  {
+    "order": {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:25.524Z",
+      "updated_at": "2015-11-02T01:22:25.524Z",
+      "shipping_address_id": 1,
+      "billing_address_id": 1,
+      "company_id": 1,
+      "order_line_item_ids": [
+        1,
+        2
+      ]
+      // more fields
+    }
+  }
+  ```
+      <% end %>
+
+      <p><%= section.step1.text3 %></p>
+
+      <% partial "includes/code_buttons"  do %>
+  ``` ruby
+  require 'gecko-ruby'
+  gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+  access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+  gecko.access_token = access_token
+  order = gecko.Order.build({:issued_at=>"Time.now", :order_line_items=>[{:variant_id=>123, :quantity=>2}, {:variant_id=>456, :quantity=>5}]})
+  order.company.build({:name=>"121 Street", :company_type=>"consumer"})
+  order.shipping_address.build({address1=>"121 Street", :label=>"my company label"})
+  order.save
+
+  {
+    "order": {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:25.524Z",
+      "updated_at": "2015-11-02T01:22:25.524Z",
+      "shipping_address_id": 2,
+      "billing_address_id": 1,
+      "company_id": 1,
+      "order_line_item_ids": [
+        1,
+        2
+      ]
+      // more fields
+    }
+  }
+  ```
+  ```shell
+  curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+  https://api.tradegecko.com/orders -d '{"order":{"issued_at":"2018-06-01","order_line_items":[{"variant_id":2,"quantity":2},{"variant_id":1,"quantity":5}],"shipping_address":{"label":"Office","address1":"123 TG Street"},"company":{"name":"TG Company","company_type":"consumer"}}}'
+
+  {
+    "order": {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:25.524Z",
+      "updated_at": "2015-11-02T01:22:25.524Z",
+      "shipping_address_id": 1,
+      "billing_address_id": 1,
+      "company_id": 1,
+      "order_line_item_ids": [
+        1,
+        2
+      ]
+      // more fields
+    }
+  }
+  ```
+      <% end %>
+
+    </div>
+
+    <div class="step-section">
+      <h3><%= section.step2.header %></h3>
+      <p><%= section.step2.text %></p>
+      <p><%= section.step2.subpoint1 %></p>
+      <p><%= section.step2.subpoint2 %></p>
+      <p><%= section.step2.subpoint3 %></p>
+    </div>
+
+    <div class="step-section">
+      <h3><%= section.step3.header %></h3>
+      <p><%= section.step3.text %></p>
+      <p><%= section.step3.subpoint1 %></p>
+      <p><%= section.step3.subpoint2 %></p>
+      <p><%= section.step3.subpoint3 %></p>
+    </div>
+
+    <div class="step-section">
+      <h3><%= section.step4.header %></h3>
+      <p><%= section.step4.text %></p>
+    </div>
+
+    <div class="step-section">
+      <h3>Notes</h3>
+      <ul>
+        <% section.notes.each do |note|%>
+          <li><%= note %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+    <% section = current_page.data.articles.handling_returns%>
+    <div id="<%=section.header.parameterize.underscore%>" class="guide-section">
+      <h2><%=section.header%></h2>
+      <%section.introduction.each do |instruction| %>
+        <p><%= instruction %></p>
+      <% end %>
+
+      <% partial "includes/code_buttons"  do %>
+  ``` ruby
+  require 'gecko-ruby'
+  gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+  access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+  gecko.access_token = access_token
+  fulfillment_return = gecko.FulfillmentReturn.build({:order_id=>1, :fulfillment_return_line_items=>[{:order_line_item_id=>1, :quantity=>1}, {:order_line_item_id=>2, :quantity=>1}]})
+  fulfillment_return.save
+
+  {
+    "fulfillment_return": {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:25.535Z",
+      "updated_at": "2015-11-02T01:22:25.535Z",
+      "order_id": 1,
+      "location_id": 1,
+      "delivery_type": null,
+      "exchange_rate": "1.0",
+      "notes": null,
+      "received_at": null,
+      "tracking_company": null,
+      "tracking_number": null,
+      "tracking_url": null,
+      "status": "returning",
+      "credit_note_number": "CN0001",
+      "order_number": "SO0001",
+      "company_id": 1
+    }
+  }
+  ```
+  ```shell
+  curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+  https://api.tradegecko.com/fulfillment_returns/ -d '{"fulfillment_return":{"order_id":1,"fulfillment_return_line_items":[{"order_line_item_id":1,"quantity":1},{"order_line_item_id":2,"quantity":1}]}'}
+
+  {
+    "fulfillment_return": {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:25.535Z",
+      "updated_at": "2015-11-02T01:22:25.535Z",
+      "order_id": 1,
+      "location_id": 1,
+      "delivery_type": null,
+      "exchange_rate": "1.0",
+      "notes": null,
+      "received_at": null,
+      "tracking_company": null,
+      "tracking_number": null,
+      "tracking_url": null,
+      "status": "returning",
+      "credit_note_number": "CN0001",
+      "order_number": "SO0001",
+      "company_id": 1
+    }
+  }
+  ```
+        <% end %>
+      </div>
+
+      <div>
+        <h3>Tips: </h3>
+        <ul>
+          <% section.tips.each do |tip|%>
+            <li><%= tip %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Notes: </h3>
+        <ul>
+          <% section.notes.each do |note|%>
+            <li><%= note %></li>
+          <% end %>
+        </ul>
+      </div>
+
+  <%= partial "includes/guides/additional_resources" %>
+  <%= partial "includes/guides/support" %>
+</div>

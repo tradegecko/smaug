@@ -1,19 +1,605 @@
- <% partial "includes/code_buttons"  do %>
+---
+  title: 3PL Integration Guide
+  introduction: This guide explains how to use TradeGecko API to integrate with a fulfillment service - a third party warehouse that prepares and ships orders on behalf of a merchant on TradeGecko. You can use these resources to receive and create fulfillments.
+  
+  articles:
+    fulfillment_resources:
+      header: Fulfillment Resources
+      introduction: Before you start working on a fulfillment integration with TradeGecko, it's helpful to understand some of the different fulfillment-related resources.
+      subsection:
+        - point: <b>Sales Order</b>:&nbsp;Contains information about a sales order, its associated order line items and fulfillments. Order line items contain information such as variants and tax types.
+          subpoints:
+            - An order in TradeGecko can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
+            - When an order is fully shipped, the order status will be changed to <code>fulfilled</code>.
+        - point: <b>Fulfillment</b>:&nbsp;Represents a shipment of one or more items in a sales order. It contains information about the shipment, such as the ship to address (<code>shipping_address</code>), ship from address (<code>stock_location_id</code>), tracking information and an array of fulfillment line items.
+          subpoints:
+            - A fulfillment in TradeGecko can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
+            - A fulfillment is created with a status of <code>packed</code> by default. After the fulfillment is shipped, its status should be updated to <code>fulfilled</code>.
+        - point: <b>Fulfillment Line Item</b>:&nbsp;Contains information about the order line item and quantity of the order line item’s variant which is being fulfilled.
+        - point: <b>Address</b>:&nbsp;Represents a physical address of a merchant's supplier or customer created and stored in the TradeGecko Relationships section.
+        - point: <b>Location</b>:&nbsp;Represents a geographical location where a merchant can receive, store and transfer goods.
+    fulfillment_behaviour:
+      header: Fulfillment Behaviour
+      introduction: Each order includes an array of order line items that needs to be fulfilled. Each order line item can be packed and fulfilled separately, depending on how the inventory is packed and managed.
+      image: ../images/sales_order.jpg
+      subsection:
+        - point: Scenario 1:&nbsp;If <a href="https://share.vidyard.com/watch/s4JwXfrBzYhg8GZVw4ed6T?" target="_blank">packing is handled by a merchant</a>  while shipping is handled by the fulfillment service, the fulfillment service should subscribe to the <code>fulfillment.create</code> webhook to be notified of any new fulfillments to be shipped.
+        - point: Scenario 2:&nbsp;If both packing and shipping are handled by the fulfillment service, the fulfillment service should subscribe to the <code>order.create</code> webhook to be notified when a new order is created.
+          subpoints:
+            - The fulfillment service can pack all order line items through an API call to:&nbsp;<code>POST /orders/[:order_id]/actions/pack</code>. This will create a fulfillment for all order line items with status <code>packed</code>.
+            - Once the fulfillment has been shipped, the status can be updated to <code>fulfilled</code> through an API call to:&nbsp;<code>POST /orders/[:order_id]/actions/fulfill</code>.
+    completing_a_fulfillment:
+      header: Completing a Fulfillment
+      scenario1:
+        header: <b>Scenario 1:&nbsp;Merchant is in charge of packing. Fulfillment service completes the shipment after items are packed.</b>
+        step1:
+          header: Step 1:&nbsp;Receive a fulfillment alert from <code>fulfillment.create</code> webhook.
+          text: To get started, subscribe to the <code>fulfillment.create</code> webhook to be notified when a fulfillment is created for an order.
+        step2:
+          header: Step 2:&nbsp;Query the fulfillment to see the fulfillment line items.
+          textSections:
+            text1: If your fulfillment service only handles fulfillment in certain stock locations, you can check the <code>stock_location_id</code> of the fulfillment to determine if you should ship any variants.
+            text2: To find a fulfillment line item's variant, first retrieve the associated order line item object. Then, use the <code>variant_id</code> attribute in the order line item object to retrieve the variant.
+        step3:
+          header: Step 3:&nbsp;Update fulfillment status to <code>fulfilled</code>.
+          text: After shipping a fulfillment, you can update the <code>status</code> of the fulfillment to <code>fulfilled</code> and include information like <code>tracking_company</code>, <code>tracking_number</code> and <code>tracking_url</code>.
+        notes:
+          - <b>Query the order to see its order line items:</b>&nbsp;In TradeGecko, merchants have the option to partially pack order line items. For example, a merchant may choose to pack only 5 out of 10 items from an order line item. 
+      scenario2:
+        header: <b>Scenario 2:&nbsp;Fulfillment service is in charge of packing and fulfilling an order.</b>
+        step1:
+          header: Step 1:&nbsp;Receive an order alert from <code>order.create</code> webhook.
+          textSections:
+            text1: To get started, subscribe to the <code>order.create</code> webhook to be notified when a new order comes in.
+        step2:
+          header: Step 2:&nbsp;Query the order to see the order line items.
+          introduction: Note:&nbsp;If your fulfillment service only handles fulfillments in certain stock locations, you can check the order's <code>stock_location_id</code> to determine if you should fulfill it.
+        step3:
+          header: Step 3:&nbsp;Create a new fulfillment.
+          textSections:
+            text1: A fulfillment service can either partially or completely fulfill an order.
+            text2: To completely fulfill an order, create a fulfillment using <code>POST /orders/[:order_id]/actions/fulfil</code>. Do note that this will create a fulfillment with status <code>fulfilled</code> for all unpacked order line items and also update the status of all existing <code>packed</code> fulfillments to <code>fulfilled</code>.
+            text3: To partially fulfill an order, pass in the <code>order_line_item_ids</code> and quantities to be fulfilled. Do note that this will create a fulfillment with status <code>packed</code>. After shipping the fulfillment, you can update the status to <code>fulfilled</code> as seen in Scenario 1 - Step 3.
+        notes:
+          - The fulfillment <code>stock_location_id</code> will default to the order <code>stock_location id</code> unless a <code>stock_location_id</code> is specified on fulfillment creation.
+          - As merchants may have already created fulfillments, you may need to check if there are existing fulfillments before creating new ones.
+    handling_returns:
+      header: Handling Returns
+      introduction:
+        - Depending on a merchant's return policy, there may be a need to create a fulfillment return or void an order. You can return an entire order or part of an order.
+        - In the event that your company is handling the return through TradeGecko API, you can create a <code>fulfillment_return</code> as shown below:&nbsp;
+      tips:
+        - If fulfillment return creation is handled by the merchant, you can subscribe to the <code>fulfillment_return.create</code> webhook to receive notifications.
+      notes:
+        - You cannot delete a fulfillment if there are any associated fulfillment returns.
+        - If a merchant is integrated with an accounting platform on TradeGecko, creating a fulfillment return would create a credit note on the accounting platform.
+        - Refunds are currently not supported. If you need an endpoint for the refund process, let us know <a target="_blank" href="https://tradegecko.typeform.com/to/A2ewy0">here</a>.
+        - You can void an order via the <a target="_blank" href="https://developer.tradegecko.com/#order-actions">order's void endpoint</a>.
+    additional_resources:
+    support:
+---
+<div class="guides-main-container">
+<div>
+  <h1 class="mt-2"><%=current_page.data.title%></h1>
+  <p><%=current_page.data.introduction%></p>
+
+  In this guide:
+  <ul class="mt-2">
+    <% current_page.data.articles.each do |article|%>
+      <li><a href=<%="##{article[0]}"%>><%= article[0].titleize %></a></li>
+    <% end %>
+  </ul>
+</div>
+
+<% section = current_page.data.articles.fulfillment_resources%>
+<div id="<%=section.header.parameterize.underscore%>" class="guide-section">
+  <h2><%=section.header%></h2>
+  <p><%=section.introduction%></p>
+  <ul class="mt-2">
+    <% section.subsection.each do |subsection|%>
+      <li class="mt-1"><%= subsection.point %></li>
+      <% if subsection.subpoints %>
+        <ul>
+          <% subsection.subpoints.each do |subpoint|%>
+            <li><%= subpoint %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<% section = current_page.data.articles.fulfillment_behaviour%>
+<div id="<%=section.header.parameterize.underscore%>" class="guide-section">
+  <h2><%=section.header%></h2>
+  <p><%=section.introduction%></p>
+  <img class="center" src="<%=section.image%>">
+  <ul class="mt-2">
+    <% section.subsection.each do |subsection|%>
+      <li class="mt-1"><%= subsection.point %></li>
+      <% if subsection.subpoints %>
+        <ul>
+          <% subsection.subpoints.each do |subpoint|%>
+            <li><%= subpoint %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<% section = current_page.data.articles.completing_a_fulfillment%>
+<div id="<%=section.header.parameterize.underscore%>" class="guide-section">
+  <h2><%=section.header%></h2>
+  <div class="scenario-section">
+    <h3><%= section.scenario1.header %></h3>
+    <ul>
+      <li><%= section.scenario1.step1.header %></li>
+      <li><%= section.scenario1.step2.header %></li>
+      <li><%= section.scenario1.step3.header %></li>
+    </ul>
+    <div class="step-section">
+      <h3><%= section.scenario1.step1.header %></h3>
+      <p><%= section.scenario1.step1.text %></p>
+      <% partial "includes/code_buttons"  do %>
+``` ruby
+require 'gecko-ruby'
+gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+gecko.access_token = access_token
+webhook = gecko.Webhook.build({:address=>"https://mywebsite.com/webhooks", :event=>"fulfillment.create"})
+webhook.save
+
+{
+  "webhook": {
+    "id": 1,
+    "created_at": "2018-09-24T11:12:49.244Z",
+    "updated_at": "2018-09-24T11:12:49.244Z",
+    "event": "fulfillment.create",
+    "address": "https://mywebsite.com/webhooks",
+    "oauth_application_id": 1
+  }
+}
+```
+```shell
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/webhooks/ -d '{"webhook":{"address":"https://mywebsite.com/webhooks","event":"fulfillment.create"}'}
+
+{
+  "webhook": {
+    "id": 1,
+    "created_at": "2018-09-24T11:12:49.244Z",
+    "updated_at": "2018-09-24T11:12:49.244Z",
+    "event": "fulfillment.create",
+    "address": "https://mywebsite.com/webhooks",
+    "oauth_application_id": 1
+  }
+}
+```
+      <% end %>
+    </div>
+
+    <div class="step-section">
+      <h3><%= section.scenario1.step2.header %></h3>
+      <p><%= section.scenario1.step2.textSections.text1 %></p>
+
+      <% partial "includes/code_buttons"  do %>
   ```ruby
-  order = gecko.Order.build({
-    company_id: 101,
-    shipping_address_id: 1002,
-    billing_address_id: 1002,
-    issued_at: Time.now,
-  })
-  order.order_line_items.build(variant_id: 14, quantity: 1)
-  order.order_line_items.build(variant_id: 15, quantity: 2)
-  order.save
+require 'gecko-ruby'
+gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+gecko.access_token = access_token
+gecko.Fulfillment.find(1)
+
+{
+  "fulfillment": {
+    "id": 1,
+    "created_at": "2015-11-02T01:22:25.524Z",
+    "updated_at": "2015-12-02T01:11:25.524Z",
+    "stock_location_id": 1,
+    "fulfillment_line_item_ids": [1, 2, 3]
+    // more fields
+  }
+}
   ```
   ```shell
-  curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>" https://api.tradegecko.com/orders/ \
-  -d '{"order": {"company_id": 101, "shipping_address_id": 1002, "billing_address_id": 1002, "status": "active", "issued_at": "21-02-2018", "order_line_items": [{"variant_id": 14, "quantity": 1}, {"variant_id": 15, "quantity": 2}]}}'
-  ```
-<% end %>
+curl -X GET -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/fulfillments/1?include=fulfillment_line_items
 
- 
+{
+  "fulfillment_line_items": [
+    {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:25.524Z",
+      "updated_at": "2015-12-02T01:11:25.524Z",
+      // more fields
+    },
+  ],
+  "fulfillment": {
+    "id": 1,
+    "created_at": "2015-11-02T01:22:25.524Z",
+    "updated_at": "2015-12-02T01:11:25.524Z",
+    "stock_location_id": 1,
+    "fulfillment_line_item_ids": [1],
+    // more fields
+  }
+}
+```   
+      <% end %>
+      <p><%= section.scenario1.step2.textSections.text2 %></p>
+    </div>
+
+    <div class="step-section">
+      <h3><%= section.scenario1.step3.header %></h3>
+      <p><%= section.scenario1.step3.text %></p>
+      
+      <% partial "includes/code_buttons"  do %>
+  ```ruby
+require 'gecko-ruby'
+gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+gecko.access_token = access_token
+fulfillment = gecko.Fulfillment.find(1)
+fulfillment.attributes = {
+  status: "fulfilled",
+  tracking_company: "GeckoShip",
+  tracking_number: "123TrackMe",
+}
+fulfillment.save
+
+{
+  "fulfillment": {
+    "id": 1,
+    "created_at": "2015-11-02T01:22:25.524Z",
+    "updated_at": "2015-12-02T01:11:25.524Z",
+    "status": "fulfilled",
+    "tracking_company": "GeckoShip",
+    "tracking_number": "123TrackMe",
+    // more fields
+  }
+}
+  ```
+  ```shell
+curl -X PUT -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/fulfillments/1 -d '{"fulfillment":{"status":"fulfilled","tracking_company":"GeckoShip","tracking_number":"123TrackMe"}}'
+
+{
+  "fulfillment_line_items": [
+    {
+      "id": 1,
+      "created_at": "2015-11-02T01:22:25.524Z",
+      "updated_at": "2015-12-02T01:11:25.524Z",
+      // more fields
+    },
+  ],
+  "fulfillment": {
+    "id": 1,
+    "created_at": "2015-11-02T01:22:25.524Z",
+    "updated_at": "2015-12-02T01:11:25.524Z",
+    "tracking_company": "GeckoShip",
+    "tracking_number": "123TrackMe",
+    "status": "fulfilled",
+    "stock_location_id": 1,
+    "fulfillment_line_item_ids": [1],
+    // more fields
+  }
+}
+```
+      <% end %>
+    </div>
+
+    <div>
+      <h3>Notes: </h3>
+      <ul>
+        <% section.scenario1.notes.each do |note|%>
+          <li><%= note %></li>
+        <% end %>
+      </ul>
+      <div>
+        <video autoplay loop width="900" height="600" class="center" poster="http://g.recordit.co/XYTdxZqUDG.gif"></video>
+      </div>
+      <p>
+        As a result, a fulfillment service may need to query for order line items and determine the outstanding items to be shipped in upcoming fulfillments.
+      </p>
+
+      <% partial "includes/code_buttons"  do %>
+  ```ruby
+require 'gecko-ruby'
+gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+gecko.access_token = access_token
+gecko.Order.find(1)
+
+{
+  "order": {
+    "id": 1,
+    "created_at": "2015-11-12T08:06:01.561Z",
+    "updated_at": "2015-11-12T08:06:01.561Z",
+    "order_line_item_ids": [
+      1,
+      2
+    ]
+  // more fields
+}
+  ```
+  ```shell
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/orders/1?include=order_line_items
+
+{
+  "order_line_items": [
+    // order line item attributes
+  ],
+  "order": {
+    "id": 1,
+    "created_at": "2015-11-12T08:06:01.561Z",
+    "updated_at": "2015-11-12T08:06:01.561Z",
+    "order_line_item_ids": [
+      1,
+      2
+    ]
+  // more fields
+}
+```
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="scenario-section">
+    <h3><%= section.scenario2.header %></h3>
+
+     <ul>
+      <li><%= section.scenario2.step1.header %></li>
+      <li><%= section.scenario2.step2.header %></li>
+      <li><%= section.scenario2.step3.header %></li>
+    </ul>
+
+    <div class="step-section">
+      <h3><%= section.scenario2.step1.header %></h3>
+      <p><%= section.scenario2.step1.textSections.text1 %></p>
+
+      <% partial "includes/code_buttons"  do %>
+``` ruby
+require 'gecko-ruby'
+gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+gecko.access_token = access_token
+webhook = gecko.Webhook.build({:address=>"https://mywebsite.com/webhooks", :event=>"order.create"})
+webhook.save
+
+{
+  "webhook": {
+    "id": 1,
+    "created_at": "2018-09-24T11:12:49.244Z",
+    "updated_at": "2018-09-24T11:12:49.244Z",
+    "event": "order.create",
+    "address": "https://mywebsite.com/webhooks",
+    "oauth_application_id": 1
+  }
+}
+```
+```shell
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/webhooks/ -d '{"webhook":{"address":"https://mywebsite.com/webhooks","event":"order.create"}'}
+
+{
+  "webhook": {
+    "id": 1,
+    "created_at": "2018-09-24T11:12:49.244Z",
+    "updated_at": "2018-09-24T11:12:49.244Z",
+    "event": "order.create",
+    "address": "https://mywebsite.com/webhooks",
+    "oauth_application_id": 1
+  }
+}
+```
+      <% end %>
+
+    </div>
+
+    <div class="step-section">
+      <h3><%= section.scenario2.step2.header %></h3>
+      <p><%= section.scenario2.step2.introduction %></p>
+
+      <% partial "includes/code_buttons"  do %>
+``` ruby
+require 'gecko-ruby'
+gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+gecko.access_token = access_token
+gecko.Order.find(1)
+
+{
+  "order": {
+    "id": 1,
+    "created_at": "2015-11-12T08:06:01.561Z",
+    "updated_at": "2015-11-12T08:06:01.561Z",
+    "stock_location_id": 1,
+    "order_line_item_ids": [
+      1,
+      2
+    ]
+  // more fields
+}
+```
+```shell
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/orders/1?include=order_line_items
+
+{
+  "order_line_items": [
+    {
+      "id": 1,
+      "created_at": "2015-11-12T08:06:01.561Z",
+      "updated_at": "2015-11-12T08:06:01.561Z",
+      // more fields
+    }
+  ],
+  "order": {
+    "id": 1,
+    "created_at": "2015-11-12T08:06:01.561Z",
+    "updated_at": "2015-11-12T08:06:01.561Z",
+    "stock_location_id": 1,
+    "order_line_item_ids": [
+      1
+    ]
+    // more fields
+}
+```
+      <% end %>
+    </div>
+
+    <div class="step-section">
+      <h3><%= section.scenario2.step3.header %></h3>
+      <p><%= section.scenario2.step3.textSections.text1 %></p>
+      <p><%= section.scenario2.step3.textSections.text2 %></p>
+      <p><%= section.scenario2.step3.textSections.text3 %></p>
+
+      <% partial "includes/code_buttons"  do %>
+``` ruby
+require 'gecko-ruby'
+gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+gecko.access_token = access_token
+fulfillment = gecko.Fulfillment.build({:order_id=>1, :packed_at=>"Time.now", :billing_address_id=>1, :shipping_address_id=>1, :fulfillment_line_items=>[{:order_line_item_id=>1}, {:order_line_item_id=>2}]})
+fulfillment.save
+
+{
+  "fulfillment": {
+    "id": 1,
+    "created_at": "2015-11-02T01:22:25.524Z",
+    "updated_at": "2015-11-02T01:22:25.524Z",
+    "order_id": 2,
+    "shipping_address_id": 1,
+    "billing_address_id": 1,
+    "stock_location_id": 1,
+    "fulfillment_line_item_ids": [
+      1,
+      2
+    ]
+    // more fields
+  }
+}
+```
+```shell
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/fulfillments/ -d '{"fulfillment":{"order_id":1,"packed_at":"Time.now","billing_address_id":1,"shipping_address_id":1,"fulfillment_line_items":[{"order_line_item_id":1},{"order_line_item_id":2}]}'}
+{
+  "fulfillment": {
+    "id": 1,
+    "created_at": "2015-11-02T01:22:25.524Z",
+    "updated_at": "2015-11-02T01:22:25.524Z",
+    "order_id": 2,
+    "shipping_address_id": 1,
+    "billing_address_id": 1,
+    "stock_location_id": 1,
+    "fulfillment_line_item_ids": [
+      1,
+      2
+    ]
+    // more fields
+  }
+}
+```
+      <% end %>
+
+    </div>
+
+    <div>
+      <h3>Notes: </h3>
+      <ul>
+        <% section.scenario2.notes.each do |note|%>
+          <li><%= note %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <% section = current_page.data.articles.handling_returns%>
+  <div id="<%=section.header.parameterize.underscore%>" class="guide-section">
+    <h2><%=section.header%></h2>
+    <%section.introduction.each do |instruction| %>
+      <p><%= instruction %></p>
+    <% end %>
+
+    <% partial "includes/code_buttons"  do %>
+``` ruby
+require 'gecko-ruby'
+gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
+access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
+gecko.access_token = access_token
+fulfillment_return = gecko.FulfillmentReturn.build({:order_id=>1, :fulfillment_return_line_items=>[{:order_line_item_id=>1, :quantity=>1}, {:order_line_item_id=>2, :quantity=>1}]})
+fulfillment_return.save
+
+{
+  "fulfillment_return": {
+    "id": 1,
+    "created_at": "2015-11-02T01:22:25.535Z",
+    "updated_at": "2015-11-02T01:22:25.535Z",
+    "order_id": 1,
+    "location_id": 1,
+    "delivery_type": null,
+    "exchange_rate": "1.0",
+    "notes": null,
+    "received_at": null,
+    "tracking_company": null,
+    "tracking_number": null,
+    "tracking_url": null,
+    "status": "returning",
+    "credit_note_number": "CN0001",
+    "order_number": "SO0001",
+    "company_id": 1
+  }
+}
+```
+```shell
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/fulfillment_returns/ -d '{"fulfillment_return":{"order_id":1,"fulfillment_return_line_items":[{"order_line_item_id":1,"quantity":1},{"order_line_item_id":2,"quantity":1}]}'}
+
+{
+  "fulfillment_return": {
+    "id": 1,
+    "created_at": "2015-11-02T01:22:25.535Z",
+    "updated_at": "2015-11-02T01:22:25.535Z",
+    "order_id": 1,
+    "location_id": 1,
+    "delivery_type": null,
+    "exchange_rate": "1.0",
+    "notes": null,
+    "received_at": null,
+    "tracking_company": null,
+    "tracking_number": null,
+    "tracking_url": null,
+    "status": "returning",
+    "credit_note_number": "CN0001",
+    "order_number": "SO0001",
+    "company_id": 1
+  }
+}
+```
+      <% end %>
+    </div>
+
+    <div>
+      <h3>Tips: </h3>
+      <ul>
+        <% section.tips.each do |tip|%>
+          <li><%= tip %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Notes: </h3>
+      <ul>
+        <% section.notes.each do |note|%>
+          <li><%= note %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <%= partial "includes/guides/additional_resources" %>
+  <%= partial "includes/guides/support" %>
+</div>

@@ -1,0 +1,25 @@
+.guides-main-container {
+  .lang-selector {
+    border-radius: 0px;
+    
+    a.active {
+      border-radius: 0px;
+    }
+  }
+}
+
+.guide-section {
+  code {
+    background-color: rgba($code-bg, .05);
+    padding: 3px;
+    border-radius: $border-radius;
+    @extend %break-words;
+    @extend %code-font;
+  }
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
