@@ -1,3 +1,21 @@
 <script>
-  window.location = 'https://developer.tradegecko.com';
+  var referrer =  document.referrer;
+
+  if (referrer.indexOf('api/stock-adjustment-line-item') > -1) {
+    window.location = 'https://developer.tradegecko.com/docs.html#stockadjustmentlineitem';
+  } else if (referrer.indexOf('api/stock-adjustment') > -1) {
+    window.location = 'https://developer.tradegecko.com/docs.html#stockadjustment';
+  } else if (referrer.indexOf('api/invoice-line-item') > -1) {
+    window.location = 'https://developer.tradegecko.com/docs.html#invoicelineitem';
+  } else if (referrer.indexOf('api/invoice') > -1) {
+    window.location = 'https://developer.tradegecko.com/docs.html#invoice';
+  } else if (referrer.indexOf('documentation') > -1) {
+    window.location = 'https://developer.tradegecko.com/docs.html';
+  } else if (referrer.indexOf('api/product') > -1) {
+    window.location = 'https://developer.tradegecko.com/docs.html#product';
+  } else if (referrer.indexOf('developer/getting-an-authorization-code') > -1) {
+    window.location = 'https://developer.tradegecko.com/docs.html#oauth-authentication-flows';
+  } else {
+    window.location = 'https://developer.tradegecko.com';
+  }
 </script>
