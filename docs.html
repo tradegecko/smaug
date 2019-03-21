@@ -758,9 +758,6 @@
                   <li>
                     <a href="#stock-adjustment-actions" class="toc-h2 toc-link" data-title="Stock Adjustment actions">Stock Adjustment actions</a>
                   </li>
-                  <li>
-                    <a href="#delete-a-stock_adjustment" class="toc-h2 toc-link" data-title="Delete a stock_adjustment">Delete a stock_adjustment</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -814,9 +811,6 @@
                   </li>
                   <li>
                     <a href="#stock-transfer-actions" class="toc-h2 toc-link" data-title="Stock Transfer actions">Stock Transfer actions</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-stock_transfer" class="toc-h2 toc-link" data-title="Delete a stock_transfer">Delete a stock_transfer</a>
                   </li>
               </ul>
           </li>
@@ -9615,7 +9609,7 @@ This endpoint also accepts embedded variants.</p>
 <tr>
 <td><strong>weight_unit</strong></td>
 <td>String</td>
-<td>The weight unit (kg, g, oz or lb)</td>
+<td>The weight unit (kg, gm, oz or lb)</td>
 <td></td>
 </tr>
 <tr>
@@ -11274,22 +11268,6 @@ https://api.tradegecko.com/stock_adjustments/[:stock_adjustment_id]/actions/[:st
 </tr>
 </tbody></table></p>
 
-<p><h2 id='delete-a-stock_adjustment'>Delete a stock_adjustment</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
-https://api.tradegecko.com/stock_adjustments/1
-</code></pre>
-<blockquote>
-<p>Response</p></p>
-
-<p>Returns 204 status when the stock_adjustment gets deleted successfully.</p>
-
-<p></blockquote></p>
-
-<p>Permanently deletes a stock_adjustment. It cannot be undone. This stock_adjustment is no longer available for future Sales Orders.</p>
-
-<h3 id='http-request'>HTTP Request</h3>
-
-<p><code>DELETE https://api.tradegecko.com/stock_adjustments/{RESOURCE_ID}/</code></p>
-
   <h1 id='stockadjustmentlineitem'>StockAdjustmentLineItem</h1>
 <p>This is an object representing a stock_adjustment_line_item of a stock_adjustment. Stock_adjustments can
   have multiple stock_adjustment_line_items but a stock_adjustment_line_item object belongs to only one
@@ -12105,22 +12083,6 @@ https://api.tradegecko.com/stock_transfers/[:stock_transfer_id]/actions/[:stock_
 <td>Revert the stock transfer</td>
 </tr>
 </tbody></table></p>
-
-<p><h2 id='delete-a-stock_transfer'>Delete a stock_transfer</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
-https://api.tradegecko.com/stock_transfers/1
-</code></pre>
-<blockquote>
-<p>Response</p></p>
-
-<p>Returns 204 status when the stock_transfer gets deleted successfully.</p>
-
-<p></blockquote></p>
-
-<p>Permanently deletes a stock_transfer. It cannot be undone. This stock_transfer is no longer available for future Sales Orders.</p>
-
-<h3 id='http-request'>HTTP Request</h3>
-
-<p><code>DELETE https://api.tradegecko.com/stock_transfers/{RESOURCE_ID}/</code></p>
 
   <h1 id='stocktransferlineitem'>StockTransferLineItem</h1>
 <p>This is an object representing a stock_transfer_line_item of a stock_transfer. Stock_transfers can
@@ -13270,7 +13232,7 @@ https://api.tradegecko.com/users/1
 <tr>
 <td><strong>weight_unit</strong></td>
 <td>String</td>
-<td>The weight unit (kg, g, oz or lb)</td>
+<td>The weight unit (kg, gm, oz or lb)</td>
 <td></td>
 </tr>
 <tr>
@@ -13789,7 +13751,7 @@ https://api.tradegecko.com/variants/ -d <span class="s1">&#39;{&quot;variant&quo
 <tr>
 <td><strong>weight_unit</strong></td>
 <td>String</td>
-<td>The weight unit (kg, g, oz or lb)</td>
+<td>The weight unit (kg, gm, oz or lb)</td>
 <td></td>
 </tr>
 <tr>
