@@ -19,6 +19,15 @@ for existing known issues or [create a new issue](https://github.com/tradegecko/
 
 ## Changelog
 
+### Apr 2019 - Pagination tidying
+In order to provide a great experience to all our API users we've made some changes to our pagination.
+The default page size is now 50 items (down from 100), with a max page size up to 250.
+
+The max page size for new integrations has been 250 for several years, but we have a
+few grandfathered integrations that supported a page size of up to 999.
+Over the next few weeks we will be contacting and migrating everyone to a 250 item max.
+
+
 ### Oct 2018 - Enable Sideloading, Add Webhooks and Resource Actions
 We now support [sideloading of resources](/docs.html#sideloading-resources).
 We have also added support for [webhooks](/docs.html#webhook)

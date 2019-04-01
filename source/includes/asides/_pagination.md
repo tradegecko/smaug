@@ -1,7 +1,5 @@
 # Pagination
 
-> The default limit is 100 items.
-
 ```shell
 curl -X GET -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
 https://api.tradegecko.com/users?limit=5&page=2
@@ -17,3 +15,5 @@ gecko.User.where(limit: 5, page: 2)
  
 The TradeGecko API enables pagination via `limit`
 and `page` query parameters on GET requests to index pages. 
+
+The default page size is 50 items, with the maximum page size being 250.
