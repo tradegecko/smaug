@@ -229,7 +229,14 @@
 
 <p>If anything is missing or seems incorrect, please check the <a href="https://github.com/tradegecko/smaug/issues">GitHub issues</a>
 for existing known issues or <a href="https://github.com/tradegecko/smaug/issues/new">create a new issue</a>.</p>
-<h2 id='changelog'>Changelog</h2><h3 id='oct-2018-enable-sideloading-add-webhooks-and-resource-actions'>Oct 2018 - Enable Sideloading, Add Webhooks and Resource Actions</h3>
+<h2 id='changelog'>Changelog</h2><h3 id='apr-2019-pagination-tidying'>Apr 2019 - Pagination tidying</h3>
+<p>In order to provide a great experience to all our API users we&#39;ve made some changes to our pagination.
+The default page size is now 50 items (down from 100), with a max page size up to 250.</p>
+
+<p>The max page size for new integrations has been 250 for several years, but we have a
+few grandfathered integrations that supported a page size of up to 999.
+Over the next few weeks we will be contacting and migrating everyone to a 250 item max.</p>
+<h3 id='oct-2018-enable-sideloading-add-webhooks-and-resource-actions'>Oct 2018 - Enable Sideloading, Add Webhooks and Resource Actions</h3>
 <p>We now support <a href="docs.html#sideloading-resources">sideloading of resources</a>.
 We have also added support for <a href="docs.html#webhook">webhooks</a>
 and introduced resource actions for <a href="docs.html#order-actions">Order</a>, <a href="docs.html#purchase-order-actions">Purchase Order</a>, <a href="docs.html#stock-adjustment-actions">Stock Adjustment</a> and <a href="docs.html#stock-transfer-actions">Stock Transfer</a>.</p>

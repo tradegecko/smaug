@@ -1172,13 +1172,7 @@ Important: The Privileged Access Tokens provide unfettered access to your TradeG
 account, be very careful to store them securely.
 </aside>
 
-<p><h1 id='pagination'>Pagination</h1>
-
-<blockquote>
-<p>The default limit is 100 items.</p>
-</blockquote>
-
-<pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+<p><h1 id='pagination'>Pagination</h1><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
 https://api.tradegecko.com/users?limit<span class="o">=</span>5&amp;page<span class="o">=</span>2
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">&#39;gecko-ruby&#39;</span>
 <span class="n">gecko</span> <span class="o">=</span> <span class="no">Gecko</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">&lt;</span><span class="no">OAUTH_ID</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="no">OAUTH_SECRET</span><span class="o">&gt;</span><span class="p">)</span>
@@ -1186,11 +1180,13 @@ https://api.tradegecko.com/users?limit<span class="o">=</span>5&amp;page<span cl
 <span class="n">gecko</span><span class="p">.</span><span class="nf">access_token</span> <span class="o">=</span> <span class="n">access_token</span>
 <span class="n">gecko</span><span class="o">.</span><span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">limit: </span><span class="mi">5</span><span class="p">,</span> <span class="ss">page: </span><span class="mi">2</span><span class="p">)</span>
 </code></pre>
-
 <p>The TradeGecko API enables pagination via <code>limit</code>
 and <code>page</code> query parameters on GET requests to index pages. </p></p>
 
+<p>The default page size is 50 items, with the maximum page size being 250.</p>
+
 <p><h1 id='filtering-collections'>Filtering Collections</h1>
+
 <p>The TradeGecko API allows filtering of records by passing along query parameters.<br>
 These are some of the filters currently allowed by the API (where relevant).</p>
 
