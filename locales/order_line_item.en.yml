@@ -188,5 +188,12 @@ en:
         name: "invoice_line_item_ids",
         type: "Array",
         readonly: true
+      },
+      order_status: {
+        name: "order_status",
+        filterable: "Filter order_line_items by order status",
+        private: true,
+        updatable: false,
+        creatable: false,
       }
     }

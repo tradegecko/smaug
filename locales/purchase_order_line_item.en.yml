@@ -128,10 +128,11 @@ en:
       procurement_id: {
         name: "procurement_id",
         type: "Integer",
-        description: "",
-        filterable: true,
+        description: "If it has been received, the procurement object this purchase_order_line_item belongs.",
+        filterable: "Filter purchase_order_line_items by procurement",
         updatable: true,
         creatable: true,
+        readonly: true
       },
       base_price: {
         name: "base_price",
@@ -207,5 +208,12 @@ en:
         updatable: true,
         creatable: true,
         deprecated: true,
+      },
+      purchase_order_status: {
+        name: "purchase_order_status",
+        filterable: "Filter purchase_order_line_items by purchase order status",
+        updatable: false,
+        private: true,
+        creatable: false,
       }
     }
