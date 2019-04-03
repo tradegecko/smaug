@@ -8562,6 +8562,10 @@ https://api.tradegecko.com/order_line_items/
 <td><strong>tax_type_id</strong></td>
 <td>Filter order_line_items by tax_type</td>
 </tr>
+<tr>
+<td><strong>order_status</strong></td>
+<td>Filter order_line_items by order status</td>
+</tr>
 </tbody></table>
 
 <h3 id='http-request'>HTTP Request:</h3>
@@ -10286,7 +10290,7 @@ This endpoint also accepts embedded purchase_order_line_items.</p>
 <tr>
 <td><strong>procurement_id</strong></td>
 <td>Integer</td>
-<td></td>
+<td>If it has been received, the procurement object this purchase_order_line_item belongs.</td>
 <td></td>
 </tr>
 <tr>
@@ -10528,8 +10532,8 @@ https://api.tradegecko.com/purchase_orders/1
 <tr>
 <td><strong>procurement_id</strong></td>
 <td>Integer</td>
-<td></td>
-<td></td>
+<td>If it has been received, the procurement object this purchase_order_line_item belongs.</td>
+<td>true</td>
 </tr>
 <tr>
 <td><strong>base_price</strong></td>
@@ -10715,7 +10719,11 @@ https://api.tradegecko.com/purchase_order_line_items/
 </tr>
 <tr>
 <td><strong>procurement_id</strong></td>
-<td></td>
+<td>Filter purchase_order_line_items by procurement</td>
+</tr>
+<tr>
+<td><strong>purchase_order_status</strong></td>
+<td>Filter purchase_order_line_items by purchase order status</td>
 </tr>
 </tbody></table>
 
@@ -10786,7 +10794,7 @@ https://api.tradegecko.com/purchase_order_line_items/ -d <span class="s1">&#39;{
 <tr>
 <td><strong>procurement_id</strong></td>
 <td>Integer</td>
-<td></td>
+<td>If it has been received, the procurement object this purchase_order_line_item belongs.</td>
 <td></td>
 </tr>
 <tr>
