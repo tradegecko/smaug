@@ -475,7 +475,7 @@ a[data-title=Resources] {
   }
 }
 
-.content pre.tab-json--inline {
+.content pre[class$='--inline'] {
   float: left;
   clear: none;
   background-color: $examples-bg;
