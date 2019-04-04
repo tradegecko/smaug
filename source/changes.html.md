@@ -27,6 +27,7 @@ The max page size for new integrations has been 250 for several years, but we ha
 few grandfathered integrations that supported a page size of up to 999.
 Over the next few weeks we will be contacting and migrating everyone to a 250 item max.
 
+Added a Webhooks section to the documentation.
 
 OrderLineItem and PurchaseOrderLineItem index endpoints now support an `order_status` and `purchase_order_status` filter respectively.
 
