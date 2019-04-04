@@ -262,6 +262,17 @@
             <a href="#soft-deletion" class="toc-h1 toc-link" data-title="Soft Deletion">Soft Deletion</a>
           </li>
           <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-webhook-notification" class="toc-h2 toc-link" data-title="The Webhook notification">The Webhook notification</a>
+                  </li>
+                  <li>
+                    <a href="#responding-to-a-webhook" class="toc-h2 toc-link" data-title="Responding to a webhook">Responding to a webhook</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#sideloading-resources" class="toc-h1 toc-link" data-title="Sideloading Resources">Sideloading Resources</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1357,20 +1368,61 @@ In the API, a soft-deleted object will have a status of <code>archived</code>.
 These records will not be returned by default, but can be accessed using filters to 
 specifically return records with a status of <code>archived</code>.</p></p>
 
-<p><h1 id='sideloading-resources'>Sideloading Resources</h1>
+<p><h1 id='webhooks'>Webhooks</h1>
+<p>You can use webhooks to receive notifications fo a collection of common events, see <a href="#list-of-available-events">the list here</a>.</p></p>
+
+<p>Once you&#39;ve created a webhook via the API, any time that matching event is triggered in the customer&#39;s TradeGecko account, the endpoint will receive a POST request.</p>
+
+<h3 id='the-webhook-notification'>The Webhook notification</h3>
+
+<p>The webhook request you received will include a JSON serialized payload including the
+<code>object_id</code>, <code>event</code>, a <code>timestamp</code> and the <code>resource_url</code>.</p>
+
+<pre class="highlight json tab-json--inline"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fulfillments.create"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546272000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.tradegecko.com/fulfillments/1234567.json"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>It will also include some specific HTTP headers.</p>
+
+<p><code>X-Gecko-Delivery</code>: A unique identifier for the event, if you have any issues with webhooks, please provide this value when submitting any support ticket.</p>
+
+<p><code>X-Gecko-Signature</code>: A signed signature for verification.</p>
+
+<p>To ensure the request comes from TradeGecko itself and is not being spoofed be sure to verify the
+signature agains the payload received.</p>
+
+<p>An example implementation in Ruby is provided.</p>
+
+<pre class="highlight ruby tab-ruby--inline"><code><span class="k">def</span> <span class="nf">generate_signature</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+  <span class="n">digest</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Digest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">)</span>
+  <span class="no">Base64</span><span class="p">.</span><span class="nf">encode64</span><span class="p">(</span><span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">digest</span><span class="p">(</span><span class="n">digest</span><span class="p">,</span> <span class="n">application</span><span class="p">.</span><span class="nf">secret</span><span class="p">,</span> <span class="n">body</span><span class="p">.</span><span class="nf">to_json</span><span class="p">)).</span><span class="nf">strip</span>
+<span class="k">end</span>
+</code></pre><h3 id='responding-to-a-webhook'>Responding to a webhook</h3>
+<p>When receiving a webhook, the request must complete within a 10-second window, we highly recommending processing the webhooks asynchronously to avoid any problems.</p>
+
+<p>we use the HTTP response code to determine whether a webhook has been received successfully.
+If your server responds with between 200 and 399, we assume it has been processed successfully.</p>
+
+<p>A 410 Gone response will automatically delete a webhook.
+Anything else will start an exponential retry backoff.</p>
+
+<p>If we receive bad responses for several days in a row, we will send a notice email to the Application developer and eventually disconnect the webhook.</p>
+
+  <h1 id='sideloading-resources'>Sideloading Resources</h1>
 <p>TradeGecko allows you retrieve associated resources as part of a single request.
-This can be done by adding an <code>include</code> parameter containing a comma-separated list of resources to load.</p></p>
+This can be done by adding an <code>include</code> parameter containing a comma-separated list of resources to load.</p>
 
 <aside class="notice">  
   Sideloading for Orders and Purchase Orders are currently available only when retrieving a single order or purchase order. Using the `include` parameter won't work on index pages.
 </aside>
 
 <p>Here&#39;s a few examples:</p>
-
 <h3 id='fetching-a-product'>Fetching a Product</h3>
-
 <p><code>GET https://api.tradegecko.com/products/1?include=variants</code></p>
-
 <pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">"Content-type: application/json"</span> -H <span class="s2">"Authorization: Bearer &lt;ACCESS_TOKEN&gt;"</span> https://api.tradegecko.com/products/153172?include<span class="o">=</span>variants
 </code></pre><pre class="highlight json tab-json--inline"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"variants"</span><span class="p">:[</span><span class="w">
