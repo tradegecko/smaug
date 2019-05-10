@@ -3,12 +3,12 @@
 <%= t(".actions.description", scope: resource) %>
 
 ```shell
-curl -X GET -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
 https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/[:<%= t('.resource_name', scope: resource) %>_id]/actions/[:<%= t('.resource_name', scope: resource) %>_action]
 ```
 
-| Action                         | Description          
-| ------------------------------ | ------------- 
+| Action                         | Description
+| ------------------------------ | -------------
 <% t(".actions.endpoints", scope: resource).each do |endpoint| %>
   `<%= endpoint[:endpoint] %>` | <%= endpoint[:description] %>
 <% end %>
