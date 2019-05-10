@@ -8314,7 +8314,7 @@ This request accepts the same arguments as the order creation call.</p>
 <p><h2 id='order-actions'>Order actions</h2>
 <p>Use the following endpoints to manage the order&#39;s invoice, payment and fulfillment. <code>POST /orders/[:order_id]/actions/[:action]</code></p>
 
-<pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
 https://api.tradegecko.com/orders/[:order_id]/actions/[:order_action]
 </code></pre>
 
@@ -10494,7 +10494,7 @@ This request accepts the same arguments as the purchase_order creation call.</p>
 <p><h2 id='purchase-order-actions'>Purchase Order actions</h2>
 <p>Use the following endpoints to manage the receiving of the purchase order. <code>POST /purchase_orders/[:purchase_order_id]/actions/[:action]</code></p>
 
-<pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
 https://api.tradegecko.com/purchase_orders/[:purchase_order_id]/actions/[:purchase_order_action]
 </code></pre>
 
@@ -11308,7 +11308,7 @@ https://api.tradegecko.com/stock_adjustments/1
 <p><h2 id='stock-adjustment-actions'>Stock Adjustment actions</h2>
 <p>Use the following endpoints to manage the reverting of the stock adjustment. <code>POST /stock_adjustments/[:stock_adjustment_id]/actions/[:action]</code></p>
 
-<pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
 https://api.tradegecko.com/stock_adjustments/[:stock_adjustment_id]/actions/[:stock_adjustment_action]
 </code></pre>
 
@@ -12120,7 +12120,7 @@ https://api.tradegecko.com/stock_transfers/1
 <p><h2 id='stock-transfer-actions'>Stock Transfer actions</h2>
 <p>Use the following endpoints to manage the receiving or reverting of the stock transfer. <code>POST /stock_transfers/[:stock_transfer_id]/actions/[:action]</code></p>
 
-<pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
 https://api.tradegecko.com/stock_transfers/[:stock_transfer_id]/actions/[:stock_transfer_action]
 </code></pre>
 
