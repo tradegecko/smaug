@@ -7,6 +7,7 @@ en:
     resource_klass: "User"
     resource_name: "user"
     resource_plural: "users"
+    used_in_sales_order: true
     json: [
       {
         id: 1,

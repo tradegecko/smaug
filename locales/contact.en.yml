@@ -9,6 +9,7 @@ en:
     resource_klass: "Contact"
     resource_name: "contact"
     resource_plural: "contacts"
+    used_in_sales_order: true
     json: [
       {
         id: 7,

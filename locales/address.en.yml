@@ -9,6 +9,7 @@ en:
     resource_klass: "Address"
     resource_name: "address"
     resource_plural: "addresses"
+    used_in_sales_order: true
     json: [
       {
         id: 6,

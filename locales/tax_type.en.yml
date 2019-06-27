@@ -5,6 +5,7 @@ en:
     resource_klass: "TaxType"
     resource_name: "tax_type"
     resource_plural: "tax_types"
+    used_in_sales_order: true
     json: [
       {
         id: 3,
