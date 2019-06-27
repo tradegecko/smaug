@@ -1,7 +1,6 @@
 ---
 en:
   stock_adjustment:
-    enable_actions: true
     child: "stock_adjustment_line_item"
     disable_update: true
     resource_article: "a"
@@ -127,13 +126,4 @@ en:
         description: "",
         readonly: true,
       }
-    }
-    actions: {
-      description: "Use the following endpoints to manage the reverting of the stock adjustment. `POST /stock_adjustments/[:stock_adjustment_id]/actions/[:action]`",
-      endpoints: [
-        {
-          endpoint: "revert",
-          description: "Revert the stock adjustment"
-        }
-      ]
     }
