@@ -4,7 +4,6 @@ en:
     enable_actions: true
     child: "stock_adjustment_line_item"
     disable_update: true
-    disable_destroy: true
     resource_article: "a"
     resource_klass: "StockAdjustment"
     resource_name: "stock_adjustment"
