@@ -5,6 +5,7 @@ en:
     resource_klass: "Location"
     resource_name: "location"
     resource_plural: "locations"
+    used_in_sales_order: true
     json: [
       {
         id: 2,

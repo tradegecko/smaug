@@ -2,6 +2,7 @@
 en:
   stock_adjustment_line_item:
     disable_update: true
+    disable_destroy: true
     parent: "stock_adjustment"
     parent_article: "a"
     parent_klass: "StockAdjustment"
@@ -114,7 +115,7 @@ en:
       price: {
         name: "price",
         type: "String",
-        description: "",
+        description: "Required only when quantity is greater than 0. For negative quantities, the current Moving Average Cost will be assigned automatically.",
         updatable: true,
         creatable: true,
         required: true,

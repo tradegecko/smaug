@@ -5,6 +5,7 @@ en:
     resource_klass: "PriceList"
     resource_name: "price_list"
     resource_plural: "price_lists"
+    used_in_sales_order: true
     json: [
       {
         id: "buy",

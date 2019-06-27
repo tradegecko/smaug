@@ -21,7 +21,10 @@ https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/1
 >
 > Returns 204 status when the <%= t(".resource_name", scope: resource) %> gets deleted successfully.
 
-Permanently deletes <%= t(".resource_article", scope: resource) %> <%= t(".resource_name", scope: resource) %>. It cannot be undone. This <%= t(".resource_name", scope: resource) %> is no longer available for future Sales Orders.
+Permanently deletes <%= t(".resource_article", scope: resource) %> <%= t(".resource_name", scope: resource) %>. It cannot be undone.
+<% if t(".used_in_sales_order", scope: resource) == true %>
+  This <%= t(".resource_name", scope: resource) %> will no longer be available for future Sales Order.
+<% end %>
 
 ### HTTP Request
 `DELETE https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/{RESOURCE_ID}/`

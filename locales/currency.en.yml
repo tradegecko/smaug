@@ -5,6 +5,7 @@ en:
     resource_klass: "Currency"
     resource_name: "currency"
     resource_plural: "currencies"
+    used_in_sales_order: true
     json: [
       {
         id: 2,

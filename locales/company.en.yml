@@ -5,6 +5,7 @@ en:
     resource_klass: "Company"
     resource_name: "company"
     resource_plural: "companies"
+    used_in_sales_order: true
     json: [
       {
         id: 4,

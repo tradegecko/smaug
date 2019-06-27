@@ -9,6 +9,7 @@ en:
     resource_klass: "Variant"
     resource_name: "variant"
     resource_plural: "variants"
+    used_in_sales_order: true
     json: [
       {
         id: 3,
