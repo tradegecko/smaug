@@ -115,7 +115,7 @@ en:
       price: {
         name: "price",
         type: "String",
-        description: "",
+        description: "Required only when quantity is greater than 0. For negative quantities, the current Moving Average Cost will be assigned automatically.",
         updatable: true,
         creatable: true,
         required: true,
