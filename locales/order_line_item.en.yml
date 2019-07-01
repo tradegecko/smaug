@@ -26,7 +26,6 @@ en:
         "price":                            "189.0",
         "quantity":                         "1.0",
         "tax_rate_override":                nil,
-        "tax_rate":                         nil,
         "fulfillment_line_item_ids":        [ ],
         "fulfillment_return_line_item_ids": [ ],
         "invoice_line_item_ids":            [ ]
@@ -47,7 +46,6 @@ en:
         "price":                            "189.0",
         "quantity":                         "1.0",
         "tax_rate_override":                nil,
-        "tax_rate":                         nil,
         "fulfillment_line_item_ids":        [ ],
         "fulfillment_return_line_item_ids": [ ],
         "invoice_line_item_ids":            [ ]
@@ -139,7 +137,6 @@ en:
         updatable: true,
         name: "line_type",
         type: "String",
-        updatable: true,
         creatable: true
       },
       position: {
@@ -172,7 +169,8 @@ en:
         name: "tax_rate",
         type: "String",
         updatable: true,
-        creatable: true
+        creatable: true,
+        deprecated: true,
       },
       fulfillment_line_item_ids: {
         name: "fulfillment_line_item_ids",
