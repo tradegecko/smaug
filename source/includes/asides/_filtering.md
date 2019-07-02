@@ -27,7 +27,7 @@ gecko.Product.where(created_at_min: "2015-11-04")
 | **updated_at_min** | Return objects only updated since
 | **updated_at_max** | Return objects only updated before
 | **order**          | The order to return the collection i.e "?order=created_at desc"
-| **limit**          | See [Pagination](#pagination) (default is 100)
+| **limit**          | See [Pagination](#pagination) (default is 50)
 | **page**           | See [Pagination](#pagination)
 
 In addition, each record type has their own specific filters; 
