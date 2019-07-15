@@ -136,6 +136,7 @@ en:
       line_type: {
         updatable: true,
         name: "line_type",
+        description: "Optional field for tracking the basic type of a line item, currently used for Channel/API integrations only, blank otherwise. Supported values are: 'product', 'discount', 'shipping', 'rounding', 'fee', and 'gift_wrap'",
         type: "String",
         creatable: true
       },
