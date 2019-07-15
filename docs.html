@@ -1239,7 +1239,7 @@ https://api.tradegecko.com/products?created_at_min<span class="o">=</span>2015-1
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>See <a href="#pagination">Pagination</a> (default is 100)</td>
+<td>See <a href="#pagination">Pagination</a> (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -2277,7 +2277,7 @@ https://api.tradegecko.com/addresses/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -2818,7 +2818,7 @@ https://api.tradegecko.com/companies/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -3360,7 +3360,7 @@ https://api.tradegecko.com/contacts/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -3754,7 +3754,7 @@ https://api.tradegecko.com/currencies/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -4159,7 +4159,7 @@ https://api.tradegecko.com/fulfillments/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -4643,7 +4643,7 @@ https://api.tradegecko.com/fulfillment_line_items/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -4994,7 +4994,7 @@ https://api.tradegecko.com/fulfillment_returns/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -5392,7 +5392,7 @@ https://api.tradegecko.com/fulfillment_return_line_items/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -5746,7 +5746,7 @@ https://api.tradegecko.com/images/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -6112,7 +6112,7 @@ https://api.tradegecko.com/invoices/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -6550,7 +6550,7 @@ https://api.tradegecko.com/invoice_line_items/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -6889,7 +6889,7 @@ https://api.tradegecko.com/locations/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -7199,7 +7199,7 @@ https://api.tradegecko.com/notes/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -7791,7 +7791,7 @@ https://api.tradegecko.com/orders/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -8161,7 +8161,7 @@ This endpoint also accepts embedded order_line_items.</p>
 <tr>
 <td><strong>line_type</strong></td>
 <td>String</td>
-<td></td>
+<td>Optional field for tracking the basic type of a line item, currently used for Channel/API integrations only, blank otherwise. Supported values are: &#39;product&#39;, &#39;discount&#39;, &#39;shipping&#39;, &#39;rounding&#39;, &#39;fee&#39;, and &#39;gift_wrap&#39;</td>
 <td></td>
 </tr>
 <tr>
@@ -8446,7 +8446,7 @@ https://api.tradegecko.com/orders/1
 <tr>
 <td><strong>line_type</strong></td>
 <td>String</td>
-<td></td>
+<td>Optional field for tracking the basic type of a line item, currently used for Channel/API integrations only, blank otherwise. Supported values are: &#39;product&#39;, &#39;discount&#39;, &#39;shipping&#39;, &#39;rounding&#39;, &#39;fee&#39;, and &#39;gift_wrap&#39;</td>
 <td></td>
 </tr>
 <tr>
@@ -8546,7 +8546,7 @@ https://api.tradegecko.com/order_line_items/
     </span><span class="s2">&quot;freeform&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;image_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;null&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;null&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;line_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;null&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;line_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;product&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;189.0&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span><span class="w">
@@ -8580,7 +8580,7 @@ https://api.tradegecko.com/order_line_items/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -8718,7 +8718,7 @@ https://api.tradegecko.com/order_line_items/ -d <span class="s1">&#39;{&quot;ord
 <tr>
 <td><strong>line_type</strong></td>
 <td>String</td>
-<td></td>
+<td>Optional field for tracking the basic type of a line item, currently used for Channel/API integrations only, blank otherwise. Supported values are: &#39;product&#39;, &#39;discount&#39;, &#39;shipping&#39;, &#39;rounding&#39;, &#39;fee&#39;, and &#39;gift_wrap&#39;</td>
 <td></td>
 </tr>
 <tr>
@@ -8944,7 +8944,7 @@ https://api.tradegecko.com/payment_terms/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -9323,7 +9323,7 @@ https://api.tradegecko.com/products/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -10062,7 +10062,7 @@ https://api.tradegecko.com/purchase_orders/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -10734,7 +10734,7 @@ https://api.tradegecko.com/purchase_order_line_items/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -11139,7 +11139,7 @@ https://api.tradegecko.com/stock_adjustments/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -11448,7 +11448,7 @@ https://api.tradegecko.com/stock_adjustment_line_items/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -11670,7 +11670,7 @@ https://api.tradegecko.com/stock_levels/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -11872,7 +11872,7 @@ https://api.tradegecko.com/stock_transfers/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -12228,7 +12228,7 @@ https://api.tradegecko.com/stock_transfer_line_items/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -12489,7 +12489,7 @@ https://api.tradegecko.com/tax_types/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -12849,7 +12849,7 @@ https://api.tradegecko.com/users/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -13499,7 +13499,7 @@ https://api.tradegecko.com/variants/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
@@ -14051,7 +14051,7 @@ https://api.tradegecko.com/webhooks/
 </tr>
 <tr>
 <td><strong>limit</strong></td>
-<td>used for pagination (default is 100)</td>
+<td>used for pagination (default is 50)</td>
 </tr>
 <tr>
 <td><strong>page</strong></td>
