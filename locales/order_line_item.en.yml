@@ -41,7 +41,7 @@ en:
         "freeform":                         false,
         "image_url":                        "null",
         "label":                            "null",
-        "line_type":                        "null",
+        "line_type":                        "product",
         "position":                         0,
         "price":                            "189.0",
         "quantity":                         "1.0",
