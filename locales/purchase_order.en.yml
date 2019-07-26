@@ -27,6 +27,7 @@ en:
         procurement_status: "unprocured",
         reference_number: null,
         tax_treatment: "exclusive",
+        issued_at: "2015-11-23",
         received_at: null,
         total: "8.63",
         tags: [ ],
@@ -59,6 +60,7 @@ en:
         reference_number: null,
         status: "active",
         tax_treatment: "exclusive",
+        issued_at: "2015-11-23",
         received_at: null,
         total: "2.88",
         tags: [ ],
@@ -218,6 +220,15 @@ en:
         updatable: true,
         creatable: true,
         required: true
+      },
+      issued_at: {
+        name: "issued_at",
+        type: "String",
+        description: "Date when purchase was issued.",
+        updatable: true,
+        creatable: true,
+        filterable: true,
+        required:  true
       },
       received_at: {
         name: "received_at",
