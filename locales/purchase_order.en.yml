@@ -24,6 +24,7 @@ en:
         email: "william@example.com",
         notes: null,
         order_number: "PO0002",
+        payment_due_at: "2015-12-07",
         procurement_status: "unprocured",
         reference_number: null,
         tax_treatment: "exclusive",
@@ -55,6 +56,7 @@ en:
         email: "william@example.com",
         notes: null,
         order_number: "PO0001",
+        payment_due_at: "2015-12-07",
         procurement_status: "unprocured",
         reference_number: null,
         status: "active",
@@ -169,7 +171,8 @@ en:
       due_at: {
         name: "due_at",
         type: "String",
-        description: "",
+        description: "Defaults to 14 days from creation",
+        filterable: true,
         updatable: true,
         creatable: true,
         required: true
@@ -195,6 +198,15 @@ en:
         filterable: true,
         updatable: true,
         creatable: true
+      },
+      payment_due_at: {
+        name: "payment_due_at",
+        type: "String",
+        description: "Defaults to 14 days from creation",
+        filterable: true,
+        updatable: true,
+        creatable: true,
+        required: true
       },
       procurement_status: {
         name: "procurement_status",
