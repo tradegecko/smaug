@@ -9867,7 +9867,7 @@ https://api.tradegecko.com/products/1
 <tr>
 <td><strong>due_at</strong></td>
 <td>String</td>
-<td></td>
+<td>Defaults to 14 days from creation</td>
 <td></td>
 </tr>
 <tr>
@@ -9886,6 +9886,12 @@ https://api.tradegecko.com/products/1
 <td><strong>order_number</strong></td>
 <td>String</td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>payment_due_at</strong></td>
+<td>String</td>
+<td>Defaults to 14 days from creation</td>
 <td></td>
 </tr>
 <tr>
@@ -9988,6 +9994,7 @@ https://api.tradegecko.com/purchase_orders/
     </span><span class="s2">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;william@example.com&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;order_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PO0002&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;payment_due_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-12-07&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;procurement_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unprocured&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tax_treatment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
@@ -10023,6 +10030,7 @@ https://api.tradegecko.com/purchase_orders/
     </span><span class="s2">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;william@example.com&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;order_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PO0001&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;payment_due_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-12-07&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;procurement_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unprocured&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="p">,</span><span class="w">
@@ -10109,7 +10117,15 @@ https://api.tradegecko.com/purchase_orders/
 <td></td>
 </tr>
 <tr>
+<td><strong>due_at</strong></td>
+<td></td>
+</tr>
+<tr>
 <td><strong>order_number</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>payment_due_at</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -10147,6 +10163,7 @@ https://api.tradegecko.com/purchase_orders/ -d <span class="s1">&#39;{&quot;purc
   </span><span class="s2">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;william@example.com&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;order_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PO0002&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;payment_due_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-12-07&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;procurement_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unprocured&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_treatment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
@@ -10227,7 +10244,7 @@ This endpoint also accepts embedded purchase_order_line_items.</p>
 <tr>
 <td><strong>due_at</strong></td>
 <td>String</td>
-<td></td>
+<td>Defaults to 14 days from creation</td>
 <td>true</td>
 </tr>
 <tr>
@@ -10247,6 +10264,12 @@ This endpoint also accepts embedded purchase_order_line_items.</p>
 <td>String</td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td><strong>payment_due_at</strong></td>
+<td>String</td>
+<td>Defaults to 14 days from creation</td>
+<td>true</td>
 </tr>
 <tr>
 <td><strong>procurement_status</strong></td>
@@ -10434,6 +10457,7 @@ https://api.tradegecko.com/purchase_orders/1
   </span><span class="s2">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;william@example.com&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;order_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PO0002&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;payment_due_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-12-07&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;procurement_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unprocured&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_treatment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
