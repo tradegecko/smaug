@@ -434,23 +434,23 @@ en:
       endpoints: [
         {
           endpoint: "invoice",
-          description: "Invoice the order"
+          description: "Invoices the whole order. If there are already existing invoices, creates another invoice with the remaining uninvoiced line items"
         },
         {
           endpoint: "pay",
-          description: "Pay for the order"
+          description: "Creates payments for the enitre order value. It will pay any existing unpaid or partially paid invoices and create an invoice and payment for the remaining value"
         },
         {
           endpoint: "pack",
-          description: "Create a fulfillment with status: `packed`"
+          description: "Create a fulfillment with status: `packed` for any unpacked items."
         },
         {
           endpoint: "fulfil",
-          description: "Create a fulfillment with status: `fulfilled`"
+          description: "Create a fulfillment with status: `fulfilled`. It will fulfill any existing fulfillments and create a new fulfillment for any remaining items"
         },
         {
           endpoint: "void",
-          description: "Void the order"
+          description: "Voids the order"
         }
       ]
     }
