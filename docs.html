@@ -8328,23 +8328,23 @@ https://api.tradegecko.com/orders/[:order_id]/actions/[:order_action]
 </thead><tbody>
 <tr>
 <td><code>invoice</code></td>
-<td>Invoice the order</td>
+<td>Invoices the whole order. If there are already existing invoices, creates another invoice with the remaining uninvoiced line items</td>
 </tr>
 <tr>
 <td><code>pay</code></td>
-<td>Pay for the order</td>
+<td>Creates payments for the enitre order value. It will pay any existing unpaid or partially paid invoices and create an invoice and payment for the remaining value</td>
 </tr>
 <tr>
 <td><code>pack</code></td>
-<td>Create a fulfillment with status: <code>packed</code></td>
+<td>Create a fulfillment with status: <code>packed</code> for any unpacked items.</td>
 </tr>
 <tr>
 <td><code>fulfil</code></td>
-<td>Create a fulfillment with status: <code>fulfilled</code></td>
+<td>Create a fulfillment with status: <code>fulfilled</code>. It will fulfill any existing fulfillments and create a new fulfillment for any remaining items</td>
 </tr>
 <tr>
 <td><code>void</code></td>
-<td>Void the order</td>
+<td>Voids the order</td>
 </tr>
 </tbody></table></p>
 
