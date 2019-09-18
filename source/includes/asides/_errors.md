@@ -13,4 +13,4 @@ Error Code | Meaning
 422 | Unprocessable Entity -- Your request is invalid
 429 | Too Many Requests -- You are allowed [300 requests per 300 seconds](#rate-limiting "Rate Limiting")
 500 | Internal Server Error -- We had a problem with our server. Try again later
-503 | Service Unavailable (Time out) -- The server is overloaded or down for maintenance
+503 | Service Unavailable (Time out) -- The server was unable to finish the request in time, if fetching data, please try using a smaller page size
