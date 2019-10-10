@@ -9,13 +9,13 @@ en:
     json: [
       {
         id: 3,
-        code: "PURCHASES",
+        code: "RETAIL",
         imported_from: null,
-        name: "Purchases Tax",
+        name: "Retail",
         status: "active",
         quickbooks_online_id: null,
         xero_online_id: null,
-        effective_rate: "15.0",
+        effective_rate: "10.0",
         tax_component_ids: [
           3
         ]
@@ -50,7 +50,15 @@ en:
     gecko:
       create: {
         name: "Retail",
-        code: "RETAIL"
+        code: "RETAIL",
+        tax_components: [
+          {
+            "position": 0,
+            "label": "Retail GST",
+            "rate": 10,
+            "compound": false
+          }
+        ]
       }
       update: {
         name: "Wholesale",
@@ -109,10 +117,10 @@ en:
         description: "Computed rate of child tax_components",
         readonly: true
       },
-      tax_component_ids: {
-        name: "tax_component_ids",
+      tax_component: {
+        name: "tax_components",
         type: "Array",
-        description: "",
-        readonly: true
+        description: "An array of Tax Components that the tax rate is composed of",
+        creatable: true
       }
     }
