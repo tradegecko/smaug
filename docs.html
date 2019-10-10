@@ -866,6 +866,29 @@
               </ul>
           </li>
           <li>
+            <a href="#taxcomponent" class="toc-h1 toc-link" data-title="TaxComponent">TaxComponent</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-taxcomponent-object" class="toc-h2 toc-link" data-title="The TaxComponent object">The TaxComponent object</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-tax_components" class="toc-h2 toc-link" data-title="List all tax_components">List all tax_components</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-new-tax_component" class="toc-h2 toc-link" data-title="Create a new tax_component">Create a new tax_component</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-a-particular-tax_component" class="toc-h2 toc-link" data-title="Retrieve a particular tax_component">Retrieve a particular tax_component</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-tax_component" class="toc-h2 toc-link" data-title="Update a tax_component">Update a tax_component</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-tax_component" class="toc-h2 toc-link" data-title="Delete a tax_component">Delete a tax_component</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#user" class="toc-h1 toc-link" data-title="User">User</a>
               <ul class="toc-list-h2">
                   <li>
@@ -9925,6 +9948,12 @@ https://api.tradegecko.com/products/1
 <td></td>
 </tr>
 <tr>
+<td><strong>issued_at</strong></td>
+<td>String</td>
+<td>Date when purchase was issued.</td>
+<td></td>
+</tr>
+<tr>
 <td><strong>received_at</strong></td>
 <td>String</td>
 <td></td>
@@ -10010,6 +10039,7 @@ https://api.tradegecko.com/purchase_orders/
     </span><span class="s2">&quot;procurement_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unprocured&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tax_treatment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;issued_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-23&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;received_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8.63&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
@@ -10047,6 +10077,7 @@ https://api.tradegecko.com/purchase_orders/
     </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tax_treatment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;issued_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-23&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;received_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.88&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
@@ -10141,6 +10172,10 @@ https://api.tradegecko.com/purchase_orders/
 <td></td>
 </tr>
 <tr>
+<td><strong>issued_at</strong></td>
+<td></td>
+</tr>
+<tr>
 <td><strong>tags</strong></td>
 <td></td>
 </tr>
@@ -10179,6 +10214,7 @@ https://api.tradegecko.com/purchase_orders/ -d <span class="s1">&#39;{&quot;purc
   </span><span class="s2">&quot;procurement_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unprocured&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_treatment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;issued_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-23&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;received_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8.63&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
@@ -10299,6 +10335,12 @@ This endpoint also accepts embedded purchase_order_line_items.</p>
 <td><strong>tax_treatment</strong></td>
 <td>String</td>
 <td>One of &#39;exclusive&#39; or &#39;inclusive&#39;, if not provided defaults to account default.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>issued_at</strong></td>
+<td>String</td>
+<td>Date when purchase was issued.</td>
 <td>true</td>
 </tr>
 <tr>
@@ -10473,6 +10515,7 @@ https://api.tradegecko.com/purchase_orders/1
   </span><span class="s2">&quot;procurement_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unprocured&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_treatment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;issued_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-23&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;received_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8.63&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
@@ -12450,10 +12493,10 @@ https://api.tradegecko.com/stock_transfer_line_items/1
 <td>true</td>
 </tr>
 <tr>
-<td><strong>tax_component_ids</strong></td>
+<td><strong>tax_components</strong></td>
 <td>Array</td>
+<td>An array of Tax Components that the tax rate is composed of</td>
 <td></td>
-<td>true</td>
 </tr>
 </tbody></table></p>
 
@@ -12469,13 +12512,13 @@ https://api.tradegecko.com/tax_types/
   </span><span class="s2">&quot;tax_types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PURCHASES&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RETAIL&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;imported_from&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Purchases Tax&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Retail&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;quickbooks_online_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;xero_online_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;effective_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;15.0&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;effective_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.0&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tax_component_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="mi">3</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -12561,20 +12604,20 @@ https://api.tradegecko.com/tax_types/
 <span class="n">gecko</span> <span class="o">=</span> <span class="no">Gecko</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">&lt;</span><span class="no">OAUTH_ID</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="no">OAUTH_SECRET</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="n">access_token</span> <span class="o">=</span> <span class="no">OAuth2</span><span class="o">::</span><span class="no">AccessToken</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">gecko</span><span class="p">.</span><span class="nf">oauth_client</span><span class="p">,</span> <span class="o">&lt;</span><span class="no">ACCESS_TOKEN</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="n">gecko</span><span class="p">.</span><span class="nf">access_token</span> <span class="o">=</span> <span class="n">access_token</span>
-<span class="n">tax_type</span> <span class="o">=</span> <span class="n">gecko</span><span class="o">.</span><span class="no">TaxType</span><span class="p">.</span><span class="nf">build</span><span class="p">({</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">&quot;Retail&quot;</span><span class="p">,</span> <span class="ss">:code</span><span class="o">=&gt;</span><span class="s2">&quot;RETAIL&quot;</span><span class="p">})</span>
+<span class="n">tax_type</span> <span class="o">=</span> <span class="n">gecko</span><span class="o">.</span><span class="no">TaxType</span><span class="p">.</span><span class="nf">build</span><span class="p">({</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">&quot;Retail&quot;</span><span class="p">,</span> <span class="ss">:code</span><span class="o">=&gt;</span><span class="s2">&quot;RETAIL&quot;</span><span class="p">,</span> <span class="ss">:tax_components</span><span class="o">=&gt;</span><span class="p">[{</span><span class="ss">:position</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="ss">:label</span><span class="o">=&gt;</span><span class="s2">&quot;Retail GST&quot;</span><span class="p">,</span> <span class="ss">:rate</span><span class="o">=&gt;</span><span class="mi">10</span><span class="p">,</span> <span class="ss">:compound</span><span class="o">=&gt;</span><span class="kp">false</span><span class="p">}]})</span>
 <span class="n">tax_type</span><span class="p">.</span><span class="nf">save</span>
 </code></pre><pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
-https://api.tradegecko.com/tax_types/ -d <span class="s1">&#39;{&quot;tax_type&quot;:{&quot;name&quot;:&quot;Retail&quot;,&quot;code&quot;:&quot;RETAIL&quot;}}&#39;</span>
+https://api.tradegecko.com/tax_types/ -d <span class="s1">&#39;{&quot;tax_type&quot;:{&quot;name&quot;:&quot;Retail&quot;,&quot;code&quot;:&quot;RETAIL&quot;,&quot;tax_components&quot;:[{&quot;position&quot;:0,&quot;label&quot;:&quot;Retail GST&quot;,&quot;rate&quot;:10,&quot;compound&quot;:false}]}}&#39;</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;tax_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PURCHASES&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RETAIL&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;imported_from&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Purchases Tax&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Retail&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;quickbooks_online_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;xero_online_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;effective_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;15.0&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;effective_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.0&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_component_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">3</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -12605,6 +12648,12 @@ https://api.tradegecko.com/tax_types/ -d <span class="s1">&#39;{&quot;tax_type&q
 <td>Display name</td>
 <td>true</td>
 </tr>
+<tr>
+<td><strong>tax_components</strong></td>
+<td>Array</td>
+<td>An array of Tax Components that the tax rate is composed of</td>
+<td></td>
+</tr>
 </tbody></table>
 
 <h3 id='http-request'>HTTP Request</h3>
@@ -12621,13 +12670,13 @@ https://api.tradegecko.com/tax_types/1
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;tax_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PURCHASES&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RETAIL&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;imported_from&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Purchases Tax&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Retail&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;quickbooks_online_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;xero_online_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;effective_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;15.0&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;effective_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.0&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_component_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">3</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -12690,6 +12739,264 @@ https://api.tradegecko.com/tax_types/1
 <h3 id='http-request'>HTTP Request</h3>
 
 <p><code>DELETE https://api.tradegecko.com/tax_types/{RESOURCE_ID}/</code></p>
+
+<p><h1 id='taxcomponent'>TaxComponent</h1>
+<p>This is an object representing a tax_component of a tax_type. Tax_types can
+  have multiple tax_components but a tax_component object belongs to only one
+  Tax_type.</p>
+
+<h2 id='the-taxcomponent-object'>The TaxComponent object</h2>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+<th>Readonly</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>Integer</td>
+<td>A unique identifier for the resource.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>tax_type_id</strong></td>
+<td>Integer</td>
+<td>The tax_type to which the tax_component belongs.</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>position</strong></td>
+<td>Integer</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label</strong></td>
+<td>String</td>
+<td>Display name</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>rate</strong></td>
+<td>String</td>
+<td>Tax Rate</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>compound</strong></td>
+<td>String</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></p>
+
+<p><h2 id='list-all-tax_components'>List all tax_components</h2><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/tax_components/
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;tax_components&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GST&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;15.0&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GST&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;15.0&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GST&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0&quot;</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Returns a list of tax_components you’ve previously created. The tax_components are returned in sorted order, with the most recent tax_components appearing first.</p>
+
+<h3 id='filters'>Filters</h3>
+
+<table><thead>
+<tr>
+<th>Arguments</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>ids</strong></td>
+<td>An array of tax_component IDs. See <a href="#filtering" title="Filtering">Getting Started</a> for examples.</td>
+</tr>
+<tr>
+<td><strong>limit</strong></td>
+<td>used for pagination (default is 50)</td>
+</tr>
+<tr>
+<td><strong>page</strong></td>
+<td>used for pagination (default is 1)</td>
+</tr>
+<tr>
+<td><strong>created_at_min</strong></td>
+<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+</tr>
+<tr>
+<td><strong>created_at_max</strong></td>
+<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+</tr>
+<tr>
+<td><strong>updated_at_min</strong></td>
+<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+</tr>
+<tr>
+<td><strong>updated_at_max</strong></td>
+<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+</tr>
+<tr>
+<td><strong>tax_type_id</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>position</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>rate</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>compound</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id='http-request'>HTTP Request:</h3>
+
+<p><code>GET  https://api.tradegecko.com/tax_components</code></p></p>
+
+<p><h2 id='create-a-new-tax_component'>Create a new tax_component</h2><pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/tax_components/ -d <span class="s1">&#39;{&quot;tax_component&quot;:{&quot;quantity&quot;:&quot;12.0&quot;,&quot;order_id&quot;:1,&quot;tax_type_id&quot;:1,&quot;price&quot;:&quot;10.0&quot;}}&#39;</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;tax_component&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GST&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;15.0&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Creates a new tax_component object.</p>
+
+<h3 id='arguments'>Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tax_type_id</strong></td>
+<td>Integer</td>
+<td>The tax_type to which the tax_component belongs.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>position</strong></td>
+<td>Integer</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>label</strong></td>
+<td>String</td>
+<td>Display name</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>rate</strong></td>
+<td>String</td>
+<td>Tax Rate</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>compound</strong></td>
+<td>String</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>POST https://api.tradegecko.com/tax_components/</code></p></p>
+
+<p><h2 id='retrieve-a-particular-tax_component'>Retrieve a particular tax_component</h2><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/tax_components/1
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;tax_component&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GST&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;15.0&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieves the details of an existing tax_component. You need only supply the unique tax_component identifier that was returned upon tax_component creation.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>GET https://api.tradegecko.com/tax_components/{RESOURCE_ID}</code></p></p>
+
+<p><h2 id='update-a-tax_component'>Update a tax_component</h2><pre class="highlight shell tab-shell"><code>curl -X PUT -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/tax_components/1 -d <span class="s1">&#39;{&quot;tax_component&quot;:{&quot;quantity&quot;:&quot;22.0&quot;,&quot;price&quot;:&quot;12.0&quot;}}&#39;</span>
+</code></pre>
+<blockquote>
+<p>Response</p></p>
+
+<p>Returns 204 status when the tax_component gets updated successfully.</p>
+
+<p></blockquote></p>
+
+<p>Updates the specified tax_component by setting the values of the parameters passed.</p>
+
+<p>Any parameters not provided will be left unchanged.
+This request accepts the same arguments as the tax_component creation call.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>PUT https://api.tradegecko.com/tax_components/{RESOURCE_ID}</code></p>
+
+<p><h2 id='delete-a-tax_component'>Delete a tax_component</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/tax_components/1
+</code></pre>
+<blockquote>
+<p>Response</p></p>
+
+<p>Returns 204 status when the tax_component gets deleted successfully.</p>
+
+<p></blockquote></p>
+
+<p>Permanently deletes a tax_component. It cannot be undone.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>DELETE https://api.tradegecko.com/tax_components/{RESOURCE_ID}/</code></p>
 
 <p><h1 id='user'>User</h1>
 <p>This is an object representing a user.</p>
