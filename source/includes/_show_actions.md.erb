@@ -12,3 +12,7 @@ https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/[:<%= t
 <% t(".actions.endpoints", scope: resource).each do |endpoint| %>
   `<%= endpoint[:endpoint] %>` | <%= endpoint[:description] %>
 <% end %>
+
+<% if t(".enable_customized_actions", scope: resource) == true %>
+  <%= partial "includes/show_customized_actions", locals: { resource: resource } %>
+<% end %>

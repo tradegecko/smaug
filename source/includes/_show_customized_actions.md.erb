@@ -1,0 +1,21 @@
+### Customized actions
+
+<%= t(".customized_actions.description", scope: resource) %>
+
+```shell
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/[:<%= t('.resource_name', scope: resource) %>_id]/actions/[:<%= t('.resource_name', scope: resource) %>_action]
+-d {"payment":{"payment_method_name": "Credit Card", "paid_at": "2015-11-12T08:06:01.561Z"}}
+```
+
+```shell
+curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
+https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/[:<%= t('.resource_name', scope: resource) %>_id]/actions/[:<%= t('.resource_name', scope: resource) %>_action]
+-d {"fulfillment":{"tracking_number": "00J6E0001234", "tracking_url": "https://trackpackage.com?track=00J6E0001234", "tracking_company": "Track Package", "service": "TPackage", "notes": "Handle with care"}}
+```
+
+| Action                         | Description   | Allowed Attributes
+| ------------------------------ | ------------- | -------------------
+<% t(".customized_actions.endpoints", scope: resource).each do |endpoint| %>
+  `<%= endpoint[:endpoint] %>` | <%= endpoint[:description] %> |  <%= endpoint[:allowed_attributes] %>
+<% end %>
