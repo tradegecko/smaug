@@ -2,6 +2,7 @@
 en:
   order:
     enable_actions: true
+    enable_customized_actions: true
     child: "order_line_item"
     child_nestable: true
     resource_article: "an"
@@ -451,6 +452,26 @@ en:
         {
           endpoint: "void",
           description: "Voids the order"
+        }
+      ]
+    }
+    customized_actions: {
+      description: "Some action endpoints would allow you to pass additional parameters on the body of your POST request in order for you to do more with just a single API call",
+      endpoints: [
+        {
+          endpoint: "pay",
+          description: "Set the order's payment status to `paid`, create an invoice and create a payment using the provided `payment_method_name` and `paid_at` in a single API call",
+          allowed_attributes: "`payment_method_name`, `paid_at`"
+        },
+        {
+          endpoint: "pack",
+          description: "Set the order's status to `packed`, and create a fulfillment using any provided tracking details and notes in a single API call",
+          allowed_attributes: "`tracking_number`, `tracking_company`, `tracking_url`, `service`, `notes`"
+        },
+        {
+          endpoint: "fulfil",
+          description: "Set the order's status to `fulfilled`, and create a fulfillment using any provided tracking details and notes in a single API call",
+          allowed_attributes: "`tracking_number`, `tracking_company`, `tracking_url`, `service`, `notes`"
         }
       ]
     }

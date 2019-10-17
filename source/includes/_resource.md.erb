@@ -43,7 +43,6 @@
   <%= partial "includes/show_actions", locals: { resource: resource } %>
 <% end %>
 
-
 <% unless t(".disable_destroy", scope: resource) == true %>
   <%= partial "includes/destroy_request", locals: { resource: resource } %>
 <% end %>
