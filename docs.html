@@ -8371,6 +8371,41 @@ https://api.tradegecko.com/orders/[:order_id]/actions/[:order_action]
 </tr>
 </tbody></table></p>
 
+<p><h3 id='customized-actions'>Customized actions</h3>
+<p>Some action endpoints would allow you to pass additional parameters on the body of your POST request in order for you to do more with just a single API call</p>
+
+<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/orders/[:order_id]/actions/[:order_action]
+-d <span class="o">{</span><span class="s2">&quot;payment&quot;</span>:<span class="o">{</span><span class="s2">&quot;payment_method_name&quot;</span>: <span class="s2">&quot;Credit Card&quot;</span>, <span class="s2">&quot;paid_at&quot;</span>: <span class="s2">&quot;2015-11-12T08:06:01.561Z&quot;</span><span class="o">}}</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/orders/[:order_id]/actions/[:order_action]
+-d <span class="o">{</span><span class="s2">&quot;fulfillment&quot;</span>:<span class="o">{</span><span class="s2">&quot;tracking_number&quot;</span>: <span class="s2">&quot;00J6E0001234&quot;</span>, <span class="s2">&quot;tracking_url&quot;</span>: <span class="s2">&quot;https://trackpackage.com?track=00J6E0001234&quot;</span>, <span class="s2">&quot;tracking_company&quot;</span>: <span class="s2">&quot;Track Package&quot;</span>, <span class="s2">&quot;service&quot;</span>: <span class="s2">&quot;TPackage&quot;</span>, <span class="s2">&quot;notes&quot;</span>: <span class="s2">&quot;Handle with care&quot;</span><span class="o">}}</span>
+</code></pre>
+
+<p><table><thead>
+<tr>
+<th>Action</th>
+<th>Description</th>
+<th>Allowed Attributes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>pay</code></td>
+<td>Set the order&#39;s payment status to <code>paid</code>, create an invoice and create a payment using the provided <code>payment_method_name</code> and <code>paid_at</code> in a single API call</td>
+<td><code>payment_method_name</code>, <code>paid_at</code></td>
+</tr>
+<tr>
+<td><code>pack</code></td>
+<td>Set the order&#39;s status to <code>packed</code>, and create a fulfillment using any provided tracking details and notes in a single API call</td>
+<td><code>tracking_number</code>, <code>tracking_company</code>, <code>tracking_url</code>, <code>service</code>, <code>notes</code></td>
+</tr>
+<tr>
+<td><code>fulfil</code></td>
+<td>Set the order&#39;s status to <code>fulfilled</code>, and create a fulfillment using any provided tracking details and notes in a single API call</td>
+<td><code>tracking_number</code>, <code>tracking_company</code>, <code>tracking_url</code>, <code>service</code>, <code>notes</code></td>
+</tr>
+</tbody></table></p></p>
+
 <p><h2 id='delete-an-order'>Delete an order</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">&#39;gecko-ruby&#39;</span>
 <span class="n">gecko</span> <span class="o">=</span> <span class="no">Gecko</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">&lt;</span><span class="no">OAUTH_ID</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="no">OAUTH_SECRET</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="n">access_token</span> <span class="o">=</span> <span class="no">OAuth2</span><span class="o">::</span><span class="no">AccessToken</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">gecko</span><span class="p">.</span><span class="nf">oauth_client</span><span class="p">,</span> <span class="o">&lt;</span><span class="no">ACCESS_TOKEN</span><span class="o">&gt;</span><span class="p">)</span>
