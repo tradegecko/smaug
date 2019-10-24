@@ -124,8 +124,8 @@ en:
         billing_address_id: 1,
         shipping_address_id: 1,
         order_line_items: [
-          {variant_id: 123, quantity: 2},
-          {variant_id: 456, quantity: 5}
+          {variant_id: 123, quantity: 2, price: 10},
+          {variant_id: 456, quantity: 5, price: 15.5}
         ]
       }
       update: {
