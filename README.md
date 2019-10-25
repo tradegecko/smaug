@@ -57,7 +57,7 @@ Look in the appropriate .yml file.
 
 # Rebase with upstream
 
-git remote set upstream git@github.com:lord/slate.git
+git remote set upstream git@github.com:slatedocs/slate.git
 
 git fetch upstream
 
