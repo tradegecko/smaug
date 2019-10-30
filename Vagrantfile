@@ -5,12 +5,23 @@ Vagrant.configure(2) do |config|
   config.vm.provision "bootstrap",
     type: "shell",
     inline: <<-SHELL
-      sudo apt-add-repository ppa:brightbox/ruby-ng
       sudo apt-get update
-      sudo apt-get install -yq ruby2.4 ruby2.4-dev
-      sudo apt-get install -yq pkg-config build-essential nodejs git libxml2-dev libxslt-dev
+      sudo apt-get install -yq curl pkg-config build-essential nodejs git libxml2-dev libxslt-dev
       sudo apt-get autoremove -yq
-      gem2.4 install --no-ri --no-rdoc bundler
+    SHELL
+
+  config.vm.provision "ruby",
+      type: "shell",
+      privileged: false,
+      inline: <<-SHELL
+        echo "=============================================="
+        echo "Installing app dependencies"
+        cd /vagrant
+        curl -sSL https://get.rvm.io | bash
+        source /home/vagrant/.rvm/scripts/rvm
+        rvm install 2.6.4
+        rvm use 2.6.4 --default
+        gem install bundler
     SHELL
 
   # add the local user git config to the vm
