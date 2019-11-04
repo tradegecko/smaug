@@ -40,12 +40,12 @@ end
 ### Responding to a webhook
 When receiving a webhook, the request must complete within a 10-second window, we highly recommending processing the webhooks asynchronously to avoid any problems.
 
-we use the HTTP response code to determine whether a webhook has been received successfully.
-If your server responds with between 200 and 399, we assume it has been processed successfully.
+We use HTTP response codes to determine whether a webhook has been received successfully.
+If your server returns a HTTP status code between `200` and `399`, we assume it has been processed successfully.
 
-A 410 Gone response will automatically delete a webhook.
-Anything else will start an exponential retry backoff.
+A HTTP `410 Gone` response will automatically delete the webhook.
 
-If we receive bad responses for several days in a row, we will send a notice email to the Application developer and eventually disconnect the webhook.
+Other responses will cause the outgoing request to be retried, based on an [exponential backoff strategy](https://github.com/mperham/sidekiq/wiki/Error-Handling#automatic-job-retry).
 
-
+If we receive unsuccessful responses consecutively for 3 days, the webhook will be deleted. Any successful response within the 3 day period will reset the counter.
+Application developers will receive daily emails to notify them of webhook failure and webhook deletion.
