@@ -48,4 +48,4 @@ A HTTP `410 Gone` response will automatically delete the webhook.
 Other responses will cause the outgoing request to be retried, based on an [exponential backoff strategy](https://github.com/mperham/sidekiq/wiki/Error-Handling#automatic-job-retry).
 
 If we receive unsuccessful responses consecutively for 3 days, the webhook will be deleted. Any successful response within the 3 day period will reset the counter.
-Application developers will receive emails to notify them of webhook failure and webhook deletion.
+Application developers will receive daily emails to notify them of webhook failure and webhook deletion.
