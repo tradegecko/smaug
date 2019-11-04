@@ -1424,13 +1424,15 @@ signature agains the payload received.</p>
 </code></pre><h3 id='responding-to-a-webhook'>Responding to a webhook</h3>
 <p>When receiving a webhook, the request must complete within a 10-second window, we highly recommending processing the webhooks asynchronously to avoid any problems.</p>
 
-<p>we use the HTTP response code to determine whether a webhook has been received successfully.
-If your server responds with between 200 and 399, we assume it has been processed successfully.</p>
+<p>We use HTTP response codes to determine whether a webhook has been received successfully.
+If your server returns a HTTP status code between <code>200</code> and <code>399</code>, we assume it has been processed successfully.</p>
 
-<p>A 410 Gone response will automatically delete a webhook.
-Anything else will start an exponential retry backoff.</p>
+<p>A HTTP <code>410 Gone</code> response will automatically delete the webhook.</p>
 
-<p>If we receive bad responses for several days in a row, we will send a notice email to the Application developer and eventually disconnect the webhook.</p>
+<p>Other responses will cause the outgoing request to be retried, based on an <a href="https://github.com/mperham/sidekiq/wiki/Error-Handling#automatic-job-retry">exponential backoff strategy</a>.</p>
+
+<p>If we receive unsuccessful responses consecutively for 3 days, the webhook will be deleted. Any successful response within the 3 day period will reset the counter.
+Application developers will receive daily emails to notify them of webhook failure and webhook deletion.</p>
 
   <h1 id='sideloading-resources'>Sideloading Resources</h1>
 <p>TradeGecko allows you retrieve associated resources as part of a single request.
