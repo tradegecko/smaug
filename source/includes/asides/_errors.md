@@ -5,7 +5,7 @@ The TradeGecko API uses the following error codes:
 Error Code | Meaning
 ---------- | -------
 400 | Bad Request -- You have passed a malformed request
-401 | Unauthorized -- Your API key is incorrect
+401 | Unauthorized -- Your API access token is invalid
 402 | Payment Required -- Your subscription has lapsed
 403 | Forbidden -- The resource requested is not available with your permissions
 404 | Not Found -- The specified resource could not be found

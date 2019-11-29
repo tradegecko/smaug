@@ -19,8 +19,8 @@ Vagrant.configure(2) do |config|
         cd /vagrant
         curl -sSL https://get.rvm.io | bash
         source /home/vagrant/.rvm/scripts/rvm
-        rvm install 2.6.4
-        rvm use 2.6.4 --default
+        rvm install 2.6.5
+        rvm use 2.6.5 --default
         gem install bundler
     SHELL
 
