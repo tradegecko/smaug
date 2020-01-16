@@ -439,7 +439,7 @@ en:
         },
         {
           endpoint: "pay",
-          description: "Creates payments for the enitre order value. It will pay any existing unpaid or partially paid invoices and create an invoice and payment for the remaining value"
+          description: "Creates payments for the entire order value. It will pay any existing unpaid or partially paid invoices and create an invoice and payment for the remaining value"
         },
         {
           endpoint: "pack",
@@ -462,6 +462,11 @@ en:
           endpoint: "pay",
           description: "Set the order's payment status to `paid`, create an invoice and create a payment using the provided `payment_method_name` and `paid_at` in a single API call",
           allowed_attributes: "`payment_method_name`, `paid_at`"
+        },
+        {
+          endpoint: "invoice",
+          description: "Set the order's invoiced status to `invoiced`, and creates an invoice for all uninvoiced items in a single API call",
+          allowed_attributes: "`due_at`, `invoiced_at`, `notes`"
         },
         {
           endpoint: "pack",
