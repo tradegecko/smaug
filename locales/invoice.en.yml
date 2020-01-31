@@ -30,14 +30,8 @@ en:
         currency_id: 1,
         status: "active",
         invoice_line_item_ids: [
-         {
-          "quantity": "1.0",
-          "order_line_item_id": 123
-        },
-         {
-          "quantity": "1.0",
-          "order_line_item_id": 456
-        }
+          1,
+          2
         ],
         payment_ids: [ ],
         refund_ids: [ ]
