@@ -1,6 +1,7 @@
 ---
 en:
   variant:
+    enable_actions: true
     parent: "product"
     parent_article: "a"
     parent_klass: "Product"
@@ -509,4 +510,17 @@ en:
         readonly: true,
         deprecated: true,
       },
+    }
+    actions: {
+      description: "Use the following endpoints to get more details about the variant type breakdown. `GET /variants/[:variant_id]/[:action]`",
+      endpoints: [
+        {
+          endpoint: "composition",
+          description: "Use this action when the variant `composite` flag is `true`. Gets the composition of the variant bundle, if the variant was a composite/bundle. Result is empty if the variant is simple or manufactured."
+        },
+        {
+          endpoint: "packsizes",
+          description: "Use this action when the variant `packsize` flag is `true`. Gets the details of the packsize variant. Result is empty if the variant is simple, manufactured, or a bundle of different variants."
+        }
+      ]
     }
