@@ -21,7 +21,7 @@ gecko.access_token = access_token
 
 ```shell
 curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
-https://api.tradegecko.com/<%= resource.resource_plural %>/ -d '{"<%= resource.resource_name %>":<%= resource.gecko[:create].to_json %>}'
+https://api.tradegecko.com/<%= resource.resource_path || resource.resource_plural %>/ -d '{"<%= resource.resource_name %>":<%= resource.gecko[:create].to_json %>}'
 ```
 
 ```json
@@ -66,4 +66,4 @@ This endpoint also accepts embedded <%= resource.child.pluralize %>.
 <% end %>
 <% end %>
 ### HTTP Request
-`POST https://api.tradegecko.com/<%= resource.resource_plural %>/`
+`POST https://api.tradegecko.com/<%= resource.resource_path || resource.resource_plural %>/`

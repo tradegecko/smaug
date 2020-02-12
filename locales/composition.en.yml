@@ -1,0 +1,78 @@
+---
+en:
+  composition:
+    disable_create: true
+    disable_destroy: true
+    disable_update: true
+    resource_article: "a"
+    resource_klass: "Composition"
+    resource_name: "composition"
+    resource_plural: "composition"
+    resource_path: "variants/composition"
+    json: [
+      {
+        bundle_id: 151235,
+        bundle_sku: "B-SKU-001",
+        component_id: 341234,
+        component_sku: "SKU-002",
+        quantity: "20"
+      },
+      {
+        bundle_id: 151235,
+        bundle_sku: "B-SKU-001",
+        component_id: 341235,
+        component_sku: "SKU-003",
+        quantity: "10"
+      }
+    ]
+
+    gecko:
+      index: {
+        sku: [B-SKU-001]
+      }
+      show: {
+        id: 151235
+      }
+
+    filters: {
+      timestamp_search: false,
+      ids: {
+        description: "An Array of Bundle IDs"
+      }
+    }
+
+    attributes: {
+      bundle_id: {
+        name: "bundle_id",
+        type: "Integer",
+        readonly: true,
+        description: "The unique bundle Id.",
+      },
+      bundle_sku: {
+        name: "bundle_sku",
+        type: "String",
+        readonly: true,
+        description: "The given bundle SKU.",
+        filterable: "Filter by Bundle SKU via `sku` parameter"
+      },
+      component_id: {
+        name: "component_id",
+        type: "Integer",
+        readonly: true,
+        description: "The unique bundle-component Id."
+      },
+      component_sku: {
+        name: "component_sku",
+        type: "String",
+        readonly: true,
+        description: "The given component SKU."
+      },
+      quantity: {
+        name: "quantity",
+        type: "String",
+        readonly: true,
+        description: "The decimal composition quantity of the component as part of the bundle."
+      }
+    }
+
+

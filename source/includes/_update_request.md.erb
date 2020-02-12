@@ -1,6 +1,9 @@
 ## Update <%= t(".resource_article", scope: resource) %> <%= t(".resource_name", scope: resource) %>
 <% unless t('.gecko.unavailable', scope: resource) == true %>
 
+<% plural_name = t(".resource_plural", scope: resource) %>
+<% resource_path = t(".resource_path", scope: resource).include?("missing") ? plural_name : t(".resource_path", scope: resource) %>
+
 ```ruby
 require 'gecko-ruby'
 gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
@@ -16,7 +19,7 @@ gecko.access_token = access_token
 
 ```shell
 curl -X PUT -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
-https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/1 -d '{"<%= t(".resource_name", scope: resource) %>":<%= t('.gecko.update', scope: resource).to_json %>}'
+https://api.tradegecko.com/<%= resource_path %>/1 -d '{"<%= t(".resource_name", scope: resource) %>":<%= t('.gecko.update', scope: resource).to_json %>}'
 ```
 
 > Response
@@ -30,4 +33,4 @@ Any parameters not provided will be left unchanged.
 This request accepts the same arguments as the <%= t(".resource_name", scope: resource) %> creation call.
 
 ### HTTP Request
-`PUT https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/{RESOURCE_ID}`
+`PUT https://api.tradegecko.com/<%= resource_path %>/{RESOURCE_ID}`

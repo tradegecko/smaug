@@ -1,4 +1,6 @@
-## List all <%= t(".resource_plural", scope: resource) %>
+<% plural_name = t(".resource_plural", scope: resource) %>
+<% resource_path = t(".resource_path", scope: resource).include?("missing") ? plural_name : t(".resource_path", scope: resource) %>
+## List all <%= plural_name %>
 <% unless t('.gecko.unavailable', scope: resource) == true %>
 ```ruby
 require 'gecko-ruby'
@@ -6,13 +8,15 @@ gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
 access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
 gecko.access_token = access_token
 
-gecko.<%= t(".resource_klass", scope: resource) %>.where(limit: 25, status: 'active')
+<% r = build_resource(t(".resource_name", scope: resource)) %>
+<% index_params = r.gecko[:index]&.present? ? r.gecko[:index] : "limit: 25, status: 'active'"  %>
+gecko.<%= t(".resource_klass", scope: resource) %>.where(<%= index_params %>)
 ```
 <% end %>
 
 ```shell
 curl -X GET -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>"
-https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/
+https://api.tradegecko.com/<%= resource_path %>/
 ```
 
 ```json
@@ -24,16 +28,21 @@ https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/
 Returns a list of <%= t(".resource_plural", scope: resource) %> you’ve previously created. The <%= t(".resource_plural", scope: resource) %> are returned in sorted order, with the most recent <%= t(".resource_plural", scope: resource) %> appearing first.
 
 ### Filters
+<% ids_filter_description = "An array of #{t(".resource_name", scope: resource)} IDs" %>
+<% custom_id_filter_description = t(".filters.ids.description", scope: resource) %>
+<% ids_description = custom_id_filter_description.include?("missing") ? ids_filter_description : custom_id_filter_description %>
 
 | Arguments          | Description
 |--------------------|--------------------
-| **ids**            | An array of <%= t(".resource_name", scope: resource) %> IDs. See [Getting Started](#filtering "Filtering") for examples.
+| **ids**            | <%= ids_description %>. See [Getting Started](#filtering "Filtering") for examples.
 | **limit**          | used for pagination (default is 50)
-| **page**           | used for pagination (default is 1)
+| **page**           | used for pagination (default is 1
+<% unless t(".filters.timestamp_search", scope: resource) == false %>
 | **created_at_min** | ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)
 | **created_at_max** | ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)
 | **updated_at_min** | ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)
 | **updated_at_max** | ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)
+<% end %>
 <% if t(".attributes", scope: resource).key?(:status) %>
   <% if !["company", "product", "purchase_order","fulfillment","order"].include?(t(".resource_name", scope: resource)) %>
     **status** | Default is `active`
@@ -46,4 +55,4 @@ Returns a list of <%= t(".resource_plural", scope: resource) %> you’ve previou
 <% end %>
 
 ### HTTP Request:
-`GET  https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>`
+`GET  https://api.tradegecko.com/<%= resource_path %>`
