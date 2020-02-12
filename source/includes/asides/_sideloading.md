@@ -117,11 +117,11 @@ curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCE
 ```
 
 
-### Fetching a Composition
+### Fetching a Bundle Product Variant's Composition
 
 Sideloading parameters for composition API work for both single and collection actions. Examples:
 
-`GET https://api.tradegecko.com/variants/composition?include=bundle,component`
+`GET https://api.tradegecko.com/variants/composition?include=bundle`
 
 `GET https://api.tradegecko.com/variants/composition/1?include=bundle,component`
 

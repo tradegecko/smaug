@@ -46,33 +46,31 @@ en:
         name: "bundle_id",
         type: "Integer",
         readonly: true,
-        description: "The unique bundle Id.",
+        description: "The ID corresponding to the bundle variant. (Must be composite: true)",
       },
       bundle_sku: {
         name: "bundle_sku",
         type: "String",
         readonly: true,
-        description: "The given bundle SKU.",
+        description: "The provided bundle variant's SKU.",
         filterable: "Filter by Bundle SKU via `sku` parameter"
       },
       component_id: {
         name: "component_id",
         type: "Integer",
         readonly: true,
-        description: "The unique bundle-component Id."
+        description: "The ID corresponding to this particular component variant of the bundle."
       },
       component_sku: {
         name: "component_sku",
         type: "String",
         readonly: true,
-        description: "The given component SKU."
+        description: "The provided component variant's SKU."
       },
       quantity: {
         name: "quantity",
         type: "String",
         readonly: true,
-        description: "The decimal composition quantity of the component as part of the bundle."
+        description: "The quantity of this component variant required to make up the bundle."
       }
     }
-
-
