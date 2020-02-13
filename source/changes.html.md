@@ -19,6 +19,9 @@ for existing known issues or [create a new issue](https://github.com/tradegecko/
 
 ## Changelog
 
+### Feb 2020 - Composition API Release
+In order to provide a simpler way to fetch packsize and bundle decomposition information, we've exposed a brand new API.
+
 ### Apr 2019 - Pagination Cleanup & Line Item Filters
 In order to provide a great experience to all our API users we've made some changes to our pagination.
 The default page size is now 50 items (down from 100), with a max page size up to 250.
@@ -43,10 +46,10 @@ All of the changes are backwards compatible.
 
 The related changes to the APIs are:
 
-- Added: `Product#image_ids`.  
-- Added: `Image#product_id`.  
-- Added: `Image#variant_ids`.  
-- Deprecated: `Image#variant_id` now returns the image's first variant.  
+- Added: `Product#image_ids`.
+- Added: `Image#product_id`.
+- Added: `Image#variant_ids`.
+- Deprecated: `Image#variant_id` now returns the image's first variant.
 
 
 ## API Deprecations
