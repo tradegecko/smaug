@@ -3,7 +3,7 @@
 TradeGecko allows you retrieve associated resources as part of a single request.
 This can be done by adding an `include` parameter containing a comma-separated list of resources to load.
 
-<aside class="notice">  
+<aside class="notice">
   Sideloading for Orders and Purchase Orders are currently available only when retrieving a single order or purchase order. Using the `include` parameter won't work on index pages.
 </aside>
 
@@ -113,5 +113,47 @@ curl -X POST -H "Content-type: application/json" -H "Authorization: Bearer <ACCE
       "contact_id":null,
       ...
    }
+}
+```
+
+
+### Fetching a Bundle Product Variant's Composition
+
+Sideloading parameters for composition API work for both single and collection actions. Examples:
+
+`GET https://api.tradegecko.com/variants/composition?include=bundle`
+
+`GET https://api.tradegecko.com/variants/composition/1?include=bundle,component`
+
+
+```shell
+curl -X GET -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>" https://api.tradegecko.com/variants/composition?include=bundle,component
+```
+
+```json--inline
+{
+   "variants": [
+      {
+         "id": 1,
+         "sku": "DRK-0001",
+         ...
+      },
+      {
+         "id": 2,
+         "sku": "DRINK-PACK-SKU",
+         ...
+      },
+      ...
+   ],
+   "composition": [
+      {
+         "bundle_sku": "DRINK-PACK-SKU",
+         "component_sku": "DRK-0001",
+         "quantity": "6.0",
+         "bundle_id": 2,
+         "component_id": 1
+      },
+      ...
+   ]
 }
 ```
