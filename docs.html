@@ -281,6 +281,9 @@
                   <li>
                     <a href="#fetching-an-order" class="toc-h2 toc-link" data-title="Fetching an Order">Fetching an Order</a>
                   </li>
+                  <li>
+                    <a href="#fetching-a-bundle-product-variant-39-s-composition" class="toc-h2 toc-link" data-title="Fetching a Bundle Product Variant's Composition">Fetching a Bundle Product Variant's Composition</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -354,6 +357,20 @@
                   </li>
                   <li>
                     <a href="#delete-a-company" class="toc-h2 toc-link" data-title="Delete a company">Delete a company</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#composition" class="toc-h1 toc-link" data-title="Composition">Composition</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-composition-object" class="toc-h2 toc-link" data-title="The Composition object">The Composition object</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-composition" class="toc-h2 toc-link" data-title="List all composition">List all composition</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-a-particular-composition" class="toc-h2 toc-link" data-title="Retrieve a particular composition">Retrieve a particular composition</a>
                   </li>
               </ul>
           </li>
@@ -1438,7 +1455,7 @@ Application developers will receive daily emails to notify them of webhook failu
 <p>TradeGecko allows you retrieve associated resources as part of a single request.
 This can be done by adding an <code>include</code> parameter containing a comma-separated list of resources to load.</p>
 
-<aside class="notice">  
+<aside class="notice">
   Sideloading for Orders and Purchase Orders are currently available only when retrieving a single order or purchase order. Using the `include` parameter won't work on index pages.
 </aside>
 
@@ -1532,6 +1549,38 @@ This can be done by adding an <code>include</code> parameter containing a comma-
       </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="err">...</span><span class="w">
    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='fetching-a-bundle-product-variant-39-s-composition'>Fetching a Bundle Product Variant&#39;s Composition</h3>
+<p>Sideloading parameters for composition API work for both single and collection actions. Examples:</p>
+
+<p><code>GET https://api.tradegecko.com/variants/composition?include=bundle</code></p>
+
+<p><code>GET https://api.tradegecko.com/variants/composition/1?include=bundle,component</code></p>
+<pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">"Content-type: application/json"</span> -H <span class="s2">"Authorization: Bearer &lt;ACCESS_TOKEN&gt;"</span> https://api.tradegecko.com/variants/composition?include<span class="o">=</span>bundle,component
+</code></pre><pre class="highlight json tab-json--inline"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRK-0001"</span><span class="p">,</span><span class="w">
+         </span><span class="err">...</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRINK-PACK-SKU"</span><span class="p">,</span><span class="w">
+         </span><span class="err">...</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"composition"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"bundle_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRINK-PACK-SKU"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"component_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRK-0001"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.0"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"bundle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"component_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2306,7 +2355,7 @@ https://api.tradegecko.com/addresses/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -2847,7 +2896,7 @@ https://api.tradegecko.com/companies/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -3203,6 +3252,133 @@ https://api.tradegecko.com/companies/1
 
 <p><code>DELETE https://api.tradegecko.com/companies/{RESOURCE_ID}/</code></p>
 
+<p><h1 id='composition'>Composition</h1>
+<p>This is an object representing a composition.</p>
+
+<h2 id='the-composition-object'>The Composition object</h2>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+<th>Readonly</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>bundle_id</strong></td>
+<td>Integer</td>
+<td>The ID corresponding to the bundle variant. (Must be composite: true)</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>bundle_sku</strong></td>
+<td>String</td>
+<td>The provided bundle variant&#39;s SKU.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>component_id</strong></td>
+<td>Integer</td>
+<td>The ID corresponding to this particular component variant of the bundle.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>component_sku</strong></td>
+<td>String</td>
+<td>The provided component variant&#39;s SKU.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>quantity</strong></td>
+<td>String</td>
+<td>The quantity of this component variant required to make up the bundle.</td>
+<td>true</td>
+</tr>
+</tbody></table></p>
+
+<p><h2 id='list-all-composition'>List all composition</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">&#39;gecko-ruby&#39;</span>
+<span class="n">gecko</span> <span class="o">=</span> <span class="no">Gecko</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">&lt;</span><span class="no">OAUTH_ID</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="no">OAUTH_SECRET</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="no">OAuth2</span><span class="o">::</span><span class="no">AccessToken</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">gecko</span><span class="p">.</span><span class="nf">oauth_client</span><span class="p">,</span> <span class="o">&lt;</span><span class="no">ACCESS_TOKEN</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">gecko</span><span class="p">.</span><span class="nf">access_token</span> <span class="o">=</span> <span class="n">access_token</span></p>
+
+<p><span class="n">gecko</span><span class="o">.</span><span class="no">Composition</span><span class="p">.</span><span class="nf">where</span><span class="p">({</span><span class="ss">:sku</span><span class="o">=&gt;</span><span class="p">[</span><span class="s2">&quot;B-SKU-001&quot;</span><span class="p">]})</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/variants/composition/
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;composition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;bundle_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">151235</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;bundle_sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;B-SKU-001&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;component_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">341234</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;component_sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SKU-002&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;bundle_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">151235</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;bundle_sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;B-SKU-001&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;component_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">341235</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;component_sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SKU-003&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10&quot;</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Returns a list of composition you’ve previously created. The composition are returned in sorted order, with the most recent composition appearing first.</p>
+
+<h3 id='filters'>Filters</h3>
+
+<table><thead>
+<tr>
+<th>Arguments</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>ids</strong></td>
+<td>An Array of Bundle IDs. See <a href="#filtering" title="Filtering">Getting Started</a> for examples.</td>
+</tr>
+<tr>
+<td><strong>limit</strong></td>
+<td>used for pagination (default is 50)</td>
+</tr>
+<tr>
+<td><strong>page</strong></td>
+<td>used for pagination (default is 1</td>
+</tr>
+<tr>
+<td><strong>bundle_sku</strong></td>
+<td>Filter by Bundle SKU via <code>sku</code> parameter</td>
+</tr>
+</tbody></table>
+
+<h3 id='http-request'>HTTP Request:</h3>
+
+<p><code>GET  https://api.tradegecko.com/variants/composition</code></p></p>
+
+<p><h2 id='retrieve-a-particular-composition'>Retrieve a particular composition</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">&#39;gecko-ruby&#39;</span>
+<span class="n">gecko</span> <span class="o">=</span> <span class="no">Gecko</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">&lt;</span><span class="no">OAUTH_ID</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="no">OAUTH_SECRET</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="no">OAuth2</span><span class="o">::</span><span class="no">AccessToken</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">gecko</span><span class="p">.</span><span class="nf">oauth_client</span><span class="p">,</span> <span class="o">&lt;</span><span class="no">ACCESS_TOKEN</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">gecko</span><span class="p">.</span><span class="nf">access_token</span> <span class="o">=</span> <span class="n">access_token</span>
+<span class="n">gecko</span><span class="o">.</span><span class="no">Composition</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">151235</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/variants/composition/151235
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;composition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;bundle_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">151235</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;bundle_sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;B-SKU-001&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;component_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">341234</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;component_sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SKU-002&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieves the details of an existing composition. You need only supply the unique composition identifier that was returned upon composition creation.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>GET https://api.tradegecko.com/variants/composition/{RESOURCE_ID}</code></p></p>
+
 <p><h1 id='contact'>Contact</h1>
 <p>This is an object representing a contact of a company. Companies can
   have multiple contacts but a contact object belongs to only one
@@ -3389,7 +3565,7 @@ https://api.tradegecko.com/contacts/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -3783,7 +3959,7 @@ https://api.tradegecko.com/currencies/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -4188,7 +4364,7 @@ https://api.tradegecko.com/fulfillments/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -4672,7 +4848,7 @@ https://api.tradegecko.com/fulfillment_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -5023,7 +5199,7 @@ https://api.tradegecko.com/fulfillment_returns/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -5421,7 +5597,7 @@ https://api.tradegecko.com/fulfillment_return_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -5775,7 +5951,7 @@ https://api.tradegecko.com/images/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -6141,7 +6317,7 @@ https://api.tradegecko.com/invoices/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -6579,7 +6755,7 @@ https://api.tradegecko.com/invoice_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -6918,7 +7094,7 @@ https://api.tradegecko.com/locations/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -7228,7 +7404,7 @@ https://api.tradegecko.com/notes/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -7665,10 +7841,10 @@ https://api.tradegecko.com/orders/
     </span><span class="s2">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12T08:06:01.561Z&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12T08:06:01.561Z&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;document_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://go.tradegecko.com/d/not-a-real-token-2&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;billing_address_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;company_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;contact_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;contact_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;currency_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;shipping_address_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;stock_location_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -7678,19 +7854,19 @@ https://api.tradegecko.com/orders/
     </span><span class="s2">&quot;fulfillment_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unshipped&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;invoice_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uninvoiced&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;issued_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;order_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SO0001&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;packed_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unpacked&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;payment_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unpaid&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;phone_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+1 650-468-2904&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;return_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unreturned&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;returning_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unreturning&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;ship_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;source_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;ship_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;source_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;draft&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tax_label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GST&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;tax_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;tax_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tax_treatment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inclusive&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
@@ -7716,11 +7892,11 @@ https://api.tradegecko.com/orders/
 <p></span><span class="p">],</span><span class="w">
     </span><span class="s2">&quot;cached_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_price_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wholesale&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tax_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;tracking_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;source_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;tracking_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;source_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;invoice_numbers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INV001&quot;</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -7734,10 +7910,10 @@ https://api.tradegecko.com/orders/
     </span><span class="s2">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12T08:06:00.561Z&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12T08:06:00.561Z&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;document_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://go.tradegecko.com/d/not-a-real-token&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;billing_address_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;company_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;contact_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;contact_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;currency_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;shipping_address_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;stock_location_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -7747,19 +7923,19 @@ https://api.tradegecko.com/orders/
     </span><span class="s2">&quot;fulfillment_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unshipped&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;invoice_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uninvoiced&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;issued_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;order_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SO0001&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;packed_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unpacked&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;payment_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unpaid&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;phone_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+1 650-468-2904&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;return_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unreturned&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;returning_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unreturning&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;ship_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;source_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;ship_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;source_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;draft&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tax_label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GST&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;tax_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;tax_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tax_treatment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
@@ -7785,11 +7961,11 @@ https://api.tradegecko.com/orders/
 <p></span><span class="p">],</span><span class="w">
     </span><span class="s2">&quot;cached_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_price_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wholesale&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;tax_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;tracking_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;source_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;tracking_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;source_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;invoice_numbers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INV001&quot;</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -7820,7 +7996,7 @@ https://api.tradegecko.com/orders/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -7942,10 +8118,10 @@ https://api.tradegecko.com/orders/ -d <span class="s1">&#39;{&quot;order&quot;:{
   </span><span class="s2">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12T08:06:01.561Z&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12T08:06:01.561Z&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;document_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://go.tradegecko.com/d/not-a-real-token-2&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;billing_address_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;company_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;contact_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;contact_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;currency_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;shipping_address_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;stock_location_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -7955,19 +8131,19 @@ https://api.tradegecko.com/orders/ -d <span class="s1">&#39;{&quot;order&quot;:{
   </span><span class="s2">&quot;fulfillment_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unshipped&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;invoice_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uninvoiced&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;issued_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;order_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SO0001&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;packed_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unpacked&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;payment_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unpaid&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;phone_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+1 650-468-2904&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;return_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unreturned&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;returning_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unreturning&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;ship_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;source_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;ship_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;source_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;draft&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GST&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;tax_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;tax_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_treatment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inclusive&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
@@ -7993,11 +8169,11 @@ https://api.tradegecko.com/orders/ -d <span class="s1">&#39;{&quot;order&quot;:{
 <p></span><span class="p">],</span><span class="w">
   </span><span class="s2">&quot;cached_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;default_price_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wholesale&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;tracking_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;source_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;tracking_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;source_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;invoice_numbers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INV001&quot;</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -8238,10 +8414,10 @@ https://api.tradegecko.com/orders/1
   </span><span class="s2">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12T08:06:01.561Z&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12T08:06:01.561Z&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;document_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://go.tradegecko.com/d/not-a-real-token-2&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;billing_address_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;company_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;contact_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;contact_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;currency_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;shipping_address_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;stock_location_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -8251,19 +8427,19 @@ https://api.tradegecko.com/orders/1
   </span><span class="s2">&quot;fulfillment_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unshipped&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;invoice_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uninvoiced&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;issued_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-12&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;notes&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;order_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SO0001&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;packed_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unpacked&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;payment_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unpaid&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;phone_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+1 650-468-2904&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;reference_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;return_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unreturned&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;returning_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unreturning&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;ship_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;source_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;ship_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;source_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;draft&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GST&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;tax_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;tax_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_treatment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inclusive&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
@@ -8289,11 +8465,11 @@ https://api.tradegecko.com/orders/1
 <p></span><span class="p">],</span><span class="w">
   </span><span class="s2">&quot;cached_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;default_price_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wholesale&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;tax_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exclusive&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;tracking_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;source_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;tracking_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;source_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;invoice_numbers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INV001&quot;</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -8357,7 +8533,7 @@ https://api.tradegecko.com/orders/[:order_id]/actions/[:order_action]
 </tr>
 <tr>
 <td><code>pay</code></td>
-<td>Creates payments for the enitre order value. It will pay any existing unpaid or partially paid invoices and create an invoice and payment for the remaining value</td>
+<td>Creates payments for the entire order value. It will pay any existing unpaid or partially paid invoices and create an invoice and payment for the remaining value</td>
 </tr>
 <tr>
 <td><code>pack</code></td>
@@ -8395,6 +8571,11 @@ https://api.tradegecko.com/orders/[:order_id]/actions/[:order_action]
 <td><code>pay</code></td>
 <td>Set the order&#39;s payment status to <code>paid</code>, create an invoice and create a payment using the provided <code>payment_method_name</code> and <code>paid_at</code> in a single API call</td>
 <td><code>payment_method_name</code>, <code>paid_at</code></td>
+</tr>
+<tr>
+<td><code>invoice</code></td>
+<td>Set the order&#39;s invoiced status to <code>invoiced</code>, and creates an invoice for all uninvoiced items in a single API call</td>
+<td><code>due_at</code>, <code>invoiced_at</code>, <code>notes</code></td>
 </tr>
 <tr>
 <td><code>pack</code></td>
@@ -8578,13 +8759,13 @@ https://api.tradegecko.com/order_line_items/
     </span><span class="s2">&quot;tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;discount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;11.0&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;freeform&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;image_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;line_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;image_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;line_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;189.0&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;tax_rate_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;tax_rate_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;fulfillment_line_item_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
 
 <p></span><span class="p">],</span><span class="w">
@@ -8610,7 +8791,7 @@ https://api.tradegecko.com/order_line_items/
     </span><span class="s2">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;189.0&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;tax_rate_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;tax_rate_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;fulfillment_line_item_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
 
 <p></span><span class="p">],</span><span class="w">
@@ -8644,7 +8825,7 @@ https://api.tradegecko.com/order_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -8702,13 +8883,13 @@ https://api.tradegecko.com/order_line_items/ -d <span class="s1">&#39;{&quot;ord
   </span><span class="s2">&quot;tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;discount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;11.0&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;freeform&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;image_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;line_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;image_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;line_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;189.0&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;tax_rate_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;tax_rate_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;fulfillment_line_item_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
 
 <p></span><span class="p">],</span><span class="w">
@@ -8834,13 +9015,13 @@ https://api.tradegecko.com/order_line_items/1
   </span><span class="s2">&quot;tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;discount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;11.0&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;freeform&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;image_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;line_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;image_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;line_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;189.0&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;tax_rate_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;tax_rate_override&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;fulfillment_line_item_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
 
 <p></span><span class="p">],</span><span class="w">
@@ -9008,7 +9189,7 @@ https://api.tradegecko.com/payment_terms/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -9387,7 +9568,7 @@ https://api.tradegecko.com/products/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -10154,7 +10335,7 @@ https://api.tradegecko.com/purchase_orders/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -10854,7 +11035,7 @@ https://api.tradegecko.com/purchase_order_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -11259,7 +11440,7 @@ https://api.tradegecko.com/stock_adjustments/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -11395,7 +11576,7 @@ This endpoint also accepts embedded stock_adjustment_line_items.</p>
 <p><code>POST https://api.tradegecko.com/stock_adjustments/</code></p></p>
 
 <p><h2 id='retrieve-a-particular-stock_adjustment'>Retrieve a particular stock_adjustment</h2><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
-https://api.tradegecko.com/stock_adjustments/1
+https://api.tradegecko.com/stock_adjustments/
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;stock_adjustment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -11568,7 +11749,7 @@ https://api.tradegecko.com/stock_adjustment_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -11664,7 +11845,7 @@ https://api.tradegecko.com/stock_adjustment_line_items/ -d <span class="s1">&#39
 <p><code>POST https://api.tradegecko.com/stock_adjustment_line_items/</code></p></p>
 
 <p><h2 id='retrieve-a-particular-stock_adjustment_line_item'>Retrieve a particular stock_adjustment_line_item</h2><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
-https://api.tradegecko.com/stock_adjustment_line_items/1
+https://api.tradegecko.com/stock_adjustment_line_items/
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;stock_adjustment_line_item&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -11790,7 +11971,7 @@ https://api.tradegecko.com/stock_levels/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -11992,7 +12173,7 @@ https://api.tradegecko.com/stock_transfers/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -12188,7 +12369,7 @@ This endpoint also accepts embedded stock_transfer_line_items.</p>
 <p><code>POST https://api.tradegecko.com/stock_transfers/</code></p></p>
 
 <p><h2 id='retrieve-a-particular-stock_transfer'>Retrieve a particular stock_transfer</h2><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
-https://api.tradegecko.com/stock_transfers/1
+https://api.tradegecko.com/stock_transfers/
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;stock_transfer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -12348,7 +12529,7 @@ https://api.tradegecko.com/stock_transfer_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -12444,7 +12625,7 @@ https://api.tradegecko.com/stock_transfer_line_items/ -d <span class="s1">&#39;{
 <p><code>POST https://api.tradegecko.com/stock_transfer_line_items/</code></p></p>
 
 <p><h2 id='retrieve-a-particular-stock_transfer_line_item'>Retrieve a particular stock_transfer_line_item</h2><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
-https://api.tradegecko.com/stock_transfer_line_items/1
+https://api.tradegecko.com/stock_transfer_line_items/
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;stock_transfer_line_item&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -12609,7 +12790,7 @@ https://api.tradegecko.com/tax_types/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -12878,7 +13059,7 @@ https://api.tradegecko.com/tax_components/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -12983,7 +13164,7 @@ https://api.tradegecko.com/tax_components/ -d <span class="s1">&#39;{&quot;tax_c
 <p><code>POST https://api.tradegecko.com/tax_components/</code></p></p>
 
 <p><h2 id='retrieve-a-particular-tax_component'>Retrieve a particular tax_component</h2><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
-https://api.tradegecko.com/tax_components/1
+https://api.tradegecko.com/tax_components/
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;tax_component&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -13001,7 +13182,7 @@ https://api.tradegecko.com/tax_components/1
 <p><code>GET https://api.tradegecko.com/tax_components/{RESOURCE_ID}</code></p></p>
 
 <p><h2 id='update-a-tax_component'>Update a tax_component</h2><pre class="highlight shell tab-shell"><code>curl -X PUT -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
-https://api.tradegecko.com/tax_components/1 -d <span class="s1">&#39;{&quot;tax_component&quot;:{&quot;quantity&quot;:&quot;22.0&quot;,&quot;price&quot;:&quot;12.0&quot;}}&#39;</span>
+https://api.tradegecko.com//1 -d <span class="s1">&#39;{&quot;tax_component&quot;:{&quot;quantity&quot;:&quot;22.0&quot;,&quot;price&quot;:&quot;12.0&quot;}}&#39;</span>
 </code></pre>
 <blockquote>
 <p>Response</p></p>
@@ -13017,7 +13198,7 @@ This request accepts the same arguments as the tax_component creation call.</p>
 
 <h3 id='http-request'>HTTP Request</h3>
 
-<p><code>PUT https://api.tradegecko.com/tax_components/{RESOURCE_ID}</code></p>
+<p><code>PUT https://api.tradegecko.com//{RESOURCE_ID}</code></p>
 
 <p><h2 id='delete-a-tax_component'>Delete a tax_component</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
 https://api.tradegecko.com/tax_components/1
@@ -13233,7 +13414,7 @@ https://api.tradegecko.com/users/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -13899,7 +14080,7 @@ https://api.tradegecko.com/variants/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
@@ -14467,7 +14648,7 @@ https://api.tradegecko.com/webhooks/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1)</td>
+<td>used for pagination (default is 1</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
