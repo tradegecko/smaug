@@ -6,4 +6,13 @@ rvm:
   - 2.6.5
 
 cache: bundler
-script: bundle exec middleman build
+
+before_install:
+  - echo -e "machine github.com\n  login $CI_USER_TOKEN" > ~/.netrc # https://docs.travis-ci.com/user/private-dependencies/#api-token
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+
+script:
+  - npm i
+  - bundle exec middleman build
