@@ -76,7 +76,7 @@ en:
     gecko:
       create: {
         name: "TradeGecko (Demo)",
-        company_type: "Supplier"
+        company_type: "supplier"
       }
       update: {
         name: "Elephant",
