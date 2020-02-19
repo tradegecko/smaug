@@ -113,7 +113,7 @@ en:
       label: {
         name: "label",
         type: "String",
-        description: "",
+        description: "A unique name among 'active' locations",
         updatable: true,
         creatable: true,
         required: true,
