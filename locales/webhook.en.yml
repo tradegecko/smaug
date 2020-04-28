@@ -24,7 +24,7 @@ en:
         ['payment', 'payment.create'],
         ['product', 'product.create, product.destroy'],
         ['procurement', 'procurement.create'],
-        ['purchase_order', 'purchase_order.create'],
+        ['purchase_order', 'purchase_order.create, purchase_order.received'],
         ['stock_adjustment', 'stock_adjustment.create'],
         ['stock_transfer', 'stock_transfer.create'],
         ['variant', 'variant.create, variant.stock_level_update'],

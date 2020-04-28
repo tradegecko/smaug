@@ -19,6 +19,9 @@ for existing known issues or [create a new issue](https://github.com/tradegecko/
 
 ## Changelog
 
+### April 2020
+Added new "PurchaseOrder Received" webhook.
+
 ### Feb 2020 - Composition API Release
 In order to provide a simpler way to fetch packsize and bundle decomposition information, we've exposed a brand new API.
 

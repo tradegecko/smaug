@@ -144,14 +144,14 @@ en:
       created_at: {
         name: "created_at",
         type: "String",
-        description: "",
-        readonly: true
+        description: "The date and time (ISO8601 format) when the Order was created_at",
+        readonly: true,
       },
       updated_at: {
         name: "updated_at",
         type: "String",
-        description: "",
-        readonly: true
+        description: "The date and time (ISO8601 format) when the Order was last updated",
+        readonly: true,
       },
       assignee_id: {
         name: "assignee_id",
@@ -298,7 +298,7 @@ en:
       },
       tags: {
         name: "tags",
-        type: "Array",
+        type: "Array[String]",
         description: "Reference tags for the order, used in filtering.",
         creatable: true,
         updatable: true,
@@ -330,7 +330,7 @@ en:
         type: "String",
         description: "",
         readonly: true,
-        filterable: "e.g. unpaid, partial or paid"
+        filterable: "One or multiple of 'unpaid', 'partial' and 'paid'"
       },
       invoice_status: {
         name: "invoice_status",
