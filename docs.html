@@ -2781,7 +2781,7 @@ https://api.tradegecko.com/addresses/1
 <tr>
 <td><strong>default_price_type_id</strong>  <span class='deprecated'>deprecated</span></td>
 <td>String</td>
-<td></td>
+<td>Use default_price_list_id instead</td>
 <td></td>
 </tr>
 </tbody></table></p>
@@ -3139,7 +3139,7 @@ https://api.tradegecko.com/companies/ -d <span class="s1">&#39;{&quot;company&qu
 <tr>
 <td><strong>default_price_type_id</strong> <span class='deprecated'>deprecated</span></td>
 <td>String</td>
-<td></td>
+<td>Use default_price_list_id instead</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -7581,13 +7581,13 @@ https://api.tradegecko.com/notes/1
 <tr>
 <td><strong>created_at</strong></td>
 <td>String</td>
-<td></td>
+<td>The date and time (ISO8601 format) when the Order was created_at</td>
 <td>true</td>
 </tr>
 <tr>
 <td><strong>updated_at</strong></td>
 <td>String</td>
-<td></td>
+<td>The date and time (ISO8601 format) when the Order was last updated</td>
 <td>true</td>
 </tr>
 <tr>
@@ -7706,7 +7706,7 @@ https://api.tradegecko.com/notes/1
 </tr>
 <tr>
 <td><strong>tags</strong></td>
-<td>Array</td>
+<td>Array[String]</td>
 <td>Reference tags for the order, used in filtering.</td>
 <td></td>
 </tr>
@@ -8068,7 +8068,7 @@ https://api.tradegecko.com/orders/
 </tr>
 <tr>
 <td><strong>payment_status</strong></td>
-<td>e.g. unpaid, partial or paid</td>
+<td>One or multiple of &#39;unpaid&#39;, &#39;partial&#39; and &#39;paid&#39;</td>
 </tr>
 <tr>
 <td><strong>invoice_status</strong></td>
@@ -8289,7 +8289,7 @@ This endpoint also accepts embedded order_line_items.</p>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
-<td>Array</td>
+<td>Array[String]</td>
 <td>Reference tags for the order, used in filtering.</td>
 <td></td>
 </tr>
@@ -14783,7 +14783,7 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
 </tr>
 <tr>
 <td>purchase_order</td>
-<td>purchase_order.create</td>
+<td>purchase_order.create, purchase_order.received</td>
 </tr>
 <tr>
 <td>stock_adjustment</td>
