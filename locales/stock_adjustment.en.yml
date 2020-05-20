@@ -85,9 +85,10 @@ en:
       reason: {
         name: "reason",
         type: "String",
-        description: "One of supplier (New Products), customer (Returned goods), damaged, shrinkage, promotion or production.",
+        description: "One of `supplier`, `customer`, `damaged`, `shrinkage`, `promotion` or `production`. Required if no `stock_adjustment_reason_id` is sent",
         updatable: true,
         creatable: true,
+        required: true,
       },
       reason_label: {
         name: "reason_label",
@@ -99,8 +100,9 @@ en:
       stock_adjustment_reason_id: {
         name: "stock_adjustment_reason_id",
         type: "Integer",
-        description: "Internal ID of Custom stock adjustment reasons. See https://go.tradegecko.com/account/stock_adjustment_reasons for your accounts reasons",
+        description: "Internal ID of Custom stock adjustment reasons. Required if no `reason` is sent",
         filterable: true,
+        required: true,
       },
       stock_location_id: {
         name: "stock_location_id",
