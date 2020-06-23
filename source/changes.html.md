@@ -19,6 +19,9 @@ for existing known issues or [create a new issue](https://github.com/tradegecko/
 
 ## Changelog
 
+### June 2020
+Added new "FulfillmentReturn Received", and "Invoice Destroy" webhooks.
+
 ### April 2020
 Added new "PurchaseOrder Received" webhook.
 
