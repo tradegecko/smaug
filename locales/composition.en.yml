@@ -59,7 +59,8 @@ en:
         name: "component_id",
         type: "Integer",
         readonly: true,
-        description: "The ID corresponding to this particular component variant of the bundle."
+        description: "The ID corresponding to this particular component variant of the bundle.",
+        filterable: "An Array of Component IDs"
       },
       component_sku: {
         name: "component_sku",

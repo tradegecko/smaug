@@ -22,6 +22,8 @@ for existing known issues or [create a new issue](https://github.com/tradegecko/
 ### June 2020
 Added new "FulfillmentReturn Received", and "Invoice Destroy" webhooks.
 
+Added new `component_id` array filter for Composition index endpoint.
+
 ### April 2020
 Added new "PurchaseOrder Received" webhook.
 
