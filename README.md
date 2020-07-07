@@ -20,15 +20,11 @@ name: {
 
 ### To Do
 
-- FulfillmentReturn
 - LedgerAccount
 - Login
 - Payment
 - Procurement
 - Refund
-- StockAdjustment
-- StockTransfer
-- TaxComponent
 
 ### Add a new resource with
 
