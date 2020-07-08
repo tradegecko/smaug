@@ -20,9 +20,7 @@ https://api.tradegecko.com/<%= resource_path %>/
 ```
 
 ```json
-{
-  "<%= t(".resource_plural", scope: resource) %>": <%= json_all %>
-}
+<%= JSON.pretty_generate(Hash[t(".resource_plural", scope: resource), json_all]) %>
 ```
 
 Returns a list of <%= t(".resource_plural", scope: resource) %> you’ve previously created. The <%= t(".resource_plural", scope: resource) %> are returned in sorted order, with the most recent <%= t(".resource_plural", scope: resource) %> appearing first.
