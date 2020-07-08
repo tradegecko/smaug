@@ -1,0 +1,3 @@
+registry=https://npm.pkg.github.com/tradegecko
+_authToken=TOKEN
+//npm.pkg.github.com:_authToken=TOKEN

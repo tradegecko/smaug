@@ -2,6 +2,7 @@
 *.rbc
 .bundle
 .config
+.npmrc
 coverage
 InstalledFiles
 lib/bundler/man

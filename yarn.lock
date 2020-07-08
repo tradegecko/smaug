@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@tradegecko/styles@git+https://50f35d54e06c3a4dc3408924d232d16f522ab729:x-oauth-basic@github.com/tradegecko/tradegecko-assets.git":
+"@tradegecko/styles@git+https://github.com/tradegecko/tradegecko-assets.git":
   version "0.0.1"
-  resolved "git+https://50f35d54e06c3a4dc3408924d232d16f522ab729:x-oauth-basic@github.com/tradegecko/tradegecko-assets.git#6ffb16df155d2d2b1376b16238471fae38ea9041"
+  resolved "git+https://github.com/tradegecko/tradegecko-assets.git#6ffb16df155d2d2b1376b16238471fae38ea9041"
 
 bootstrap@^4.3.1:
   version "4.3.1"

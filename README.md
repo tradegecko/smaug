@@ -51,6 +51,11 @@ Look in changes.html
 
 Look in the appropriate .yml file.
 
+# Setup
+
+Create a `.npmrc` file in the project directory based on `.npmrc.template`
+and replace `TOKEN` with the personal access token.
+
 # Deploy
 
 ./deploy.sh
