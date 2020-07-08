@@ -53,8 +53,21 @@ Look in the appropriate .yml file.
 
 # Setup
 
-Create a `.npmrc` file in the project directory based on `.npmrc.template`
+1. Create a `.npmrc` file in the project directory based on `.npmrc.template`
 and replace `TOKEN` with the personal access token.
+
+2. Install dependencies
+```bash
+bundle install
+yarn install
+```
+
+3. Run the server
+```bash
+bundle exec middleman server
+```
+
+[Learn more about slatedocs setup](https://github.com/slatedocs/slate/wiki/Using-Slate-Natively)
 
 # Deploy
 
