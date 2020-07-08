@@ -14,9 +14,7 @@ https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/current
 ```
 
 ```json
-{
-  "<%= t(".resource_name", scope: resource) %>": <%= json_single %>
-}
+<%= JSON.pretty_generate(Hash[t(".resource_name", scope: resource), json_single]) %>
 ```
 
 Retrieves the details of the current <%= t(".resource_name", scope: resource) %>.
