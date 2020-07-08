@@ -13,7 +13,7 @@ gecko.access_token = access_token
 <%=- resource.resource_name %>.<%= resource.child.pluralize %>.build(<%= child %>)
 <%- end %>
 <%- else -%>
-<%=- resource.resource_name %> = gecko.<%= resource.resource_klass %>.build(<%= resource.gecko[:create] %>)
+<%=- resource.resource_name %> = gecko.<%= resource.resource_klass %>.build(<%= JSON.pretty_generate(resource.gecko[:create]) %>)
 <% end %>
 <%= resource.resource_name %>.save
 ```
