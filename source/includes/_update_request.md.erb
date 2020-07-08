@@ -10,9 +10,7 @@ gecko = Gecko::Client.new(<OAUTH_ID>, <OAUTH_SECRET>)
 access_token = OAuth2::AccessToken.new(gecko.oauth_client, <ACCESS_TOKEN>)
 gecko.access_token = access_token
 <%= t(".resource_name", scope: resource) %> = gecko.<%= t(".resource_klass", scope: resource) %>.find(1)
-<%= t(".resource_name", scope: resource) %>.attributes = {
-  rate: "12.0",
-}
+<%= t(".resource_name", scope: resource) %>.attributes = <%= pretty_ruby_hash(t(".gecko.update", scope: resource)) %>
 <%= t(".resource_name", scope: resource) %>.save
 ```
 <% end %>
