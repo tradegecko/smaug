@@ -53,16 +53,13 @@ Look in the appropriate .yml file.
 
 # Setup
 
-1. Create a `.npmrc` file in the project directory based on `.npmrc.template`
-and replace `TOKEN` with the personal access token.
-
-2. Install dependencies
+1. Install dependencies
 ```bash
 bundle install
 yarn install
 ```
 
-3. Run the server
+2. Run the server
 ```bash
 bundle exec middleman server
 ```
