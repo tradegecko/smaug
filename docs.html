@@ -837,6 +837,9 @@
                   <li>
                     <a href="#stock-transfer-actions" class="toc-h2 toc-link" data-title="Stock Transfer actions">Stock Transfer actions</a>
                   </li>
+                  <li>
+                    <a href="#delete-a-stock_transfer" class="toc-h2 toc-link" data-title="Delete a stock_transfer">Delete a stock_transfer</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -12557,6 +12560,22 @@ https://api.tradegecko.com/stock_transfers/[:stock_transfer_id]/actions/[:stock_
 <td>Revert the stock transfer</td>
 </tr>
 </tbody></table></p>
+
+<p><h2 id='delete-a-stock_transfer'>Delete a stock_transfer</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/stock_transfers/1
+</code></pre>
+<blockquote>
+<p>Response</p></p>
+
+<p>Returns 204 status when the stock_transfer gets deleted successfully.</p>
+
+<p></blockquote></p>
+
+<p>Permanently deletes a stock_transfer. It cannot be undone.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>DELETE https://api.tradegecko.com/stock_transfers/{RESOURCE_ID}/</code></p>
 
   <h1 id='stocktransferlineitem'>StockTransferLineItem</h1>
 <p>This is an object representing a stock_transfer_line_item of a stock_transfer. Stock_transfers can
