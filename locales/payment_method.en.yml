@@ -5,6 +5,7 @@ en:
     resource_klass: "PaymentMethod"
     resource_name: "payment_method"
     resource_plural: "payment_methods"
+    used_in_payment: true
     json: [
       {
         id: 1,
