@@ -321,7 +321,7 @@ en:
         name: "status",
         type: "String",
         description: "Signifies the current state of the order, can be set as 'draft', 'active' or 'finalized'",
-        filterable: "Possible options are `draft`, `active`, `finalized`",
+        filterable: "Possible options are `draft`, `deleted`, `active`, `finalized`, `fulfilled`, `void`",
         creatable: true,
         updatable: true
       },
@@ -330,7 +330,7 @@ en:
         type: "String",
         description: "",
         readonly: true,
-        filterable: "One or multiple of 'unpaid', 'partial' and 'paid'"
+        filterable: "One or multiple of `unpaid`, `partial` and `paid`"
       },
       invoice_status: {
         name: "invoice_status",
