@@ -20,7 +20,7 @@ en:
         position: 0,
         quantity: "1.0",
         ledger_account_id: null,
-        stock_trail_ids: []
+        stock_trail_ids: [1]
       }
     ]
     gecko:

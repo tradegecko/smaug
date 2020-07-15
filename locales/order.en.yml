@@ -43,13 +43,13 @@ en:
         "tax_override":           null,
         "tax_treatment":          "inclusive",
         "total":                  0,
-        "tags":                   [],
-        "fulfillment_ids":        [],
-        "fulfillment_return_ids": [],
-        "invoice_ids":            [],
-        "payment_ids":            [],
-        "refund_ids":             [],
-        "invoices":               [],
+        "tags":                   ["sales"],
+        "fulfillment_ids":        [10],
+        "fulfillment_return_ids": [21],
+        "invoice_ids":            [20],
+        "payment_ids":            [30],
+        "refund_ids":             [40],
+        "invoices":               [50],
         "cached_total":           0,
         "default_price_type_id":  "wholesale",
         "source":                 null,
@@ -60,7 +60,7 @@ en:
         "invoice_numbers":        {
           1: "INV001"
         },
-        "order_line_item_ids":    [1,2]
+        "order_line_item_ids":    [3,4]
       },
       {
         "id":                     1,
@@ -95,13 +95,13 @@ en:
         "tax_override":           null,
         "tax_treatment":          "exclusive",
         "total":                  0,
-        "tags":                   [],
-        "fulfillment_ids":        [],
-        "fulfillment_return_ids": [],
-        "invoice_ids":            [],
-        "payment_ids":            [],
-        "refund_ids":             [],
-        "invoices":               [],
+        "tags":                   ["promotion"],
+        "fulfillment_ids":        [10],
+        "fulfillment_return_ids": [11],
+        "invoice_ids":            [12],
+        "payment_ids":            [13],
+        "refund_ids":             [14],
+        "invoices":               [15],
         "cached_total":           0,
         "default_price_type_id":  "wholesale",
         "source":                 null,
@@ -112,9 +112,7 @@ en:
         "invoice_numbers":        {
           1: "INV001"
         },
-        "order_line_item_ids":    [
-
-        ]
+        "order_line_item_ids":    [1,2]
       }
     ]
     gecko:
