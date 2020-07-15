@@ -674,6 +674,29 @@
               </ul>
           </li>
           <li>
+            <a href="#paymentmethod" class="toc-h1 toc-link" data-title="PaymentMethod">PaymentMethod</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-paymentmethod-object" class="toc-h2 toc-link" data-title="The PaymentMethod object">The PaymentMethod object</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-payment_methods" class="toc-h2 toc-link" data-title="List all payment_methods">List all payment_methods</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-new-payment_method" class="toc-h2 toc-link" data-title="Create a new payment_method">Create a new payment_method</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-a-particular-payment_method" class="toc-h2 toc-link" data-title="Retrieve a particular payment_method">Retrieve a particular payment_method</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-payment_method" class="toc-h2 toc-link" data-title="Update a payment_method">Update a payment_method</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-payment_method" class="toc-h2 toc-link" data-title="Delete a payment_method">Delete a payment_method</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#paymentterm" class="toc-h1 toc-link" data-title="PaymentTerm">PaymentTerm</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1995,9 +2018,15 @@ contact your success rep as we'd love to discuss your usecases further.
 <td></td>
 </tr>
 <tr>
+<td><strong>default_payment_method_id</strong></td>
+<td>Integer</td>
+<td>The default method of payment for creating a new payment.</td>
+<td></td>
+</tr>
+<tr>
 <td><strong>default_payment_term_id</strong></td>
 <td>Integer</td>
-<td>The default method of payment. This can also be used to push to multiple ledger accounts in your accounting integration.</td>
+<td>The default term of payment. This can also be used to push to multiple ledger accounts in your accounting integration.</td>
 <td></td>
 </tr>
 <tr>
@@ -2101,6 +2130,7 @@ https://api.tradegecko.com/accounts/current
     </span><span class="s2">&quot;primary_location_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;primary_billing_location_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_currency_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;default_payment_method_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_payment_term_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;billing_contact_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_sales_order_tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -2358,23 +2388,23 @@ https://api.tradegecko.com/addresses/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -2674,6 +2704,12 @@ https://api.tradegecko.com/addresses/1
 <td></td>
 </tr>
 <tr>
+<td><strong>default_payment_method_id</strong></td>
+<td>Integer</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td><strong>default_payment_term_id</strong></td>
 <td>Integer</td>
 <td></td>
@@ -2811,6 +2847,7 @@ https://api.tradegecko.com/companies/
       </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-02T01:44:42.417Z&quot;</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;default_ledger_account_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;default_payment_method_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;default_payment_term_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;default_stock_location_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;default_tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -2848,6 +2885,7 @@ https://api.tradegecko.com/companies/
       </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-02T01:22:24.612Z&quot;</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;default_ledger_account_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;default_payment_method_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;default_payment_term_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;default_stock_location_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;default_tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -2905,23 +2943,23 @@ https://api.tradegecko.com/companies/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -2933,6 +2971,10 @@ https://api.tradegecko.com/companies/
 </tr>
 <tr>
 <td><strong>default_ledger_account_id</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>default_payment_method_id</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -2995,6 +3037,7 @@ https://api.tradegecko.com/companies/ -d <span class="s1">&#39;{&quot;company&qu
     </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-02T01:44:42.417Z&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_ledger_account_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;default_payment_method_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_payment_term_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_stock_location_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -3048,6 +3091,12 @@ https://api.tradegecko.com/companies/ -d <span class="s1">&#39;{&quot;company&qu
 </tr>
 <tr>
 <td><strong>default_ledger_account_id</strong></td>
+<td>Integer</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>default_payment_method_id</strong></td>
 <td>Integer</td>
 <td></td>
 <td></td>
@@ -3174,6 +3223,7 @@ https://api.tradegecko.com/companies/1
     </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-02T01:44:42.417Z&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;assignee_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_ledger_account_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;default_payment_method_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_payment_term_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_stock_location_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;default_tax_type_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -3358,7 +3408,7 @@ https://api.tradegecko.com/variants/composition/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>bundle_sku</strong></td>
@@ -3583,23 +3633,23 @@ https://api.tradegecko.com/contacts/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -3980,23 +4030,23 @@ https://api.tradegecko.com/currencies/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -4389,23 +4439,23 @@ https://api.tradegecko.com/fulfillments/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>order_id</strong></td>
@@ -4889,23 +4939,23 @@ https://api.tradegecko.com/fulfillment_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>fulfillment_id</strong></td>
@@ -5245,23 +5295,23 @@ https://api.tradegecko.com/fulfillment_returns/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -5655,23 +5705,23 @@ https://api.tradegecko.com/fulfillment_return_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>fulfillment_return_id</strong></td>
@@ -6013,23 +6063,23 @@ https://api.tradegecko.com/images/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>product_id</strong></td>
@@ -6386,23 +6436,23 @@ https://api.tradegecko.com/invoices/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>order_id</strong></td>
@@ -6839,23 +6889,23 @@ https://api.tradegecko.com/invoice_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>invoice_id</strong></td>
@@ -7183,23 +7233,23 @@ https://api.tradegecko.com/locations/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -7497,23 +7547,23 @@ https://api.tradegecko.com/notes/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>company_id</strong></td>
@@ -8092,23 +8142,23 @@ https://api.tradegecko.com/orders/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>assignee_id</strong></td>
@@ -8940,23 +8990,23 @@ https://api.tradegecko.com/order_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>order_id</strong></td>
@@ -9211,6 +9261,217 @@ https://api.tradegecko.com/order_line_items/1
 
 <p><code>DELETE https://api.tradegecko.com/order_line_items/{RESOURCE_ID}/</code></p>
 
+<p><h1 id='paymentmethod'>PaymentMethod</h1>
+<p>This is an object representing a payment_method.</p>
+
+<h2 id='the-paymentmethod-object'>The PaymentMethod object</h2>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+<th>Readonly</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>Integer</td>
+<td>A unique identifier for the resource.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>created_at</strong></td>
+<td>String</td>
+<td></td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>updated_at</strong></td>
+<td>String</td>
+<td></td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>String</td>
+<td>Name of the payment method.</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>is_default</strong></td>
+<td>Boolean</td>
+<td>Is the default payment method of the account.</td>
+<td>true</td>
+</tr>
+</tbody></table></p>
+
+<p><h2 id='list-all-payment_methods'>List all payment_methods</h2><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/payment_methods/
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;payment_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-10-24T11:21:57.700Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-10-24T11:21:57.700Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cash&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;is_default&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-10-24T11:21:57.710Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-10-24T11:21:57.710Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Credit Card&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;is_default&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-10-24T11:21:57.721Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-10-24T11:21:57.721Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bank Transfer&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;is_default&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Returns a list of payment_methods you’ve previously created. The payment_methods are returned in sorted order, with the most recent payment_methods appearing first.</p>
+
+<h3 id='filters'>Filters</h3>
+
+<table><thead>
+<tr>
+<th>Arguments</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>ids</strong></td>
+<td>An array of payment_method IDs. See <a href="#filtering" title="Filtering">Getting Started</a> for examples.</td>
+</tr>
+<tr>
+<td><strong>limit</strong></td>
+<td>used for pagination (default is 50)</td>
+</tr>
+<tr>
+<td><strong>page</strong></td>
+<td>used for pagination (default is 1)</td>
+</tr>
+<tr>
+<td><strong>created_at_min</strong></td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
+</tr>
+<tr>
+<td><strong>created_at_max</strong></td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
+</tr>
+<tr>
+<td><strong>updated_at_min</strong></td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
+</tr>
+<tr>
+<td><strong>updated_at_max</strong></td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id='http-request'>HTTP Request:</h3>
+
+<p><code>GET  https://api.tradegecko.com/payment_methods</code></p></p>
+
+<p><h2 id='create-a-new-payment_method'>Create a new payment_method</h2><pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/payment_methods/ -d <span class="s1">&#39;{&quot;payment_method&quot;:{&quot;name&quot;:&quot;Wire Transfer&quot;}}&#39;</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;payment_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-10-24T11:21:57.700Z&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-10-24T11:21:57.700Z&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cash&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;is_default&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Creates a new payment_method object.</p>
+
+<h3 id='arguments'>Arguments</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>name</strong></td>
+<td>String</td>
+<td>Name of the payment method.</td>
+<td>true</td>
+</tr>
+</tbody></table>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>POST https://api.tradegecko.com/payment_methods/</code></p></p>
+
+<p><h2 id='retrieve-a-particular-payment_method'>Retrieve a particular payment_method</h2><pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/payment_methods/
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;payment_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-10-24T11:21:57.700Z&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-10-24T11:21:57.700Z&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cash&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;is_default&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieves the details of an existing payment_method. You need only supply the unique payment_method identifier that was returned upon payment_method creation.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>GET https://api.tradegecko.com/payment_methods/{RESOURCE_ID}</code></p></p>
+
+<p><h2 id='update-a-payment_method'>Update a payment_method</h2><pre class="highlight shell tab-shell"><code>curl -X PUT -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com//1 -d <span class="s1">&#39;{&quot;payment_method&quot;:{&quot;name&quot;:&quot;PayPal&quot;}}&#39;</span>
+</code></pre>
+<blockquote>
+<p>Response</p></p>
+
+<p>Returns 204 status when the payment_method gets updated successfully.</p>
+
+<p></blockquote></p>
+
+<p>Updates the specified payment_method by setting the values of the parameters passed.</p>
+
+<p>Any parameters not provided will be left unchanged.
+This request accepts the same arguments as the payment_method creation call.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>PUT https://api.tradegecko.com//{RESOURCE_ID}</code></p>
+
+<p><h2 id='delete-a-payment_method'>Delete a payment_method</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
+https://api.tradegecko.com/payment_methods/1
+</code></pre>
+<blockquote>
+<p>Response</p></p>
+
+<p>Returns 204 status when the payment_method gets deleted successfully.</p>
+
+<p></blockquote></p>
+
+<p>Permanently deletes a payment_method. It cannot be undone.
+  This payment_method will no longer be available for future Payment.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>DELETE https://api.tradegecko.com/payment_methods/{RESOURCE_ID}/</code></p>
+
 <p><h1 id='paymentterm'>PaymentTerm</h1>
 <p>This is an object representing a payment_term.</p>
 
@@ -9310,23 +9571,23 @@ https://api.tradegecko.com/payment_terms/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -9464,7 +9725,7 @@ https://api.tradegecko.com/payment_terms/1
 <p></blockquote></p>
 
 <p>Permanently deletes a payment_term. It cannot be undone.
-  This payment_term will no longer be available for future Sales Order.</p>
+  This payment_term will no longer be available for future Invoice.</p>
 
 <h3 id='http-request'>HTTP Request</h3>
 
@@ -9693,23 +9954,23 @@ https://api.tradegecko.com/products/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -10464,23 +10725,23 @@ https://api.tradegecko.com/purchase_orders/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -11171,23 +11432,23 @@ https://api.tradegecko.com/purchase_order_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>purchase_order_id</strong></td>
@@ -11582,23 +11843,23 @@ https://api.tradegecko.com/stock_adjustments/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>adjustment_number</strong></td>
@@ -11891,23 +12152,23 @@ https://api.tradegecko.com/stock_adjustment_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>stock_adjustment_id</strong></td>
@@ -12113,23 +12374,23 @@ https://api.tradegecko.com/stock_levels/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 </tbody></table>
 
@@ -12315,23 +12576,23 @@ https://api.tradegecko.com/stock_transfers/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -12687,23 +12948,23 @@ https://api.tradegecko.com/stock_transfer_line_items/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>stock_transfer_id</strong></td>
@@ -12948,23 +13209,23 @@ https://api.tradegecko.com/tax_types/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -13229,23 +13490,23 @@ https://api.tradegecko.com/tax_components/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>tax_type_id</strong></td>
@@ -13584,23 +13845,23 @@ https://api.tradegecko.com/users/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -14250,23 +14511,23 @@ https://api.tradegecko.com/variants/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -14828,23 +15089,23 @@ https://api.tradegecko.com/webhooks/
 </tr>
 <tr>
 <td><strong>page</strong></td>
-<td>used for pagination (default is 1</td>
+<td>used for pagination (default is 1)</td>
 </tr>
 <tr>
 <td><strong>created_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>created_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_min</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 <tr>
 <td><strong>updated_at_max</strong></td>
-<td>ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)</td>
+<td>ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)</td>
 </tr>
 </tbody></table>
 
