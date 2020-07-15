@@ -5,7 +5,7 @@ en:
     resource_klass: "PaymentTerm"
     resource_name: "payment_term"
     resource_plural: "payment_terms"
-    used_in_sales_order: true
+    used_in_invoice: true
     json: [
       {
         id: 3,

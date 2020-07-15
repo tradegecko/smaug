@@ -34,12 +34,12 @@ Returns a list of <%= t(".resource_plural", scope: resource) %> you’ve previou
 |--------------------|--------------------
 | **ids**            | <%= ids_description %>. See [Getting Started](#filtering "Filtering") for examples.
 | **limit**          | used for pagination (default is 50)
-| **page**           | used for pagination (default is 1
+| **page**           | used for pagination (default is 1)
 <% unless t(".filters.timestamp_search", scope: resource) == false %>
-| **created_at_min** | ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)
-| **created_at_max** | ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)
-| **updated_at_min** | ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)
-| **updated_at_max** | ISO 8601 format (e.g. 2015-11-04T00:00:00.00Z)
+| **created_at_min** | ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)
+| **created_at_max** | ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)
+| **updated_at_min** | ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)
+| **updated_at_max** | ISO 8601 format (e.g. 2020-01-08T00:00:00.00Z)
 <% end %>
 <% if t(".attributes", scope: resource).key?(:status) %>
   <% if !["company", "product", "purchase_order","fulfillment","order"].include?(t(".resource_name", scope: resource)) %>

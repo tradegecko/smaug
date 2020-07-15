@@ -24,6 +24,12 @@ https://api.tradegecko.com/<%= t(".resource_plural", scope: resource) %>/1
 Permanently deletes <%= t(".resource_article", scope: resource) %> <%= t(".resource_name", scope: resource) %>. It cannot be undone.
 <% if t(".used_in_sales_order", scope: resource) == true %>
   This <%= t(".resource_name", scope: resource) %> will no longer be available for future Sales Order.
+  <% end %>
+<% if t(".used_in_invoice", scope: resource) == true %>
+  This <%= t(".resource_name", scope: resource) %> will no longer be available for future Invoice.
+<% end %>
+<% if t(".used_in_payment", scope: resource) == true %>
+  This <%= t(".resource_name", scope: resource) %> will no longer be available for future Payment.
 <% end %>
 
 ### HTTP Request
