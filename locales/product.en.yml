@@ -58,7 +58,7 @@ en:
         supplier_ids: [
           3
         ],
-        image_ids: [],
+        image_ids: [1],
         tags: "candy,summer",
         variant_ids: [
           2,

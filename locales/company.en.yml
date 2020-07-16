@@ -31,7 +31,7 @@ en:
         status: "active",
         tax_number: null,
         website: null,
-        tags: [],
+        tags: ["wholesale"],
         address_ids: [6],
         contact_ids: [7],
         note_ids: [ ],
@@ -61,7 +61,7 @@ en:
         status: "active",
         tax_number: null,
         website: "http://williamwonkacandyltd.com",
-        tags: [],
+        tags: ["reseller"],
         address_ids: [
           4,
           5
