@@ -9,6 +9,7 @@ en:
     resource_klass: "InvoiceLineItem"
     resource_name: "invoice_line_item"
     resource_plural: "invoice_line_items"
+    positioned: true
     json: [
       {
         id: 3,

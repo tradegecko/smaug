@@ -9,6 +9,7 @@ en:
     resource_klass: "OrderLineItem"
     resource_name: "order_line_item"
     resource_plural: "order_line_items"
+    positioned: true
     json: [
       {
         "id":                               2,

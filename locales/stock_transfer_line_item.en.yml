@@ -10,6 +10,7 @@ en:
     resource_klass: "StockTransferLineItem"
     resource_name: "stock_transfer_line_item"
     resource_plural: "stock_transfer_line_items"
+    positioned: true
     json: [
       {
         id: 1,

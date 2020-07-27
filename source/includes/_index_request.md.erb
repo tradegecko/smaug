@@ -23,7 +23,7 @@ https://api.tradegecko.com/<%= resource_path %>/
 <%= JSON.pretty_generate(Hash[t(".resource_plural", scope: resource), json_all]) %>
 ```
 
-Returns a list of <%= t(".resource_plural", scope: resource) %> you’ve previously created. The <%= t(".resource_plural", scope: resource) %> are returned in sorted order, with the most recent <%= t(".resource_plural", scope: resource) %> appearing first.
+Returns a list of <%= t(".resource_plural", scope: resource) %> you’ve previously created. The <%= t(".resource_plural", scope: resource) %> are returned in sorted order, <% if t(".positioned", scope: resource) == true %>based on the position attribute<% else %>with the most recent <%= t(".resource_plural", scope: resource) %> appearing first<% end %>.
 
 ### Filters
 <% ids_filter_description = "An array of #{t(".resource_name", scope: resource)} IDs" %>

@@ -9,6 +9,7 @@ en:
     resource_klass: "FulfillmentLineItem"
     resource_name: "fulfillment_line_item"
     resource_plural: "fulfillment_line_items"
+    positioned: true
     json: [
       {
         id: 3,
