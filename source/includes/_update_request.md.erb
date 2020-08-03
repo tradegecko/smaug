@@ -20,9 +20,15 @@ curl -X PUT -H "Content-type: application/json" -H "Authorization: Bearer <ACCES
 https://api.tradegecko.com/<%= resource_path %>/1 -d '{"<%= t(".resource_name", scope: resource) %>":<%= t('.gecko.update', scope: resource).to_json %>}'
 ```
 
+<% if t(".update_returns_200", scope: resource) == true %>
+> Response
+>
+> Returns 200 status when the <%= t(".resource_name", scope: resource) %> gets updated successfully.
+<% else %>
 > Response
 >
 > Returns 204 status when the <%= t(".resource_name", scope: resource) %> gets updated successfully.
+<% end %>
 
 
 Updates the specified <%= t(".resource_name", scope: resource) %> by setting the values of the parameters passed.
