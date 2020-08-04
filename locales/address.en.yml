@@ -10,6 +10,7 @@ en:
     resource_name: "address"
     resource_plural: "addresses"
     used_in_sales_order: true
+    update_returns_200: true
     json: [
       {
         id: 6,
