@@ -1404,7 +1404,7 @@ X-Rate-Limit-Reset: 1509339000<br>
 
 <p><h1 id='idempotency-tokens'>Idempotency Tokens</h1><pre class="highlight shell tab-shell"><code>curl https://api.tradegecko.com/orders/ <span class="se">&lt;/span&gt;
      -X POST <span class="se">&lt;/span&gt;
-     -H <span class="s2">&quot;Idempotency-Key: ecf83ef1-0f85-4860-bbc3-70a4bd74be41&quot;</span> <span class="se">&lt;/span&gt;
+     -H <span class="s2">&quot;HTTP_IDEMPOTENCY_KEY: ecf83ef1-0f85-4860-bbc3-70a4bd74be41&quot;</span> <span class="se">&lt;/span&gt;
      -H <span class="s2">&quot;Content-type: application/json&quot;</span> <span class="se">&lt;/span&gt;
      -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span> <span class="se">&lt;/span&gt;
      -d <span class="s1">&#39;{&quot;order&quot;: {&quot;company_id&quot;: 101, &quot;shipping_address_id&quot;: 1002, &quot;billing_address_id&quot;: 1002, &quot;status&quot;: &quot;active&quot;, &quot;issued_at&quot;: &quot;21-02-2018&quot;, &quot;order_line_items&quot;: [{&quot;variant_id&quot;: 14, &quot;quantity&quot;: 1}, {&quot;variant_id&quot;: 15, &quot;quantity&quot;: 2}]}}&#39;</span>
@@ -1418,9 +1418,9 @@ X-Rate-Limit-Reset: 1509339000<br>
 <span class="n">order</span><span class="p">.</span><span class="nf">order_line_items</span><span class="p">.</span><span class="nf">build</span><span class="p">(</span><span class="ss">variant_id: </span><span class="mi">15</span><span class="p">,</span> <span class="ss">quantity: </span><span class="mi">2</span><span class="p">)</span>
 <span class="n">order</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="ss">idempotency_token: </span><span class="s2">&quot;ecf83ef1-0f85-4860-bbc3-70a4bd74be41&quot;</span><span class="p">)</span>
 </code></pre>
-<p>The TradeGecko API has support for <a href="https://en.wikipedia.org/wiki/Idempotence">idempotent</a> 
-requests via an optional <code>Idempotency-Key</code> request header.
-By providing a unique Idempotency key in your POST or PUT requests the API can 
+<p>The TradeGecko API has support for <a href="https://en.wikipedia.org/wiki/Idempotence">idempotent</a>
+requests via an optional <code>HTTP_IDEMPOTENCY_KEY</code> request header.
+By providing a unique Idempotency key in your POST or PUT requests the API can
 guarantee that a specific operation is only performed once.</p></p>
 
 <p>The keys expire after 24 hours.</p>
