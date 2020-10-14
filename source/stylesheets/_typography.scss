@@ -11,10 +11,10 @@ h2, h3 {
   @extend %header-font;
   font-size: 24px;
   line-height: 28px;
-  font-weight: $font-weight-bold;
 }
 
 h4, h5, h6 {
-  font-size: 16px;
-  font-weight: $font-weight-bold;
+  @extend %header-font;
+  font-size: 20px;
+  line-height: 24px;
 }

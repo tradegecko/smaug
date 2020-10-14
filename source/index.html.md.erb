@@ -5,27 +5,18 @@ primary_cards:
   - name:  Ecommerce Integration Guide
     blurb: Build a sales channel integration with TradeGecko. Sync orders and products from your online stores and marketplaces.
     url: /guides/sales.html
-    background_color: "#5784f7"
-    image:
-      url: /images/eCommerce@2x.png
   - name: Fulfillment Service Integration Guide
     blurb: Integrate TradeGecko with a fulfilment service to streamline your 3PL management and shipping workflows.
     url: /guides/3pl.html
-    background_color: "#5bb4f9"
-    image:
-      url: /images/3PL@2x.png
   - name: Warehouse Management Integration Guide
     blurb: Sync inventory levels between your Warehouse Management System and TradeGecko.
     url: /guides/warehouse.html
-    background_color: "#80dce2"
-    image:
-      url: /images/Warehouse@2x.png
 
 secondary_cards:
   - name: Comprehensive API Docs
     blurb: Build exactly what you need with our modern APIs and webhooks.
     url: /docs.html
-    cta: Explore docs
+    cta: Explore API Docs
   - name: Detailed Guides and Tutorials
     blurb: TradeGecko’s thorough use cases provide step-by-step instructions to build integrations quickly and easily.
     url: /docs.html#guides
@@ -48,12 +39,9 @@ home: true
   <div class="row index-page__section">
     <div class="card-list">
       <% current_page.data.primary_cards.each do |study| %>
-        <div class="study-card" style="background-color: <%=study.background_color%> ">
-          <div class="study-card__image-wrapper">
-            <img src="<%=study.image.url%>" />
-          </div>
+        <div class="study-card">
           <div class="study-blurb">
-            <h2><%=study.name%></h2>
+            <h4><%=study.name%></h4>
             <p><%=study.blurb%></p>
             <a href="<%=study.url%>" class="btn btn-big btn-primary card__sticky-button" >
               Read More
@@ -68,35 +56,19 @@ home: true
     <h2> Start building with TradeGecko API in minutes</h2>
   </div>
 
-  <div class="row">
+  <div class="row index-page__section">
     <div class="card-list">
       <% current_page.data.secondary_cards.each do |study| %>
         <div class="study-card secondary-card">
           <div class="study-blurb">
-            <h2><%=study.name%></h2>
+            <h4 class="study-card__title"><%=study.name%></h4>
             <p><%=study.blurb%></p>
-            <a href="<%= study.url %>" class="plain-link card__sticky-button" >
+            <a href="<%= study.url %>" class="plain-link card__sticky-button secondary-card__cta" >
               <%= study.cta %> <i class="fa fa-angle-right"></i>
             </a>
           </div>
         </div>
       <% end %>
-    </div>
-  </div>
-
-  <div class="row index-page__section">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-3 become-partner__image">
-    </div>
-    <div class="col-md-7 become-partner__details">
-      <h2> Sign up for a partner account to get started</h2>
-      <p>Discover how our Partner Program can help your clients build the business of their dreams and make you money in the process</p>
-      <a href="https://partners.tradegecko.com/register" target="blank_" class="btn btn-big btn-primary" >
-        Become a partner
-      </a>
-    </div>
-    <div class="col-md-1">
     </div>
   </div>
 </div>

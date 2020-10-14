@@ -97,7 +97,7 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 }
 
 %small-font {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 %label-font {
@@ -113,6 +113,7 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 
 %header-font {
   font-family: 'AvenirNext', Helvetica, Arial, sans-serif;
+  font-weight: 600;
 }
 
 %code-font {

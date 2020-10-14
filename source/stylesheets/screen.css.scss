@@ -64,7 +64,7 @@
 
 .plain-link {
   text-decoration: none;
-  color: $c-green-2;
+  color: $c-blue-2;
 }
 .base__body {
   overflow: visible;
@@ -77,12 +77,6 @@
 $border-base: solid 1px $c-gray-3;
 $base-shadow: 0px 1px 3px rgba(0, 0, 0, 0.10);
 $border-radius: 3px;
-
-@media (max-width: 360px) {
-  .cta-section {
-    margin-top: 30px;
-  }
-}
 
 @media (max-width: 800px) {
   .index-page__section {
