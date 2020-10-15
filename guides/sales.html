@@ -183,6 +183,10 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <div class="site-topbar">
+      <a class="site-topbar__link" target="_blank" href="https://tradegecko.com/blog/tradegecko/acquired-by-intuit">TradeGecko is now QuickBooks Commerce.</a>
+    </div>
+
     <div class="base">
       <div class="base__header">
   <div class="container">
@@ -191,13 +195,12 @@
         <header class='site-header'>
           <div class="site-header__branding col-sm p-0">
             <a href="/" class="site-header__logo" ></a>
-            <a href="/" class="site-header__title" >
-                <strong class="site-header__title--strong">TradeGecko</strong> Developer
+            <a href="/" class="site-header__title" >Developer
             </a>
             <i class="burger fas fa-bars" class="burger"></i>
             <nav>
               <a class="nav-link" href="/">Home</a>
-              <a class="nav-link" href="/docs.html">Docs</a>
+              <a class="nav-link" href="/docs.html">API Docs</a>
               <a class="nav-link" href="https://go.tradegecko.com/apps" target="_blank">App Store</a>
               <a class="nav-link" href="https://github.com/tradegecko/smaug/issues" target="_blank">Community</a>
               <a class="nav-link" href="/changes.html">Changelog</a>
@@ -207,7 +210,7 @@
       </div>
     </div>
   </div>
-  <div style="background:#F4F4F5;padding:10px 20px;border-top: 1px solid #e2e6e8;">
+  <div>
     <div class="container">
       <div class="search-wrapper">
   <div class="search">
@@ -225,14 +228,14 @@
           <div class="guides-main-container">
   <div>
     <h1 class="mt-2">Sales Channel Guide</h1>
-    <p>Use TradeGecko APIs and webhooks to build sales channel integrations, allowing merchants to import orders and products from online stores or marketplaces and to sell anywhere and everywhere.</p>
+    <p>Use QuickBooks Commerce APIs and webhooks to build sales channel integrations, allowing merchants to import orders and products from online stores or marketplaces and to sell anywhere and everywhere.</p>
 
     In this guide:
     <ul class="mt-2">
         <li><a href="#sales_channel_resources">Sales Channel Resources</a></li>
         <li><a href="#authorising_your_sales_channel_integration">Authorising Your Sales Channel Integration</a></li>
-        <li><a href="#publishing_products_from_tradegecko_to_a_sales_channel">Publishing Products from TradeGecko to a Sales Channel</a></li>
-        <li><a href="#importing_orders_from_a_sales_channel_to_tradegecko">Importing Orders from a Sales Channel to TradeGecko</a></li>
+        <li><a href="#publishing_products_from_tradegecko_to_a_sales_channel">Publishing Products from QuickBooks Commerce to a Sales Channel</a></li>
+        <li><a href="#importing_orders_from_a_sales_channel_to_tradegecko">Importing Orders from a Sales Channel to QuickBooks Commerce</a></li>
         <li><a href="#handling_returns">Handling Returns</a></li>
         <li><a href="#additional_resources">Additional Resources</a></li>
         <li><a href="#support">Support</a></li>
@@ -241,33 +244,33 @@
 
   <div id="sales_channel_resources" class="guide-section">
     <h2>Sales Channel Resources</h2>
-    <p>Before you start working on a sales channel integration with TradeGecko, it’s helpful to understand some of the different sales channel related resources.</p>
+    <p>Before you start working on a sales channel integration with QuickBooks Commerce, it’s helpful to understand some of the different sales channel related resources.</p>
     <ul class="mt-2">
         <li class="mt-1"><b>Sales Order</b>:&nbsp;Contains information about a sales order, its associated order line items and fulfillments. Order line items contain information such as variants and tax types</li>
           <ul>
-              <li>An order in TradeGecko can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
+              <li>An order in QuickBooks Commerce can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
           </ul>
         <li class="mt-1"><b>Fulfillment</b>:&nbsp;Represents a shipment of one or more items in a sales order. It includes the line item that the fulfillment applies to, its tracking information and the location of the fulfillment</li>
           <ul>
-              <li>A fulfillment object in TradeGecko can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
+              <li>A fulfillment object in QuickBooks Commerce can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
           </ul>
-        <li class="mt-1"><b>Company</b>:&nbsp;Represents a merchant's supplier or customer created and stored in the TradeGecko Relationships section</li>
+        <li class="mt-1"><b>Company</b>:&nbsp;Represents a merchant's supplier or customer created and stored in the QuickBooks Commerce Relationships section</li>
         <li class="mt-1"><b>Address</b>:&nbsp;Represents a physical address associated with a merchant's company</li>
     </ul>
   </div>
 
   <div id="authorising_your_sales_channel_integration" class="guide-section">
     <h2>Authorising Your Sales Channel Integration</h2>
-    <p>TradeGecko uses OAuth to authorize third party integrations. As part of the OAuth flow, TradeGecko obtains the user’s authorization and issues an access token that your sales channel can use to interact with the API. To find out more, refer to our <a href="/docs.html#oauth-authentication-flows" target="_blank">OAuth docs</a>.</p>
+    <p>QuickBooks Commerce uses OAuth to authorize third party integrations. As part of the OAuth flow, QuickBooks Commerce obtains the user’s authorization and issues an access token that your sales channel can use to interact with the API. To find out more, refer to our <a href="/docs.html#oauth-authentication-flows" target="_blank">OAuth docs</a>.</p>
   </div>
 
-  <div id="publishing_products_from_tradegecko_to_a_sales_channel" class="guide-section">
-    <h2>Publishing Products from TradeGecko to a Sales Channel</h2>
+  <div id="publishing_products_from_quickbooks_commerce_to_a_sales_channel" class="guide-section">
+    <h2>Publishing Products from QuickBooks Commerce to a Sales Channel</h2>
     <p></p>
     <ul>
       <li>Step 1:&nbsp;Get a product, its variants and their inventory levels.</li>
-      <li>Step 2 (optional):&nbsp;Receive an alert whenever a merchant creates a new product or variant in TradeGecko</li>
-      <li>Step 3:&nbsp;Receive an alert whenever the stock level for a variant is updated in TradeGecko</li>
+      <li>Step 2 (optional):&nbsp;Receive an alert whenever a merchant creates a new product or variant in QuickBooks Commerce</li>
+      <li>Step 3:&nbsp;Receive an alert whenever the stock level for a variant is updated in QuickBooks Commerce</li>
     </ul>
 
     <div class="step-section">
@@ -330,15 +333,15 @@
 </code></pre>
 <p><h3><b>Tips:</b></h3>
       <ul>
-          <li>As TradeGecko does not enforce variant SKU uniqueness, you are advised to use the TradeGecko variant id instead of SKU to create any mapping between TradeGecko and sales channel variants. This will ensure that incoming sales orders are linked to the correct TradeGecko variants.</li>
+          <li>As QuickBooks Commerce does not enforce variant SKU uniqueness, you are advised to use the QuickBooks Commerce variant id instead of SKU to create any mapping between QuickBooks Commerce and sales channel variants. This will ensure that incoming sales orders are linked to the correct QuickBooks Commerce variants.</li>
       </ul>
       <h3>Notes:</h3>
       <ul>
           <li>For each variant, we return <code>locations</code>, an array of per-warehouse inventory data about the current variant.</li>
-          <li>When a variant&#39;s <code>manage_stock</code> attribute is set to false, the variant&#39;s stock level will not be tracked by TradeGecko.</li>
+          <li>When a variant&#39;s <code>manage_stock</code> attribute is set to false, the variant&#39;s stock level will not be tracked by QuickBooks Commerce.</li>
           <li>When a variant&#39;s <code>keep_selling</code> attribute is set to true, the variant can continue to be sold even when the stock level is zero or negative.</li>
           <li>If the variant has a <code>max_online</code> value defined, the sales channel should not display stock levels higher than this value.</li>
-          <li>In TradeGecko, images belong to products. Each image can be assigned to multiple variants of the product. Use the <a target="_blank" href="/docs.html#retrieve-a-particular-image">image endpoint</a> to retrieve variant images.</li>
+          <li>In QuickBooks Commerce, images belong to products. Each image can be assigned to multiple variants of the product. Use the <a target="_blank" href="/docs.html#retrieve-a-particular-image">image endpoint</a> to retrieve variant images.</li>
           <li>Variants may have different prices across price lists. To determine the variant prices to be displayed on the sales channel, you may need to retrieve the merchant&#39;s price lists by making a GET request to the price lists endpoint (<code>GET /price_lists</code>). Some relevant price lists include:&nbsp;</li>
             <ul>
                 <li>The <code>default_order_price_list_id</code> which you can retrieve from the <a href="/docs.html#account" target="_blank">account endpoint.</a></li>
@@ -348,7 +351,7 @@
     </div></p>
 
 <p><div class="step-section">
-      <h3>Step 2 (optional):&nbsp;Receive an alert whenever a merchant creates a new product or variant in TradeGecko</h3>
+      <h3>Step 2 (optional):&nbsp;Receive an alert whenever a merchant creates a new product or variant in QuickBooks Commerce</h3>
       <p>Subscribe to the <code>product.create</code> and <code>variant.create</code> webhooks to be notified when a new product or variant is created by the merchant.</p>
 <div class="lang-selector">
       <a href="#" data-language-name="ruby">ruby</a>
@@ -388,8 +391,8 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
     </div></p>
 
 <p><div class="step-section">
-      <h3>Step 3:&nbsp;Receive an alert whenever the stock level for a variant is updated in TradeGecko</h3>
-      <p>Subscribe to the <code>variant.stock_level_update</code> webhook to be notified when the stock level for a variant is updated in TradeGecko.</p>
+      <h3>Step 3:&nbsp;Receive an alert whenever the stock level for a variant is updated in QuickBooks Commerce</h3>
+      <p>Subscribe to the <code>variant.stock_level_update</code> webhook to be notified when the stock level for a variant is updated in QuickBooks Commerce.</p>
 <div class="lang-selector">
       <a href="#" data-language-name="ruby">ruby</a>
       <a href="#" data-language-name="shell">shell</a>
@@ -428,8 +431,8 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
     </div>
   </div></p>
 
-<p><div id="importing_orders_from_a_sales_channel_to_tradegecko" class="guide-section">
-    <h2>Importing Orders from a Sales Channel to TradeGecko</h2>
+<p><div id="importing_orders_from_a_sales_channel_to_quickbooks_commerce" class="guide-section">
+    <h2>Importing Orders from a Sales Channel to QuickBooks Commerce</h2>
     <p>Each order includes an array of order line items that needs to be fulfilled. Each order line item can be packed and fulfilled separately, depending on how the inventory is packed and managed.</p>
     <ul>
       <li>Step 1:&nbsp;Create a sales order.</li>
@@ -440,7 +443,7 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
 
 <p><div class="step-section">
       <h3>Step 1:&nbsp;Create a sales order.</h3>
-      <p>For an existing customer with existing addresses, populate the <code>company_id</code> attribute with the customer&#39;s TradeGecko id, and the <code>shipping_address_id</code> and <code>billing_address_id</code> attributes with appropriate TradeGecko address ids. Do note that the <code>billing_address_id</code> defaults to the <code>shipping_address_id</code> if it is not provided.</p></p>
+      <p>For an existing customer with existing addresses, populate the <code>company_id</code> attribute with the customer&#39;s QuickBooks Commerce id, and the <code>shipping_address_id</code> and <code>billing_address_id</code> attributes with appropriate QuickBooks Commerce address ids. Do note that the <code>billing_address_id</code> defaults to the <code>shipping_address_id</code> if it is not provided.</p></p>
 
 <div class="lang-selector">
       <a href="#" data-language-name="ruby">ruby</a>
@@ -598,7 +601,7 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
       <h3>Step 3 (optional):&nbsp;Fulfill a sales order.</h3>
       <p></p>
       <p>Fulfill a sales order by sending an API call to <code>POST /orders/[:order_id]/actions/pack</code>. This creates a fulfillment object with status <code>packed</code> and fires a <code>fulfillment.create</code> webhook. Once the fulfillment has been shipped, send an API call to <code>POST /orders/[:order_id]/actions/fulfil</code> which updates the fulfillment object to status <code>fulfilled</code>.</p>
-      <p>Learn more about managing the fulfillment process in TradeGecko <a target="_blank" href="3pl.html">here</a>.</p>
+      <p>Learn more about managing the fulfillment process in QuickBooks Commerce <a target="_blank" href="3pl.html">here</a>.</p>
       <p></p>
     </div></p>
 
@@ -611,8 +614,8 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
       <h3>Notes</h3>
       <ul>
           <li>If you want to add additional information to a sales order such as special requests for customers or shipping information, you can set the <code>freeform</code> attribute to true and create or update an order line item with these information.</li>
-          <li>When you create a sales order with a variant that cannot be matched to an existing variant in TradeGecko, either by TradeGecko id or SKU, you will need to create the variant in TradeGecko before re-importing the sales order.</li>
-          <li>If you want to specify a currency when creating a sales order, pass in the <code>currency_iso</code> when creating or updating a sales order and TradeGecko would find a matching currency. However, if the currency matching fails, you will need to create the currency first. You can also cache the currencies and check if a particular currency exists before creating a new sales order.</li>
+          <li>When you create a sales order with a variant that cannot be matched to an existing variant in QuickBooks Commerce, either by QuickBooks Commerce id or SKU, you will need to create the variant in QuickBooks Commerce before re-importing the sales order.</li>
+          <li>If you want to specify a currency when creating a sales order, pass in the <code>currency_iso</code> when creating or updating a sales order and QuickBooks Commerce would find a matching currency. However, if the currency matching fails, you will need to create the currency first. You can also cache the currencies and check if a particular currency exists before creating a new sales order.</li>
       </ul>
     </div>
   </div></p>
@@ -620,7 +623,7 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
 <p><div id="handling_returns" class="guide-section">
       <h2>Handling Returns</h2>
         <p>Depending on a merchant&#39;s return policy, there may be a need to create a fulfillment return or void an order. You can return an entire order or part of an order.</p>
-        <p>In the event that your company is handling the return through TradeGecko API, you can create a <code>fulfillment_return</code> as shown below:&nbsp;</p></p>
+        <p>In the event that your company is handling the return through QuickBooks Commerce API, you can create a <code>fulfillment_return</code> as shown below:&nbsp;</p></p>
 
 <div class="lang-selector">
       <a href="#" data-language-name="ruby">ruby</a>
@@ -690,7 +693,7 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
         <h3>Notes: </h3>
         <ul>
             <li>You cannot delete a fulfillment if there are any associated fulfillment returns.</li>
-            <li>If a merchant is integrated with an accounting platform on TradeGecko, creating a fulfillment return would create a credit note on the accounting platform.</li>
+            <li>If a merchant is integrated with an accounting platform on QuickBooks Commerce, creating a fulfillment return would create a credit note on the accounting platform.</li>
             <li>Refunds are currently not supported. If you need an endpoint for the refund process, let us know <a target="_blank" href="https://tradegecko.typeform.com/to/A2ewy0">here</a>.</li>
             <li>You can void an order via the <a target="_blank" href="/docs.html#order-actions">order&#39;s void endpoint</a>.</li>
         </ul>
@@ -703,7 +706,7 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
     <li><a target="_blank" href="/docs.html#authentication">Getting API key for Authentication</a></li>
     <li><a target="_blank" href="/docs.html#webhook">Using Webhooks</a></li>
     <li><a target="_blank" href="/docs.html#order-actions">Order Actions</a></li>
-    <li><a target="_blank" href="https://github.com/tradegecko/smaug/issues">TradeGecko API Forum</a></li>
+    <li><a target="_blank" href="https://github.com/tradegecko/smaug/issues">QuickBooks Commerce API Forum</a></li>
   </ul>
 </div></p>
 
@@ -725,15 +728,10 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
     </a>
 </div>
 <div class="base__footer">
-  <div class="corner-ribbon-bounds corner-ribbon-bounds--loose">
-    <a class="corner-ribbon corner-ribbon--moko" target="_blank" href="https://www.tradegecko.com/jobs">
-      We're Hiring
-    </a>
-  </div>
   <div class="footer-wrapper">
     <div class="container">
       <div class="row">
-          <div class="col-2">
+          <div class="col-3">
           <h4>Company</h4>
             <ul class="link-list">
                 <li><a href="https://www.tradegecko.com/about-us" target="_blank">About us</a></li>
@@ -742,7 +740,7 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
                 <li><a href="https://www.tradegecko.com/press-kit" target="_blank">Press kit</a></li>
             </ul>
           </div>
-          <div class="col-2">
+          <div class="col-3">
           <h4>Contact</h4>
             <ul class="link-list">
                 <li><a href="https://www.tradegecko.com/contact-us" target="_blank">Contact us</a></li>
@@ -750,7 +748,7 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
                 <li><a href="https://www.tradegecko.com/contact-us" target="_blank">Visit us</a></li>
             </ul>
           </div>
-          <div class="col-2">
+          <div class="col-3">
           <h4>Getting Help</h4>
             <ul class="link-list">
                 <li><a href="http://support.tradegecko.com" target="_blank">Help Desk</a></li>
@@ -758,7 +756,7 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
                 <li><a href="https://status.tradegecko.com" target="_blank">Staus</a></li>
             </ul>
           </div>
-          <div class="col-2">
+          <div class="col-3">
           <h4>Partners</h4>
             <ul class="link-list">
                 <li><a href="https://www.tradegecko.com/partners" target="_blank">Become a partner</a></li>
@@ -767,17 +765,6 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
                 <li><a href="https://developer.tradegecko.com/" target="_blank">Developers & API</a></li>
             </ul>
           </div>
-        <div class="col-4">
-          <a target="_blank" href="https://tradegecko.typeform.com/to/A2ewy0" class="btn btn-big btn-primary" >
-            Subscribe to our newsletter
-          </a>
-          <legend>
-            You'll get useful news from our blog, as well as periodic product update emails. Unsubscribe any time.
-          </legend>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 100px;">
-        <div class="footer-moko">
       </div>
     </div>
   </div>
@@ -785,7 +772,7 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
 
     </div>
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700' rel='stylesheet' type='text/css'>
+    <link href="https://d3ds1rcygteua7.cloudfront.net/assets/fonts/avenir.css" rel="stylesheet">
     <script>
       window.intercomSettings = {
         app_id: "i0krnes0"

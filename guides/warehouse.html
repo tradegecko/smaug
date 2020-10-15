@@ -183,6 +183,10 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <div class="site-topbar">
+      <a class="site-topbar__link" target="_blank" href="https://tradegecko.com/blog/tradegecko/acquired-by-intuit">TradeGecko is now QuickBooks Commerce.</a>
+    </div>
+
     <div class="base">
       <div class="base__header">
   <div class="container">
@@ -191,13 +195,12 @@
         <header class='site-header'>
           <div class="site-header__branding col-sm p-0">
             <a href="/" class="site-header__logo" ></a>
-            <a href="/" class="site-header__title" >
-                <strong class="site-header__title--strong">TradeGecko</strong> Developer
+            <a href="/" class="site-header__title" >Developer
             </a>
             <i class="burger fas fa-bars" class="burger"></i>
             <nav>
               <a class="nav-link" href="/">Home</a>
-              <a class="nav-link" href="/docs.html">Docs</a>
+              <a class="nav-link" href="/docs.html">API Docs</a>
               <a class="nav-link" href="https://go.tradegecko.com/apps" target="_blank">App Store</a>
               <a class="nav-link" href="https://github.com/tradegecko/smaug/issues" target="_blank">Community</a>
               <a class="nav-link" href="/changes.html">Changelog</a>
@@ -207,7 +210,7 @@
       </div>
     </div>
   </div>
-  <div style="background:#F4F4F5;padding:10px 20px;border-top: 1px solid #e2e6e8;">
+  <div>
     <div class="container">
       <div class="search-wrapper">
   <div class="search">
@@ -225,7 +228,7 @@
           <div class="guides-main-container">
 <div>
   <h1 class="mt-2">Managing Warehouse Inventory Guide</h1>
-  <p>This guide explains how to manage inventory across different warehouse locations in TradeGecko.</p>
+  <p>This guide explains how to manage inventory across different warehouse locations in QuickBooks Commerce.</p>
 
   In this guide:
   <ul class="mt-2">
@@ -240,28 +243,28 @@
 
 <div id="warehouse_resources" class="guide-section">
   <h2>Warehouse Resources</h2>
-  <p>Before you start working on a warehouse integration with TradeGecko, it’s helpful to understand some of the different warehouse-related resources.</p>
+  <p>Before you start working on a warehouse integration with QuickBooks Commerce, it’s helpful to understand some of the different warehouse-related resources.</p>
   <ul class="mt-2">
       <li class="mt-1"><b>Sales Order</b>:&nbsp;Contains information about a sales order, its associated order line items and fulfillments. Order line items contain information such as variants and tax types.</li>
         <ul>
-            <li>An order in TradeGecko can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
+            <li>An order in QuickBooks Commerce can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
         </ul>
       <li class="mt-1"><b>Fulfillment</b>:&nbsp;Represents a shipment of one or more items in a sales order.</li>
         <ul>
-            <li>A fulfillment in TradeGecko can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
+            <li>A fulfillment in QuickBooks Commerce can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
         </ul>
       <li class="mt-1"><b>Purchase Order</b>:&nbsp;Contains information about a purchase order and its associated purchase order line items. Purchase order line items contain information such as variants, quantity to procure, quantity to receive, item cost, tax, and landed cost.</li>
         <ul>
-            <li>A purchase order in TradeGecko can have 1 of 5 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>received</code>, <code>void</code> or <code>deleted</code>.</li>
+            <li>A purchase order in QuickBooks Commerce can have 1 of 5 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>received</code>, <code>void</code> or <code>deleted</code>.</li>
             <li>After a purchase order is fully received, the purchase order status will be changed to <code>received</code>.</li>
         </ul>
-      <li class="mt-1"><b>Address</b>:&nbsp;Represents a physical address of a merchant's supplier or customer created and stored in the TradeGecko Relationships section.</li>
+      <li class="mt-1"><b>Address</b>:&nbsp;Represents a physical address of a merchant's supplier or customer created and stored in the QuickBooks Commerce Relationships section.</li>
       <li class="mt-1"><b>Location</b>:&nbsp;Represents a geographical location where a merchant can receive, store and transfer goods.</li>
       <li class="mt-1"><b>Product</b>:&nbsp;Represents a group of variants e.g. t-shirt.</li>
       <li class="mt-1"><b>Variant</b>:&nbsp;Represents a variation of a product, based on specific attributes e.g. t-shirt in colour red and size small, t-shirt in colour blue and size large.</li>
         <ul>
             <li>In a sales order or purchase order, each line item always references a variant.</li>
-            <li>At TradeGecko, stock levels are on variants and not products.</li>
+            <li>At QuickBooks Commerce, stock levels are on variants and not products.</li>
         </ul>
   </ul>
 </div>
@@ -269,7 +272,7 @@
 <div id="how_sales_order_and_stock_control_affect_inventory" class="guide-section">
   <h2>How Sales Order and Stock Control Affect Inventory</h2>
   <ul class="mt-2">
-      <li class="mt-1"><b>Stock Levels</b>:&nbsp;There are four types of stock levels in TradeGecko:&nbsp;</li>
+      <li class="mt-1"><b>Stock Levels</b>:&nbsp;There are four types of stock levels in QuickBooks Commerce:&nbsp;</li>
         <ul>
             <li><b>Stock on Hand</b>:&nbsp; The stock that is present in a warehouse.</li>
             <li><b>Committed Stock</b>:&nbsp; The stock that is committed for sales orders but has not been shipped yet.</li>
@@ -428,7 +431,7 @@ https://api.tradegecko.com/purchase_orders/1/actions/receive
         <ul>
           <li>You can subscribe to the <code>stock_transfer.create</code> webhook to be notified when a merchant creates a new stock transfer.</li>
         </ul>
-      <li class="mt-1"><b>Creating a Stocktake</b>:&nbsp;Used to update inventory levels without changing the account’s Moving Average Cost. For example, your TradeGecko account indicates that you have 25 medium sized, white T-shirts in stock. When you go to the warehouse to do a physical stocktake, you realise that there are only 23 in stock. To account for this discrepancy, you should create a stocktake.</li>
+      <li class="mt-1"><b>Creating a Stocktake</b>:&nbsp;Used to update inventory levels without changing the account’s Moving Average Cost. For example, your QuickBooks Commerce account indicates that you have 25 medium sized, white T-shirts in stock. When you go to the warehouse to do a physical stocktake, you realise that there are only 23 in stock. To account for this discrepancy, you should create a stocktake.</li>
   </ol>
 </div>
 
@@ -439,7 +442,7 @@ https://api.tradegecko.com/purchase_orders/1/actions/receive
     <li><a target="_blank" href="/docs.html#authentication">Getting API key for Authentication</a></li>
     <li><a target="_blank" href="/docs.html#webhook">Using Webhooks</a></li>
     <li><a target="_blank" href="/docs.html#order-actions">Order Actions</a></li>
-    <li><a target="_blank" href="https://github.com/tradegecko/smaug/issues">TradeGecko API Forum</a></li>
+    <li><a target="_blank" href="https://github.com/tradegecko/smaug/issues">QuickBooks Commerce API Forum</a></li>
   </ul>
 </div>
 
@@ -461,15 +464,10 @@ https://api.tradegecko.com/purchase_orders/1/actions/receive
     </a>
 </div>
 <div class="base__footer">
-  <div class="corner-ribbon-bounds corner-ribbon-bounds--loose">
-    <a class="corner-ribbon corner-ribbon--moko" target="_blank" href="https://www.tradegecko.com/jobs">
-      We're Hiring
-    </a>
-  </div>
   <div class="footer-wrapper">
     <div class="container">
       <div class="row">
-          <div class="col-2">
+          <div class="col-3">
           <h4>Company</h4>
             <ul class="link-list">
                 <li><a href="https://www.tradegecko.com/about-us" target="_blank">About us</a></li>
@@ -478,7 +476,7 @@ https://api.tradegecko.com/purchase_orders/1/actions/receive
                 <li><a href="https://www.tradegecko.com/press-kit" target="_blank">Press kit</a></li>
             </ul>
           </div>
-          <div class="col-2">
+          <div class="col-3">
           <h4>Contact</h4>
             <ul class="link-list">
                 <li><a href="https://www.tradegecko.com/contact-us" target="_blank">Contact us</a></li>
@@ -486,7 +484,7 @@ https://api.tradegecko.com/purchase_orders/1/actions/receive
                 <li><a href="https://www.tradegecko.com/contact-us" target="_blank">Visit us</a></li>
             </ul>
           </div>
-          <div class="col-2">
+          <div class="col-3">
           <h4>Getting Help</h4>
             <ul class="link-list">
                 <li><a href="http://support.tradegecko.com" target="_blank">Help Desk</a></li>
@@ -494,7 +492,7 @@ https://api.tradegecko.com/purchase_orders/1/actions/receive
                 <li><a href="https://status.tradegecko.com" target="_blank">Staus</a></li>
             </ul>
           </div>
-          <div class="col-2">
+          <div class="col-3">
           <h4>Partners</h4>
             <ul class="link-list">
                 <li><a href="https://www.tradegecko.com/partners" target="_blank">Become a partner</a></li>
@@ -503,17 +501,6 @@ https://api.tradegecko.com/purchase_orders/1/actions/receive
                 <li><a href="https://developer.tradegecko.com/" target="_blank">Developers & API</a></li>
             </ul>
           </div>
-        <div class="col-4">
-          <a target="_blank" href="https://tradegecko.typeform.com/to/A2ewy0" class="btn btn-big btn-primary" >
-            Subscribe to our newsletter
-          </a>
-          <legend>
-            You'll get useful news from our blog, as well as periodic product update emails. Unsubscribe any time.
-          </legend>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 100px;">
-        <div class="footer-moko">
       </div>
     </div>
   </div>
@@ -521,7 +508,7 @@ https://api.tradegecko.com/purchase_orders/1/actions/receive
 
     </div>
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700' rel='stylesheet' type='text/css'>
+    <link href="https://d3ds1rcygteua7.cloudfront.net/assets/fonts/avenir.css" rel="stylesheet">
     <script>
       window.intercomSettings = {
         app_id: "i0krnes0"

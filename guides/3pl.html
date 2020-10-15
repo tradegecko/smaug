@@ -183,6 +183,10 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <div class="site-topbar">
+      <a class="site-topbar__link" target="_blank" href="https://tradegecko.com/blog/tradegecko/acquired-by-intuit">TradeGecko is now QuickBooks Commerce.</a>
+    </div>
+
     <div class="base">
       <div class="base__header">
   <div class="container">
@@ -191,13 +195,12 @@
         <header class='site-header'>
           <div class="site-header__branding col-sm p-0">
             <a href="/" class="site-header__logo" ></a>
-            <a href="/" class="site-header__title" >
-                <strong class="site-header__title--strong">TradeGecko</strong> Developer
+            <a href="/" class="site-header__title" >Developer
             </a>
             <i class="burger fas fa-bars" class="burger"></i>
             <nav>
               <a class="nav-link" href="/">Home</a>
-              <a class="nav-link" href="/docs.html">Docs</a>
+              <a class="nav-link" href="/docs.html">API Docs</a>
               <a class="nav-link" href="https://go.tradegecko.com/apps" target="_blank">App Store</a>
               <a class="nav-link" href="https://github.com/tradegecko/smaug/issues" target="_blank">Community</a>
               <a class="nav-link" href="/changes.html">Changelog</a>
@@ -207,7 +210,7 @@
       </div>
     </div>
   </div>
-  <div style="background:#F4F4F5;padding:10px 20px;border-top: 1px solid #e2e6e8;">
+  <div>
     <div class="container">
       <div class="search-wrapper">
   <div class="search">
@@ -225,7 +228,7 @@
           <div class="guides-main-container">
 <div>
   <h1 class="mt-2">Fulfillment Service Integration Guide</h1>
-  <p>This guide explains how to use TradeGecko API to integrate with a fulfillment service - a third party warehouse that prepares and ships orders on behalf of a merchant on TradeGecko. You can use these resources to receive and create fulfillments.</p>
+  <p>This guide explains how to use QuickBooks Commerce API to integrate with a fulfillment service - a third party warehouse that prepares and ships orders on behalf of a merchant on QuickBooks Commerce. You can use these resources to receive and create fulfillments.</p>
 
   In this guide:
   <ul class="mt-2">
@@ -240,20 +243,20 @@
 
 <div id="fulfillment_resources" class="guide-section">
   <h2>Fulfillment Resources</h2>
-  <p>Before you start working on a fulfillment integration with TradeGecko, it's helpful to understand some of the different fulfillment-related resources.</p>
+  <p>Before you start working on a fulfillment integration with QuickBooks Commerce, it's helpful to understand some of the different fulfillment-related resources.</p>
   <ul class="mt-2">
       <li class="mt-1"><b>Sales Order</b>:&nbsp;Contains information about a sales order, its associated order line items and fulfillments. Order line items contain information such as variants and tax types.</li>
         <ul>
-            <li>An order in TradeGecko can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
+            <li>An order in QuickBooks Commerce can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
             <li>When an order is fully shipped, the order status will be changed to <code>fulfilled</code>.</li>
         </ul>
       <li class="mt-1"><b>Fulfillment</b>:&nbsp;Represents a shipment of one or more items in a sales order. It contains information about the shipment, such as the ship to address (<code>shipping_address</code>), ship from address (<code>stock_location_id</code>), tracking information and an array of fulfillment line items.</li>
         <ul>
-            <li>A fulfillment in TradeGecko can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
+            <li>A fulfillment in QuickBooks Commerce can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.</li>
             <li>A fulfillment is created with a status of <code>packed</code> by default. After the fulfillment is shipped, its status should be updated to <code>fulfilled</code>.</li>
         </ul>
       <li class="mt-1"><b>Fulfillment Line Item</b>:&nbsp;Contains information about the order line item and quantity of the order line item’s variant which is being fulfilled.</li>
-      <li class="mt-1"><b>Address</b>:&nbsp;Represents a physical address of a merchant's supplier or customer created and stored in the TradeGecko Relationships section.</li>
+      <li class="mt-1"><b>Address</b>:&nbsp;Represents a physical address of a merchant's supplier or customer created and stored in the QuickBooks Commerce Relationships section.</li>
       <li class="mt-1"><b>Location</b>:&nbsp;Represents a geographical location where a merchant can receive, store and transfer goods.</li>
   </ul>
 </div>
@@ -433,7 +436,7 @@ https://api.tradegecko.com/fulfillments/1 -d <span class="s1">'{"fulfillment":{"
 <p><div>
       <h3><b>Notes:</b></h3>
       <ul>
-          <li><b>Query the order to see its order line items:</b>&nbsp;In TradeGecko, merchants have the option to partially pack order line items. For example, a merchant may choose to pack only 5 out of 10 items from an order line item.</li>
+          <li><b>Query the order to see its order line items:</b>&nbsp;In QuickBooks Commerce, merchants have the option to partially pack order line items. For example, a merchant may choose to pack only 5 out of 10 items from an order line item.</li>
       </ul>
       <div>
         <video autoplay loop class="mr-auto ml-auto guide-section__video-container" poster="http://g.recordit.co/XYTdxZqUDG.gif"></video>
@@ -651,7 +654,7 @@ https://api.tradegecko.com/fulfillments/ -d <span class="s1">'{"fulfillment":{"o
 <p><div id="handling_returns" class="guide-section">
     <h2>Handling Returns</h2>
       <p>Depending on a merchant&#39;s return policy, there may be a need to create a fulfillment return or void an order. You can return an entire order or part of an order.</p>
-      <p>In the event that your company is handling the return through TradeGecko API, you can create a <code>fulfillment_return</code> as shown below:&nbsp;</p></p>
+      <p>In the event that your company is handling the return through QuickBooks Commerce API, you can create a <code>fulfillment_return</code> as shown below:&nbsp;</p></p>
 
 <div class="lang-selector">
       <a href="#" data-language-name="ruby">ruby</a>
@@ -721,7 +724,7 @@ https://api.tradegecko.com/fulfillment_returns/ -d <span class="s1">'{"fulfillme
       <h3><b>Notes:</b></h3>
       <ul>
           <li>You cannot delete a fulfillment if there are any associated fulfillment returns.</li>
-          <li>If a merchant is integrated with an accounting platform on TradeGecko, creating a fulfillment return would create a credit note on the accounting platform.</li>
+          <li>If a merchant is integrated with an accounting platform on QuickBooks Commerce, creating a fulfillment return would create a credit note on the accounting platform.</li>
           <li>Refunds are currently not supported. If you need an endpoint for the refund process, let us know <a target="_blank" href="https://tradegecko.typeform.com/to/A2ewy0">here</a>.</li>
           <li>You can void an order via the <a target="_blank" href="/docs.html#order-actions">order&#39;s void endpoint</a>.</li>
       </ul>
@@ -735,7 +738,7 @@ https://api.tradegecko.com/fulfillment_returns/ -d <span class="s1">'{"fulfillme
     <li><a target="_blank" href="/docs.html#authentication">Getting API key for Authentication</a></li>
     <li><a target="_blank" href="/docs.html#webhook">Using Webhooks</a></li>
     <li><a target="_blank" href="/docs.html#order-actions">Order Actions</a></li>
-    <li><a target="_blank" href="https://github.com/tradegecko/smaug/issues">TradeGecko API Forum</a></li>
+    <li><a target="_blank" href="https://github.com/tradegecko/smaug/issues">QuickBooks Commerce API Forum</a></li>
   </ul>
 </div></p>
 
@@ -757,15 +760,10 @@ https://api.tradegecko.com/fulfillment_returns/ -d <span class="s1">'{"fulfillme
     </a>
 </div>
 <div class="base__footer">
-  <div class="corner-ribbon-bounds corner-ribbon-bounds--loose">
-    <a class="corner-ribbon corner-ribbon--moko" target="_blank" href="https://www.tradegecko.com/jobs">
-      We're Hiring
-    </a>
-  </div>
   <div class="footer-wrapper">
     <div class="container">
       <div class="row">
-          <div class="col-2">
+          <div class="col-3">
           <h4>Company</h4>
             <ul class="link-list">
                 <li><a href="https://www.tradegecko.com/about-us" target="_blank">About us</a></li>
@@ -774,7 +772,7 @@ https://api.tradegecko.com/fulfillment_returns/ -d <span class="s1">'{"fulfillme
                 <li><a href="https://www.tradegecko.com/press-kit" target="_blank">Press kit</a></li>
             </ul>
           </div>
-          <div class="col-2">
+          <div class="col-3">
           <h4>Contact</h4>
             <ul class="link-list">
                 <li><a href="https://www.tradegecko.com/contact-us" target="_blank">Contact us</a></li>
@@ -782,7 +780,7 @@ https://api.tradegecko.com/fulfillment_returns/ -d <span class="s1">'{"fulfillme
                 <li><a href="https://www.tradegecko.com/contact-us" target="_blank">Visit us</a></li>
             </ul>
           </div>
-          <div class="col-2">
+          <div class="col-3">
           <h4>Getting Help</h4>
             <ul class="link-list">
                 <li><a href="http://support.tradegecko.com" target="_blank">Help Desk</a></li>
@@ -790,7 +788,7 @@ https://api.tradegecko.com/fulfillment_returns/ -d <span class="s1">'{"fulfillme
                 <li><a href="https://status.tradegecko.com" target="_blank">Staus</a></li>
             </ul>
           </div>
-          <div class="col-2">
+          <div class="col-3">
           <h4>Partners</h4>
             <ul class="link-list">
                 <li><a href="https://www.tradegecko.com/partners" target="_blank">Become a partner</a></li>
@@ -799,17 +797,6 @@ https://api.tradegecko.com/fulfillment_returns/ -d <span class="s1">'{"fulfillme
                 <li><a href="https://developer.tradegecko.com/" target="_blank">Developers & API</a></li>
             </ul>
           </div>
-        <div class="col-4">
-          <a target="_blank" href="https://tradegecko.typeform.com/to/A2ewy0" class="btn btn-big btn-primary" >
-            Subscribe to our newsletter
-          </a>
-          <legend>
-            You'll get useful news from our blog, as well as periodic product update emails. Unsubscribe any time.
-          </legend>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 100px;">
-        <div class="footer-moko">
       </div>
     </div>
   </div>
@@ -817,7 +804,7 @@ https://api.tradegecko.com/fulfillment_returns/ -d <span class="s1">'{"fulfillme
 
     </div>
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700' rel='stylesheet' type='text/css'>
+    <link href="https://d3ds1rcygteua7.cloudfront.net/assets/fonts/avenir.css" rel="stylesheet">
     <script>
       window.intercomSettings = {
         app_id: "i0krnes0"

@@ -5,13 +5,12 @@
         <header class='site-header'>
           <div class="site-header__branding col-sm p-0">
             <a href="/" class="site-header__logo" ></a>
-            <a href="/" class="site-header__title" >
-                <strong class="site-header__title--strong">TradeGecko</strong> Developer
+            <a href="/" class="site-header__title" >Developer
             </a>
             <i class="burger fas fa-bars" class="burger"></i>
             <nav>
               <a class="nav-link" href="/">Home</a>
-              <a class="nav-link" href="/docs.html">Docs</a>
+              <a class="nav-link" href="/docs.html">API Docs</a>
               <a class="nav-link" href="https://go.tradegecko.com/apps" target="_blank">App Store</a>
               <a class="nav-link" href="https://github.com/tradegecko/smaug/issues" target="_blank">Community</a>
               <a class="nav-link" href="/changes.html">Changelog</a>
@@ -21,7 +20,7 @@
       </div>
     </div>
   </div>
-  <div style="background:#F4F4F5;padding:10px 20px;border-top: 1px solid #e2e6e8;">
+  <div>
     <div class="container">
       <div class="search-wrapper">
   <div class="search">

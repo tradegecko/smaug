@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>TradeGecko API Documentation</title>
+    <title>QuickBooks Commerce API Documentation</title>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -181,6 +181,11 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P2LGV7S"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <div class="site-topbar site-topbar__fixed">
+      <a class="site-topbar__link" target="_blank" href="https://tradegecko.com/blog/tradegecko/acquired-by-intuit">TradeGecko is now QuickBooks Commerce.</a>
+    </div>
+
     <a href="#" id="nav-button">
       <span>
         <img src="images/navbar-2.png" alt="Navbar 2" />
@@ -189,7 +194,7 @@
 
     <div class="toc-wrapper">
       <a href="/" title="Back to API documentation">
-        <img src="images/logo.png" width="200px" alt="Logo" />
+        <img src="images/qbcommerce-logo.svg" width="140px" alt="Qbcommerce logo" />
       </a>
         <div class="lang-selector">
               <a href="#" data-language-name="ruby">ruby</a>
@@ -202,7 +207,7 @@
       <div id="toc" class="toc-list-h1">
           <a class="faux-toc-link" href="/">Back to documentation</a>
           <li>
-            <a href="#tradegecko-api-reference" class="toc-h1 toc-link" data-title="TradeGecko API Reference">TradeGecko API Reference</a>
+            <a href="#quickbooks-commerce-api-reference" class="toc-h1 toc-link" data-title="QuickBooks Commerce API Reference">QuickBooks Commerce API Reference</a>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
@@ -1014,8 +1019,8 @@
     <div class="page-wrapper code-page">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='tradegecko-api-reference'>TradeGecko API Reference</h1>
-<p>This website documents the public API for <a href="https://www.tradegecko.com">TradeGecko</a></p>
+        <h1 id='quickbooks-commerce-api-reference'>QuickBooks Commerce API Reference</h1>
+<p>This website documents the public API for <a href="https://www.tradegecko.com">QuickBooks Commerce</a></p>
 
 <p>You can view code examples in the dark area to the right; switch the programming language of the examples with the tabs in the top right.</p>
 
@@ -1029,10 +1034,10 @@ https://api.tradegecko.com/products?sku<span class="o">=</span>moko/
 <span class="n">gecko</span><span class="p">.</span><span class="nf">authorize_from_existing</span><span class="p">(</span><span class="o">&lt;</span><span class="no">ACCESS_TOKEN</span><span class="o">&gt;</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="kp">nil</span><span class="p">)</span>
 <span class="n">gecko</span><span class="o">.</span><span class="no">Product</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">sku: </span><span class="s1">'moko'</span><span class="p">)</span>
 </code></pre>
-<p>The TradeGecko API is JSON based. In order to make an authenticated call to the API, you must include your access token with the call. OAuth2 uses a BEARER token that is passed along in an Authorization header.</p>
+<p>The QuickBooks Commerce API is JSON based. In order to make an authenticated call to the API, you must include your access token with the call. OAuth2 uses a BEARER token that is passed along in an Authorization header.</p>
 
 <p><h2 id='registering-an-application'>Registering an Application</h2>
-<p>In order to use the TradeGecko API, you must have an active TradeGecko account.
+<p>In order to use the QuickBooks Commerce API, you must have an active QuickBooks Commerce account.
 Once you&#39;re logged in to your account you can register a new API application at 
 <a href="https://go.tradegecko.com/oauth/applications">https://go.tradegecko.com/oauth/applications</a>.</p></p>
 
@@ -1051,7 +1056,7 @@ unique keys: </p>
 <p>These two keys are subsequently used to obtain access tokens for making API calls.</p>
 
 <p><h2 id='oauth-authentication-flows'>OAuth Authentication Flows</h2>
-<p>The TradeGecko API is based on <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-22">version 22 of the OAuth 2.0 specification</a>.</p></p>
+<p>The QuickBooks Commerce API is based on <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-22">version 22 of the OAuth 2.0 specification</a>.</p></p>
 
 <p>If you are familiar with OAuth, then the authentication endpoints are as follows:</p>
 
@@ -1068,7 +1073,7 @@ unique keys: </p>
 
 <h3 id='available-authentication-flows'>Available Authentication Flows</h3>
 
-<p>The TradeGecko API supports two common OAuth 2.0 flows:</p>
+<p>The QuickBooks Commerce API supports two common OAuth 2.0 flows:</p>
 
 <ul>
 <li><a href="#authorization-code">Authorization Code with Refresh Token flow</a></li>
@@ -1079,7 +1084,7 @@ unique keys: </p>
 
 <p>For prototyping, or one-off integrations you may use the <a href="#resource-owner-password-credentials">Resource Owner Password Credentials</a> flows.</p>
 
-<p>If you plan on building an application that will be used by multiple TradeGecko accounts, you MUST use the <a href="#authorization-code">Authorization Code with Refresh token</a> flow.</p>
+<p>If you plan on building an application that will be used by multiple QuickBooks Commerce accounts, you MUST use the <a href="#authorization-code">Authorization Code with Refresh token</a> flow.</p>
 
 <p><h2 id='authorization-code-with-refresh-token'>Authorization Code with Refresh Token</h2>
 <p>The Authorization Code flow is a redirection-based flow,
@@ -1116,7 +1121,7 @@ the user will be redirected back to after the request is authorized.</li>
 
 <h3 id='phase-2-user-authorization'>Phase 2: User Authorization</h3>
 
-<p>Once directed to the above link, the user will be asked to log in to their TradeGecko account (if they&#39;re not already logged in).
+<p>Once directed to the above link, the user will be asked to log in to their QuickBooks Commerce account (if they&#39;re not already logged in).
 They will then be asked to authorize or deny the authentication request.</p>
 
 <div class="screenshot">
@@ -1207,10 +1212,10 @@ Using an expired refresh token will return an error.
 </aside>
 
   <h2 id='resource-owner-password-credentials-flow'>Resource Owner Password Credentials flow</h2>
-<p>The TradeGecko API also supports the Resource Owner Password Credentials flow
+<p>The QuickBooks Commerce API also supports the Resource Owner Password Credentials flow
 through the concept of Privileged Access Tokens.</p>
 
-<p>These tokens are generated through the TradeGecko UI and do not expire.
+<p>These tokens are generated through the QuickBooks Commerce UI and do not expire.
 This means that you can access the API using the privileged token without the need
 to use browser redirects or manage refresh tokens.</p>
 
@@ -1239,10 +1244,10 @@ you will see a button to &quot;Create a Privileged Token&quot; for the applicati
 </div>
 
 <p>If you have already registered your application, you can add a privileged token by
-finding your application in your <a href="https://go.tradegecko.com/oauth/applications">TradeGecko App List</a>.</p>
+finding your application in your <a href="https://go.tradegecko.com/oauth/applications">QuickBooks Commerce App List</a>.</p>
 
 <aside class="notice">
-Important: The Privileged Access Tokens provide unfettered access to your TradeGecko
+Important: The Privileged Access Tokens provide unfettered access to your QuickBooks Commerce
 account, be very careful to store them securely.
 </aside>
 
@@ -1254,14 +1259,14 @@ https://api.tradegecko.com/users?limit<span class="o">=</span>5&amp;page<span cl
 <span class="n">gecko</span><span class="p">.</span><span class="nf">access_token</span> <span class="o">=</span> <span class="n">access_token</span>
 <span class="n">gecko</span><span class="o">.</span><span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">limit: </span><span class="mi">5</span><span class="p">,</span> <span class="ss">page: </span><span class="mi">2</span><span class="p">)</span>
 </code></pre>
-<p>The TradeGecko API enables pagination via <code>limit</code>
+<p>The QuickBooks Commerce API enables pagination via <code>limit</code>
 and <code>page</code> query parameters on GET requests to index pages. </p></p>
 
 <p>The default page size is 50 items, with the maximum page size being 250.</p>
 
 <p><h1 id='filtering-collections'>Filtering Collections</h1>
 
-<p>The TradeGecko API allows filtering of records by passing along query parameters.<br>
+<p>The QuickBooks Commerce API allows filtering of records by passing along query parameters.<br>
 These are some of the filters currently allowed by the API (where relevant).</p>
 
 <pre class="highlight shell tab-shell"><code>curl -X GET -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
@@ -1340,7 +1345,7 @@ For example, a single API call can return products with multiple brands:<br>
 <code>GET https://api.tradegecko.com/companies?company_status=active&amp;company_type=supplier&amp;order=created_at+desc&amp;page=2&amp;limit=20</code></p>
 
 <p><h1 id='response-metadata'>Response Metadata</h1>
-<p>Every response returned from the TradeGecko API returns some useful pieces of information in the response headers.</p>
+<p>Every response returned from the QuickBooks Commerce API returns some useful pieces of information in the response headers.</p>
 <h2 id='request-ids'>Request IDs</h2>
 <p>Every response will include an <code>X-Request-ID</code> parameter unique to that specific request.
 If you need to contact us about a specific request, please make sure to include the specific request ID in any communication with us to help speed up investigations.</p>
@@ -1366,7 +1371,7 @@ this is for historical reasons and should not be relied on, please use the pagin
 </aside>
 
 <p><h1 id='rate-limiting'>Rate Limiting</h1>
-<p>The TradeGecko API provides a rate limit of 300 requests per 300 seconds.</p>
+<p>The QuickBooks Commerce API provides a rate limit of 300 requests per 300 seconds.</p>
 
 <pre class="highlight plaintext"><code>curl -IXGET https://api.tradegecko.com/products?page=1 -H &quot;Content-type: application/json&quot; -H &quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot; | grep X-Rate-Limit<br>
 X-Rate-Limit-Limit: 300
@@ -1404,7 +1409,7 @@ X-Rate-Limit-Reset: 1509339000<br>
 
 <p><h1 id='idempotency-tokens'>Idempotency Tokens</h1><pre class="highlight shell tab-shell"><code>curl https://api.tradegecko.com/orders/ <span class="se">&lt;/span&gt;
      -X POST <span class="se">&lt;/span&gt;
-     -H <span class="s2">&quot;HTTP_IDEMPOTENCY_KEY: ecf83ef1-0f85-4860-bbc3-70a4bd74be41&quot;</span> <span class="se">&lt;/span&gt;
+     -H <span class="s2">&quot;Idempotency-Key: ecf83ef1-0f85-4860-bbc3-70a4bd74be41&quot;</span> <span class="se">&lt;/span&gt;
      -H <span class="s2">&quot;Content-type: application/json&quot;</span> <span class="se">&lt;/span&gt;
      -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span> <span class="se">&lt;/span&gt;
      -d <span class="s1">&#39;{&quot;order&quot;: {&quot;company_id&quot;: 101, &quot;shipping_address_id&quot;: 1002, &quot;billing_address_id&quot;: 1002, &quot;status&quot;: &quot;active&quot;, &quot;issued_at&quot;: &quot;21-02-2018&quot;, &quot;order_line_items&quot;: [{&quot;variant_id&quot;: 14, &quot;quantity&quot;: 1}, {&quot;variant_id&quot;: 15, &quot;quantity&quot;: 2}]}}&#39;</span>
@@ -1418,15 +1423,15 @@ X-Rate-Limit-Reset: 1509339000<br>
 <span class="n">order</span><span class="p">.</span><span class="nf">order_line_items</span><span class="p">.</span><span class="nf">build</span><span class="p">(</span><span class="ss">variant_id: </span><span class="mi">15</span><span class="p">,</span> <span class="ss">quantity: </span><span class="mi">2</span><span class="p">)</span>
 <span class="n">order</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="ss">idempotency_token: </span><span class="s2">&quot;ecf83ef1-0f85-4860-bbc3-70a4bd74be41&quot;</span><span class="p">)</span>
 </code></pre>
-<p>The TradeGecko API has support for <a href="https://en.wikipedia.org/wiki/Idempotence">idempotent</a>
-requests via an optional <code>HTTP_IDEMPOTENCY_KEY</code> request header.
-By providing a unique Idempotency key in your POST or PUT requests the API can
+<p>The QuickBooks Commerce API has support for <a href="https://en.wikipedia.org/wiki/Idempotence">idempotent</a> 
+requests via an optional <code>Idempotency-Key</code> request header.
+By providing a unique Idempotency key in your POST or PUT requests the API can 
 guarantee that a specific operation is only performed once.</p></p>
 
 <p>The keys expire after 24 hours.</p>
 
 <p><h1 id='soft-deletion'>Soft Deletion</h1>
-<p>TradeGecko uses soft-deletion for most of its records. 
+<p>QuickBooks Commerce uses soft-deletion for most of its records. 
 In the API, a soft-deleted object will have a status of <code>archived</code>. 
 These records will not be returned by default, but can be accessed using filters to 
 specifically return records with a status of <code>archived</code>.</p></p>
@@ -1434,7 +1439,7 @@ specifically return records with a status of <code>archived</code>.</p></p>
 <p><h1 id='webhooks'>Webhooks</h1>
 <p>You can use webhooks to receive notifications fo a collection of common events, see <a href="#list-of-available-events">the list here</a>.</p></p>
 
-<p>Once you&#39;ve created a webhook via the API, any time that matching event is triggered in the customer&#39;s TradeGecko account, the endpoint will receive a POST request.</p>
+<p>Once you&#39;ve created a webhook via the API, any time that matching event is triggered in the customer&#39;s QuickBooks Commerce account, the endpoint will receive a POST request.</p>
 
 <h3 id='the-webhook-notification'>The Webhook notification</h3>
 
@@ -1455,7 +1460,7 @@ specifically return records with a status of <code>archived</code>.</p></p>
 
 <p><code>X-Gecko-Signature</code>: A signed signature for verification.</p>
 
-<p>To ensure the request comes from TradeGecko itself and is not being spoofed be sure to verify the
+<p>To ensure the request comes from QuickBooks Commerce itself and is not being spoofed be sure to verify the
 signature agains the payload received.</p>
 
 <p>An example implementation in Ruby is provided.</p>
@@ -1478,7 +1483,7 @@ If your server returns a HTTP status code between <code>200</code> and <code>399
 Application developers will receive daily emails to notify them of webhook failure and webhook deletion.</p>
 
   <h1 id='sideloading-resources'>Sideloading Resources</h1>
-<p>TradeGecko allows you retrieve associated resources as part of a single request.
+<p>QuickBooks Commerce allows you retrieve associated resources as part of a single request.
 This can be done by adding an <code>include</code> parameter containing a comma-separated list of resources to load.</p>
 
 <aside class="notice">
@@ -1611,7 +1616,7 @@ This can be done by adding an <code>include</code> parameter containing a comma-
 </span></code></pre>
 
 <p><h1 id='errors'>Errors</h1>
-<p>The TradeGecko API uses the following error codes:</p></p>
+<p>The QuickBooks Commerce API uses the following error codes:</p></p>
 
 <table><thead>
 <tr>
@@ -1663,7 +1668,7 @@ This can be done by adding an <code>include</code> parameter containing a comma-
 
 <h1 id='guides'>Guides</h1>
 
-<p>Check out these guides to start integrating TradeGecko with your external sales channels, fulfillment services or warehouse management systems:&nbsp;</p>
+<p>Check out these guides to start integrating QuickBooks Commerce with your external sales channels, fulfillment services or warehouse management systems:&nbsp;</p>
 
 <p><ul>
     <li><a href="/guides/sales.html" target="_blank"> Ecommerce Integration Guide</a></li>
@@ -1676,7 +1681,7 @@ This can be done by adding an <code>include</code> parameter containing a comma-
   </ul></p>
 
 <p><h2 id='creating-a-sales-order'>Creating a Sales Order</h2>
-<p>There are several ways to create a Sales Order via the TradeGecko API, 
+<p>There are several ways to create a Sales Order via the QuickBooks Commerce API, 
 depending on the number of line items, and whether the order is being made to a 
 new or existing customer.</p></p>
 
@@ -1862,7 +1867,7 @@ the next set of items.</p>
 </span></code></pre>
 
 <aside class="notice">
-If you are regularly making > 400 line item orders via the TradeGecko API, please
+If you are regularly making > 400 line item orders via the QuickBooks Commerce API, please
 contact your success rep as we'd love to discuss your usecases further.
 </aside>
 <h1 id='resources'>Resources</h1>
@@ -1900,7 +1905,7 @@ contact your success rep as we'd love to discuss your usecases further.
 <tr>
 <td><strong>contact_email</strong></td>
 <td>String</td>
-<td>Contact email used on TradeGecko documents and emails.</td>
+<td>Contact email used on QuickBooks Commerce documents and emails.</td>
 <td></td>
 </tr>
 <tr>
@@ -1912,7 +1917,7 @@ contact your success rep as we'd love to discuss your usecases further.
 <tr>
 <td><strong>contact_phone</strong></td>
 <td>String</td>
-<td>Contact phone number used on TradeGecko documents and emails.</td>
+<td>Contact phone number used on QuickBooks Commerce documents and emails.</td>
 <td></td>
 </tr>
 <tr>
@@ -15030,13 +15035,13 @@ https://api.tradegecko.com/variants/1
 <tr>
 <td><strong>event</strong></td>
 <td>String</td>
-<td>Event which fires the webhook from TradeGecko to the specified address.</td>
+<td>Event which fires the webhook from QuickBooks Commerce to the specified address.</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>address</strong></td>
 <td>String</td>
-<td>URI where a POST request will be sent everytime an event occurs in TradeGecko</td>
+<td>URI where a POST request will be sent everytime an event occurs in QuickBooks Commerce</td>
 <td></td>
 </tr>
 </tbody></table></p>
@@ -15151,13 +15156,13 @@ https://api.tradegecko.com/webhooks/ -d <span class="s1">&#39;{&quot;webhook&quo
 <tr>
 <td><strong>event</strong></td>
 <td>String</td>
-<td>Event which fires the webhook from TradeGecko to the specified address.</td>
+<td>Event which fires the webhook from QuickBooks Commerce to the specified address.</td>
 <td>true</td>
 </tr>
 <tr>
 <td><strong>address</strong></td>
 <td>String</td>
-<td>URI where a POST request will be sent everytime an event occurs in TradeGecko</td>
+<td>URI where a POST request will be sent everytime an event occurs in QuickBooks Commerce</td>
 <td>true</td>
 </tr>
 </tbody></table>
