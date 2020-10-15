@@ -1,7 +1,6 @@
 @charset "utf-8";
 
-@import url("//fonts.googleapis.com/css?family=Open+Sans:400,600,700");
-@import url("//fonts.googleapis.com/css?family=Raleway:300,500,700");
+@import url("//d3ds1rcygteua7.cloudfront.net/assets/fonts/avenir.css");
 
 @import 'normalize';
 @import 'variables'; //revert to tripit defaults
@@ -50,60 +49,51 @@
 @import 'content';
 @import 'guides';
 
-.site-header nav a {
-  @extend %header-font;
-  font-weight: 700;
-}
-
 .btn-primary:hover {
   color: white;
 }
 
 .btn {
+  @extend %base-font;
   display: inline-block;
 }
 
 .index-page__section {
-  margin-top: 100px;
+  margin: 30px 0;
 }
 
 .plain-link {
   text-decoration: none;
-  color: #70cf32;
-  font-weight: 700;
+  color: $c-blue-2;
 }
 .base__body {
   overflow: visible;
-}
-
-.btn-primary {
-  color: white;
 }
 
 .site-header {
   border-bottom: none;
 }
 
-.base__footer {
-  position: relative;
+.site-topbar {
+  background: linear-gradient(45deg, $c-green-3,#00C1BC);
+  margin-bottom: 10px;
 
-  .footer-wrapper {
-    h4 {
-      font-size: 14px;
-      font-weight: 700;
-    }
+  &__link,
+  &__link:hover {
+    color: $white;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: $font-weight-bold;
+    text-align: center;
+    display: block;
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
 }
 
-$border-base: solid 1px $gray-3;
+$border-base: solid 1px $c-gray-3;
 $base-shadow: 0px 1px 3px rgba(0, 0, 0, 0.10);
 $border-radius: 3px;
-
-@media (max-width: 360px) {
-  .cta-section {
-    margin-top: 30px;
-  }
-}
 
 @media (max-width: 800px) {
   .index-page__section {
@@ -141,10 +131,6 @@ $border-radius: 3px;
     justify-content: inherit;
     width:100%;
     justify-content: flex-end;
-  }
-
-  .site-header {
-    padding-top: 0;
   }
 
   .site-header {

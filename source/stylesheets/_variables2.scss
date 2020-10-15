@@ -88,16 +88,16 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 // FONTS
 ////////////////////
 %base-font {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 %nav-font {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
 }
 
 %small-font {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 %label-font {
@@ -107,13 +107,13 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 }
 
 %default-font {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+  font-family: 'AvenirNext', Helvetica, Arial, sans-serif;
   @extend %base-font;
 }
 
 %header-font {
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
-  font-weight: 300;
+  font-family: 'AvenirNext', Helvetica, Arial, sans-serif;
+  font-weight: 600;
 }
 
 %code-font {

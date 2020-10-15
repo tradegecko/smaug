@@ -8,22 +8,22 @@
 
 .secondary-card{
   &.study-card {
-    background: none;
-    border: solid 1px $gray-3;
+    border: 1px solid $c-gray-6;
     border-radius: 5px;
+    background: $white;
+    color: $c-gray-2;
   }
 
-  .study-blurb {
-    background: none;
+  .study-card__title {
+    color: $c-gray-1;
   }
 }
 
 .study-card {
   width: 32%;
-  background:#4A90E2;
+  background: $c-gray-9;
   border-radius: 5px;
-  display:inline-block;
-  overflow: visible;
+  display: inline-block;
 
   img {
     max-width: 100%;
@@ -40,16 +40,16 @@
   position: absolute;
   width: 100%;
   bottom: 0;
-  background:#F4F4F5;
-  min-height: 260px;
-  padding: 20px;
+  min-height: 240px;
+  padding: 30px;
   position: relative;
 }
 
 
 .card__sticky-button {
   position: absolute;
-    bottom: 30px;
+  bottom: 30px;
+  font-weight: $font-weight-bold;
 }
 
 @media (max-width: 1000px) {
