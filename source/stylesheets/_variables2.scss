@@ -23,8 +23,8 @@ under the License.
 
 // TG COLORS
 ////////////////////
-$tg-green: #70cf32;
-$tg-dark-green: #61b729;
+$qbc-blue: #0077c5;
+$qbc-blue-dark: #055393;
 $tg-slate: #2d3033;
 $tg-grey: #6c7279;
 $tg-teal: #65d5d9;
@@ -62,8 +62,8 @@ $main-text: $tg-slate; // main content text color
 $nav-text: $tg-grey;
 $nav-active-text: $main-text;
 $nav-footer-text: $base-grey-70;
-$content-link: $tg-green;
-$content-link-hover: $tg-dark-green;
+$content-link: $qbc-blue;
+$content-link-hover: $qbc-blue-dark;
 $code: $tg-red;
 $lang-select-text: $white; // color of unselected language tab text
 $lang-select-active-text: $white; // color of selected language tab text

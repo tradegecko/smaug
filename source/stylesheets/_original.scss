@@ -456,10 +456,9 @@ html, body {
 }
 
 a[data-title=Resources] {
-  font-weight: 100;
   text-transform: uppercase;
-  font-size: 0.9em;
-  padding-top: 30px;
+  font-weight: $font-weight-heavy;
+  margin-top: 20px;
 }
 
 #resources {
