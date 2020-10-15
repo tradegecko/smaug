@@ -74,6 +74,23 @@
   border-bottom: none;
 }
 
+.site-topbar {
+  background: linear-gradient(45deg, $c-green-3,#00C1BC);
+  margin-bottom: 10px;
+
+  &__link,
+  &__link:hover {
+    color: $white;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: $font-weight-bold;
+    text-align: center;
+    display: block;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+
 $border-base: solid 1px $c-gray-3;
 $base-shadow: 0px 1px 3px rgba(0, 0, 0, 0.10);
 $border-radius: 3px;
