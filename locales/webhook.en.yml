@@ -81,7 +81,7 @@ en:
       event: {
         name: "event",
         type: "String",
-        description: "Event which fires the webhook from TradeGecko to the specified address.",
+        description: "Event which fires the webhook from QuickBooks Commerce to the specified address.",
         updatable: true,
         creatable: true,
         required: true,
@@ -89,7 +89,7 @@ en:
       address: {
         name: "address",
         type: "String",
-        description: "URI where a POST request will be sent everytime an event occurs in TradeGecko",
+        description: "URI where a POST request will be sent everytime an event occurs in QuickBooks Commerce",
         updatable: true,
         creatable: true,
         required: true,

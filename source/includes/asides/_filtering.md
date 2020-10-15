@@ -1,6 +1,6 @@
 # Filtering Collections
 
-The TradeGecko API allows filtering of records by passing along query parameters.  
+The QuickBooks Commerce API allows filtering of records by passing along query parameters.  
 These are some of the filters currently allowed by the API (where relevant).
 
 ```shell

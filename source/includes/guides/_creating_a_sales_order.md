@@ -1,6 +1,6 @@
 ## Creating a Sales Order
 
-There are several ways to create a Sales Order via the TradeGecko API, 
+There are several ways to create a Sales Order via the QuickBooks Commerce API, 
 depending on the number of line items, and whether the order is being made to a 
 new or existing customer.
 
@@ -213,6 +213,6 @@ the next set of items.
 ```
 
 <aside class="notice">
-If you are regularly making > 400 line item orders via the TradeGecko API, please
+If you are regularly making > 400 line item orders via the QuickBooks Commerce API, please
 contact your success rep as we'd love to discuss your usecases further.
 </aside>

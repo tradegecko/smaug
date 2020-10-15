@@ -1,5 +1,5 @@
 ---
-title: TradeGecko API Changelog
+title: QuickBooks Commerce API Changelog
 
 toc_footers:
   - <a href='https://go.tradegecko.com/register'>Sign up for an account</a>
@@ -8,7 +8,7 @@ toc_footers:
 search: true
 ---
 
-# TradeGecko API Changelog
+# QuickBooks Commerce API Changelog
 
 Build tools that solve problems for millions of wholesale and retail businesses worldwide.
 

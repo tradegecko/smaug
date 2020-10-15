@@ -88,7 +88,7 @@ en:
       contact_email: {
         name: "contact_email",
         type: "String",
-        description: "Contact email used on TradeGecko documents and emails.",
+        description: "Contact email used on QuickBooks Commerce documents and emails.",
         updatable: true,
         creatable: true,
       },
@@ -102,7 +102,7 @@ en:
       contact_phone: {
         name: "contact_phone",
         type: "String",
-        description: "Contact phone number used on TradeGecko documents and emails.",
+        description: "Contact phone number used on QuickBooks Commerce documents and emails.",
         updatable: true,
         creatable: true,
       },

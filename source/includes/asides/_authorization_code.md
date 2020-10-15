@@ -40,7 +40,7 @@ the user will be redirected back to after the request is authorized.
 
 ### Phase 2: User Authorization
 
-Once directed to the above link, the user will be asked to log in to their TradeGecko account (if they're not already logged in).
+Once directed to the above link, the user will be asked to log in to their QuickBooks Commerce account (if they're not already logged in).
 They will then be asked to authorize or deny the authentication request.
 
 <div class="screenshot">

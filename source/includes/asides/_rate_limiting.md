@@ -1,6 +1,6 @@
 # Rate Limiting
 
-The TradeGecko API provides a rate limit of 300 requests per 300 seconds.
+The QuickBooks Commerce API provides a rate limit of 300 requests per 300 seconds.
 
 ```
 curl -IXGET https://api.tradegecko.com/products?page=1 -H "Content-type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>" | grep X-Rate-Limit  

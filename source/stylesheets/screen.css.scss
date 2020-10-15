@@ -78,6 +78,14 @@
   background: linear-gradient(45deg, $c-green-3,#00C1BC);
   margin-bottom: 10px;
 
+  &__fixed {
+    position: fixed;
+    top: 0;
+    height: $top-bar-height;
+    width: 100%;
+    z-index: 40;
+  }
+
   &__link,
   &__link:hover {
     color: $white;

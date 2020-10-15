@@ -1,6 +1,6 @@
 # Sideloading Resources
 
-TradeGecko allows you retrieve associated resources as part of a single request.
+QuickBooks Commerce allows you retrieve associated resources as part of a single request.
 This can be done by adding an `include` parameter containing a comma-separated list of resources to load.
 
 <aside class="notice">

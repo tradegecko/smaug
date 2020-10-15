@@ -1,5 +1,5 @@
 # Response Metadata
-Every response returned from the TradeGecko API returns some useful pieces of information in the response headers.
+Every response returned from the QuickBooks Commerce API returns some useful pieces of information in the response headers.
 
 ## Request IDs
 Every response will include an `X-Request-ID` parameter unique to that specific request.
