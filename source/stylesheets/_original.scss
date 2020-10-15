@@ -59,7 +59,7 @@ html, body {
   overflow-x: hidden;
   position: fixed;
   z-index: 30;
-  top: 0;
+  top: $top-bar-height;
   left: 0;
   bottom: 0;
   width: $nav-width;
@@ -259,6 +259,7 @@ html, body {
 .page-wrapper {
   margin-left: $nav-width;
   position: relative;
+  top: $top-bar-height;
   z-index: 10;
   background-color: $main-bg;
   min-height: 100%;
