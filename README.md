@@ -1,4 +1,4 @@
-# TradeGecko developer docs
+# QuickBooks Commerce developer docs
 --------
 
 ### Example attribute.

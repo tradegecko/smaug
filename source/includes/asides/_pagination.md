@@ -13,7 +13,7 @@ gecko.access_token = access_token
 gecko.User.where(limit: 5, page: 2)
 ```
  
-The TradeGecko API enables pagination via `limit`
+The QuickBooks Commerce API enables pagination via `limit`
 and `page` query parameters on GET requests to index pages. 
 
 The default page size is 50 items, with the maximum page size being 250.

@@ -1,32 +1,32 @@
 ---
   title: Managing Warehouse Inventory Guide
-  introduction: This guide explains how to manage inventory across different warehouse locations in TradeGecko.
+  introduction: This guide explains how to manage inventory across different warehouse locations in QuickBooks Commerce.
   articles:
     warehouse_resources:
       header: Warehouse Resources
-      introduction: Before you start working on a warehouse integration with TradeGecko, it’s helpful to understand some of the different warehouse-related resources.
+      introduction: Before you start working on a warehouse integration with QuickBooks Commerce, it’s helpful to understand some of the different warehouse-related resources.
       subsection:
         - point: <b>Sales Order</b>:&nbsp;Contains information about a sales order, its associated order line items and fulfillments. Order line items contain information such as variants and tax types.
           subpoints:
-            - An order in TradeGecko can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
+            - An order in QuickBooks Commerce can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
         - point: <b>Fulfillment</b>:&nbsp;Represents a shipment of one or more items in a sales order.
           subpoints:
-            - A fulfillment in TradeGecko can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
+            - A fulfillment in QuickBooks Commerce can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
         - point: <b>Purchase Order</b>:&nbsp;Contains information about a purchase order and its associated purchase order line items. Purchase order line items contain information such as variants, quantity to procure, quantity to receive, item cost, tax, and landed cost.
           subpoints:
-            - A purchase order in TradeGecko can have 1 of 5 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>received</code>, <code>void</code> or <code>deleted</code>.
+            - A purchase order in QuickBooks Commerce can have 1 of 5 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>received</code>, <code>void</code> or <code>deleted</code>.
             - After a purchase order is fully received, the purchase order status will be changed to <code>received</code>.
-        - point: <b>Address</b>:&nbsp;Represents a physical address of a merchant's supplier or customer created and stored in the TradeGecko Relationships section.
+        - point: <b>Address</b>:&nbsp;Represents a physical address of a merchant's supplier or customer created and stored in the QuickBooks Commerce Relationships section.
         - point: <b>Location</b>:&nbsp;Represents a geographical location where a merchant can receive, store and transfer goods.
         - point: <b>Product</b>:&nbsp;Represents a group of variants e.g. t-shirt.
         - point: <b>Variant</b>:&nbsp;Represents a variation of a product, based on specific attributes e.g. t-shirt in colour red and size small, t-shirt in colour blue and size large.
           subpoints:
             - In a sales order or purchase order, each line item always references a variant.
-            - At TradeGecko, stock levels are on variants and not products.
+            - At QuickBooks Commerce, stock levels are on variants and not products.
     how_sales_order_and_stock_control_affect_inventory:
       header: How Sales Order and Stock Control Affect Inventory
       subsection:
-        - point: <b>Stock Levels</b>:&nbsp;There are four types of stock levels in TradeGecko:&nbsp;
+        - point: <b>Stock Levels</b>:&nbsp;There are four types of stock levels in QuickBooks Commerce:&nbsp;
           subpoints:
             - <b>Stock on Hand</b>:&nbsp; The stock that is present in a warehouse.
             - <b>Committed Stock</b>:&nbsp; The stock that is committed for sales orders but has not been shipped yet.
@@ -60,7 +60,7 @@
       - point: <b>Receiving a Stock Transfer</b>:&nbsp;Used to update inventory movements between warehouses. For example, you have 2 warehouses, one in New York and one in Chicago. When you transfer 20 items from New York to Chicago, you can <a target="_blank" href="/docs.html#create-a-new-stock_transfer">create a stock transfer</a>. Stock Transfers will not affect Moving Average Cost.
         tips:
           - You can subscribe to the <code>stock_transfer.create</code> webhook to be notified when a merchant creates a new stock transfer.
-      - point: <b>Creating a Stocktake</b>:&nbsp;Used to update inventory levels without changing the account’s Moving Average Cost. For example, your TradeGecko account indicates that you have 25 medium sized, white T-shirts in stock. When you go to the warehouse to do a physical stocktake, you realise that there are only 23 in stock. To account for this discrepancy, you should create a stocktake.
+      - point: <b>Creating a Stocktake</b>:&nbsp;Used to update inventory levels without changing the account’s Moving Average Cost. For example, your QuickBooks Commerce account indicates that you have 25 medium sized, white T-shirts in stock. When you go to the warehouse to do a physical stocktake, you realise that there are only 23 in stock. To account for this discrepancy, you should create a stocktake.
     additional_resources:
     support:
 

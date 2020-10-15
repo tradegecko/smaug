@@ -1,6 +1,6 @@
 # Errors
 
-The TradeGecko API uses the following error codes:
+The QuickBooks Commerce API uses the following error codes:
 
 Error Code | Meaning
 ---------- | -------

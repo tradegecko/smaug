@@ -22,7 +22,7 @@ order.save(idempotency_token: "ecf83ef1-0f85-4860-bbc3-70a4bd74be41")
 ```
 
 
-The TradeGecko API has support for [idempotent](https://en.wikipedia.org/wiki/Idempotence) 
+The QuickBooks Commerce API has support for [idempotent](https://en.wikipedia.org/wiki/Idempotence) 
 requests via an optional `Idempotency-Key` request header.
 By providing a unique Idempotency key in your POST or PUT requests the API can 
 guarantee that a specific operation is only performed once.

@@ -2,7 +2,7 @@
 
 You can use webhooks to receive notifications fo a collection of common events, see [the list here](#list-of-available-events).
 
-Once you've created a webhook via the API, any time that matching event is triggered in the customer's TradeGecko account, the endpoint will receive a POST request.
+Once you've created a webhook via the API, any time that matching event is triggered in the customer's QuickBooks Commerce account, the endpoint will receive a POST request.
 
 ### The Webhook notification
 
@@ -24,7 +24,7 @@ It will also include some specific HTTP headers.
 
 `X-Gecko-Signature`: A signed signature for verification.
 
-To ensure the request comes from TradeGecko itself and is not being spoofed be sure to verify the
+To ensure the request comes from QuickBooks Commerce itself and is not being spoofed be sure to verify the
 signature agains the payload received.
 
 An example implementation in Ruby is provided.

@@ -1,9 +1,9 @@
 ## Resource Owner Password Credentials flow
 
-The TradeGecko API also supports the Resource Owner Password Credentials flow
+The QuickBooks Commerce API also supports the Resource Owner Password Credentials flow
 through the concept of Privileged Access Tokens.
 
-These tokens are generated through the TradeGecko UI and do not expire.
+These tokens are generated through the QuickBooks Commerce UI and do not expire.
 This means that you can access the API using the privileged token without the need
 to use browser redirects or manage refresh tokens.
 
@@ -37,9 +37,9 @@ you will see a button to "Create a Privileged Token" for the application.
 </div>
 
 If you have already registered your application, you can add a privileged token by
-finding your application in your [TradeGecko App List](https://go.tradegecko.com/oauth/applications).
+finding your application in your [QuickBooks Commerce App List](https://go.tradegecko.com/oauth/applications).
 
 <aside class="notice">
-Important: The Privileged Access Tokens provide unfettered access to your TradeGecko
+Important: The Privileged Access Tokens provide unfettered access to your QuickBooks Commerce
 account, be very careful to store them securely.
 </aside>

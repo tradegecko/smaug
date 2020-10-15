@@ -1,22 +1,22 @@
 ---
   title: Fulfillment Service Integration Guide
-  introduction: This guide explains how to use TradeGecko API to integrate with a fulfillment service - a third party warehouse that prepares and ships orders on behalf of a merchant on TradeGecko. You can use these resources to receive and create fulfillments.
+  introduction: This guide explains how to use QuickBooks Commerce API to integrate with a fulfillment service - a third party warehouse that prepares and ships orders on behalf of a merchant on QuickBooks Commerce. You can use these resources to receive and create fulfillments.
 
   articles:
     fulfillment_resources:
       header: Fulfillment Resources
-      introduction: Before you start working on a fulfillment integration with TradeGecko, it's helpful to understand some of the different fulfillment-related resources.
+      introduction: Before you start working on a fulfillment integration with QuickBooks Commerce, it's helpful to understand some of the different fulfillment-related resources.
       subsection:
         - point: <b>Sales Order</b>:&nbsp;Contains information about a sales order, its associated order line items and fulfillments. Order line items contain information such as variants and tax types.
           subpoints:
-            - An order in TradeGecko can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
+            - An order in QuickBooks Commerce can have 1 of 6 statuses:&nbsp;<code>draft</code>, <code>active</code>, <code>finalized</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
             - When an order is fully shipped, the order status will be changed to <code>fulfilled</code>.
         - point: <b>Fulfillment</b>:&nbsp;Represents a shipment of one or more items in a sales order. It contains information about the shipment, such as the ship to address (<code>shipping_address</code>), ship from address (<code>stock_location_id</code>), tracking information and an array of fulfillment line items.
           subpoints:
-            - A fulfillment in TradeGecko can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
+            - A fulfillment in QuickBooks Commerce can have 1 of 4 statuses:&nbsp;<code>packed</code>, <code>fulfilled</code>, <code>void</code> or <code>deleted</code>.
             - A fulfillment is created with a status of <code>packed</code> by default. After the fulfillment is shipped, its status should be updated to <code>fulfilled</code>.
         - point: <b>Fulfillment Line Item</b>:&nbsp;Contains information about the order line item and quantity of the order line item’s variant which is being fulfilled.
-        - point: <b>Address</b>:&nbsp;Represents a physical address of a merchant's supplier or customer created and stored in the TradeGecko Relationships section.
+        - point: <b>Address</b>:&nbsp;Represents a physical address of a merchant's supplier or customer created and stored in the QuickBooks Commerce Relationships section.
         - point: <b>Location</b>:&nbsp;Represents a geographical location where a merchant can receive, store and transfer goods.
     fulfillment_behaviour:
       header: Fulfillment Behaviour
@@ -43,7 +43,7 @@
           header: Step 3:&nbsp;Update fulfillment status to <code>fulfilled</code>.
           text: After shipping a fulfillment, you can update the <code>status</code> of the fulfillment to <code>fulfilled</code> and include information like <code>tracking_company</code>, <code>tracking_number</code> and <code>tracking_url</code>.
         notes:
-          - <b>Query the order to see its order line items:</b>&nbsp;In TradeGecko, merchants have the option to partially pack order line items. For example, a merchant may choose to pack only 5 out of 10 items from an order line item.
+          - <b>Query the order to see its order line items:</b>&nbsp;In QuickBooks Commerce, merchants have the option to partially pack order line items. For example, a merchant may choose to pack only 5 out of 10 items from an order line item.
       scenario2:
         header: <b>Scenario 2:&nbsp;Fulfillment service is in charge of packing and fulfilling an order.</b>
         step1:
@@ -66,12 +66,12 @@
       header: Handling Returns
       introduction:
         - Depending on a merchant's return policy, there may be a need to create a fulfillment return or void an order. You can return an entire order or part of an order.
-        - In the event that your company is handling the return through TradeGecko API, you can create a <code>fulfillment_return</code> as shown below:&nbsp;
+        - In the event that your company is handling the return through QuickBooks Commerce API, you can create a <code>fulfillment_return</code> as shown below:&nbsp;
       tips:
         - If fulfillment return creation is handled by the merchant, you can subscribe to the <code>fulfillment_return.create</code> webhook to receive notifications.
       notes:
         - You cannot delete a fulfillment if there are any associated fulfillment returns.
-        - If a merchant is integrated with an accounting platform on TradeGecko, creating a fulfillment return would create a credit note on the accounting platform.
+        - If a merchant is integrated with an accounting platform on QuickBooks Commerce, creating a fulfillment return would create a credit note on the accounting platform.
         - Refunds are currently not supported. If you need an endpoint for the refund process, let us know <a target="_blank" href="https://tradegecko.typeform.com/to/A2ewy0">here</a>.
         - You can void an order via the <a target="_blank" href="/docs.html#order-actions">order's void endpoint</a>.
     additional_resources:
