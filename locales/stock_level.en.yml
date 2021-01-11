@@ -21,6 +21,7 @@ en:
           }
         ],
         stock_on_hand: "30",
+        available_stock: "25",
         incoming_stock: "0"
       },
       {
@@ -35,6 +36,7 @@ en:
           }
         ],
         stock_on_hand: "75",
+        available_stock: "75",
         incoming_stock: "0"
       }
     ]
