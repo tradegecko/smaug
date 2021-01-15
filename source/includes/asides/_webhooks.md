@@ -25,7 +25,7 @@ It will also include some specific HTTP headers.
 `X-Gecko-Signature`: A signed signature for verification.
 
 To ensure the request comes from QuickBooks Commerce itself and is not being spoofed be sure to verify the
-signature agains the payload received.
+signature against the payload received.
 
 An example implementation in Ruby is provided.
 
