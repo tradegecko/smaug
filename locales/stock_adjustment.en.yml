@@ -42,10 +42,13 @@ en:
     gecko:
       unavailable: true
       create: {
-        company_id: 1,
-        issued_at: "2015-11-25T07:27:39.813Z",
-        billing_address_id: 1,
-        shipping_address_id: 1
+        adjustment_number: "SA0001",
+        notes: null,
+        reason: "promotion",
+        stock_location_id: 1,
+        stock_adjustment_line_items: [
+          { variant_id: 1, quantity: -1 }
+        ]
       }
 
     attributes: {
