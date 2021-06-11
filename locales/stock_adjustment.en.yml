@@ -110,6 +110,7 @@ en:
         description: "Defaults to account primary_location.",
         filterable: true,
         creatable: true,
+        required: true,
       },
       cached_quantity: {
         name: "cached_quantity",
