@@ -11886,7 +11886,7 @@ https://api.tradegecko.com/stock_adjustments/
 <p><code>GET  https://api.tradegecko.com/stock_adjustments</code></p></p>
 
 <p><h2 id='create-a-new-stock_adjustment'>Create a new stock_adjustment</h2><pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">&quot;Content-type: application/json&quot;</span> -H <span class="s2">&quot;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&quot;</span>
-https://api.tradegecko.com/stock_adjustments/ -d <span class="s1">&#39;{&quot;stock_adjustment&quot;:{&quot;company_id&quot;:1,&quot;issued_at&quot;:&quot;2015-11-25T07:27:39.813Z&quot;,&quot;billing_address_id&quot;:1,&quot;shipping_address_id&quot;:1}}&#39;</span>
+https://api.tradegecko.com/stock_adjustments/ -d <span class="s1">&#39;{&quot;stock_adjustment&quot;:{&quot;adjustment_number&quot;:&quot;SA0001&quot;,&quot;notes&quot;:null,&quot;reason&quot;:&quot;promotion&quot;,&quot;stock_location_id&quot;:1,&quot;stock_adjustment_line_items&quot;:[{&quot;variant_id&quot;:1,&quot;quantity&quot;:-1}]}}&#39;</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;stock_adjustment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
